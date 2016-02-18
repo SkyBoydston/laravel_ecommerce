@@ -24,6 +24,20 @@
                             </div>
                         </div>
 
+                        <div class="form-group{{ $errors->has('business_name') ? ' has-error' : '' }}">
+                            <label class="col-md-4 control-label">Business name</label>
+
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="business_name" value="{{ old('business_name') }}">
+
+                                @if ($errors->has('business_name'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('business_name') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                             <label class="col-md-4 control-label">E-Mail Address</label>
 
