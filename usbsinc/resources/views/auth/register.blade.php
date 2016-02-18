@@ -38,6 +38,21 @@
                             </div>
                         </div>
 
+                        <div class="form-group{{ $errors->has('brands_of_interest') ? ' has-error' : '' }}">
+                            <label class="col-md-4 control-label">Brands of interest</label>
+
+                            <div class="col-md-6">
+                                <input type="checkbox" class="form-control" name="brands_of_interest[]" value="company1" checked="checked">Company 1<br>
+                                <input type="checkbox" class="form-control" name="brands_of_interest[]" value="company2" checked="checked">Company 2<br>
+
+                                @if ($errors->has('brands_of_interest'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('brands_of_interest') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                             <label class="col-md-4 control-label">E-Mail Address</label>
 
