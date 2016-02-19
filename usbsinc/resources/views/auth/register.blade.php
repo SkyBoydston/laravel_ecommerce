@@ -9,26 +9,13 @@
                 <div class="panel-body">
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/register') }}">
                         {!! csrf_field() !!}
+                        <p class="help-block">Business Details</p>
 
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                            <label class="col-md-4 control-label">Name</label>
-
-                            <div class="col-md-6">
-                                <input type="text" class="form-control" name="name" value="{{ old('name') }}">
-
-                                @if ($errors->has('name'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('name') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('business_name') ? ' has-error' : '' }}">
                             <label class="col-md-4 control-label">Business name</label>
 
                             <div class="col-md-6">
-                                <input type="text" class="form-control" name="business_name" value="{{ old('business_name') }}">
+                                <input type="text" class="form-control" name="business_name" value="Test business name">
 
                                 @if ($errors->has('business_name'))
                                     <span class="help-block">
@@ -37,6 +24,89 @@
                                 @endif
                             </div>
                         </div>
+
+                        <div class="form-group{{ $errors->has('business_type') ? ' has-error' : '' }}">
+                            <label class="col-md-4 control-label">Business type</label>
+
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="business_type" value="Test business type">
+
+                                @if ($errors->has('business_type'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('business_type') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('business_status') ? ' has-error' : '' }}">
+                            <label class="col-md-4 control-label">Business status</label>
+
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="business_status" value="Test business status">
+
+                                @if ($errors->has('business_status'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('business_status') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('business_address') ? ' has-error' : '' }}">
+                            <label class="col-md-4 control-label">Business address</label>
+
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="business_address" value="Test business address">
+
+                                @if ($errors->has('business_address'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('business_address') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="form-group{{ $errors->has('city') ? ' has-error' : '' }}">
+                            <label class="col-md-4 control-label">City</label>
+
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="city" value="Test city">
+
+                                @if ($errors->has('city'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('city') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('state') ? ' has-error' : '' }}">
+                            <label class="col-md-4 control-label">State</label>
+
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="state" value="Test state">
+
+                                @if ($errors->has('state'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('state') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="form-group{{ $errors->has('zip_code') ? ' has-error' : '' }}">
+                            <label class="col-md-4 control-label">Zip code</label>
+
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="zip_code" value="12345">
+
+                                @if ($errors->has('zip_code'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('zip_code') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
 
                         <div class="form-group{{ $errors->has('brands_of_interest') ? ' has-error' : '' }}">
                             <label class="col-md-4 control-label">Brands of interest</label>
@@ -53,6 +123,101 @@
                             </div>
                         </div>
 
+                        <p class="help-block">Contact Details</p>
+
+
+                        <div class="form-group{{ $errors->has('first_name') ? ' has-error' : '' }}">
+                            <label class="col-md-4 control-label">First name</label>
+
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="first_name" value="Test first name">
+
+                                @if ($errors->has('first_name'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('first_name') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('last_name') ? ' has-error' : '' }}">
+                            <label class="col-md-4 control-label">Last name</label>
+
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="last_name" value="Test last name">
+
+                                @if ($errors->has('last_name'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('last_name') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
+                            <label class="col-md-4 control-label">Title</label>
+
+                            <div class="col-md-6">
+                                <input type="title" class="form-control" name="title" value="Test title">
+
+                                @if ($errors->has('title'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('title') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+
+
+                        <div class="form-group{{ $errors->has('primary_phone') ? ' has-error' : '' }}">
+                            <label class="col-md-4 control-label">Primary phone</label>
+
+                            <div class="col-md-6">
+                                <input type="primary_phone" class="form-control" name="primary_phone" value="3037777777">
+
+                                @if ($errors->has('primary_phone'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('primary_phone') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('secondary_phone') ? ' has-error' : '' }}">
+                            <label class="col-md-4 control-label">Secondary phone</label>
+
+                            <div class="col-md-6">
+                                <input type="secondary_phone" class="form-control" name="secondary_phone" value="">
+
+                                @if ($errors->has('secondary_phone'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('secondary_phone') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+
+                        <div class="form-group{{ $errors->has('contact_me_via') ? ' has-error' : '' }}">
+                            <label class="col-md-4 control-label">Contact me via</label>
+
+                            <div class="col-md-6">
+                                <input type="radio" name="contact_me_via" class="form-control" value="phone" checked> Phone<br>
+                                <input type="radio" name="contact_me_via" class="form-control" value="email" > Email<br>
+
+                                @if ($errors->has('contact_me_via'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('contact_me_via') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+
+
+
+
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                             <label class="col-md-4 control-label">E-Mail Address</label>
 
@@ -62,6 +227,20 @@
                                 @if ($errors->has('email'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('email') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('how_heard_about') ? ' has-error' : '' }}">
+                            <label class="col-md-4 control-label">How did you hear about us?</label>
+
+                            <div class="col-md-6">
+                                <textarea rows="5" name="how_heard_about" class="form-control" value="" >Test how_heard_about</textarea>
+
+                                @if ($errors->has('how_heard_about'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('how_heard_about') }}</strong>
                                     </span>
                                 @endif
                             </div>

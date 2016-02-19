@@ -49,10 +49,22 @@ class AuthController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => 'required|max:255',
-            'business_name' => 'required|max:255',
+            'business_name' => 'required|max:255|string',
+            'business_type' => 'sometimes|max:255|string',
+            'business_status' => 'sometimes|max:255|string',
+            'business_address' => 'required|max:255|string',
+            'city' => 'required|max:255|string',
+            'state' => 'required|max:255|string',
+            'zip_code' => 'required|max:255|string',
+            'first_name' => 'required|max:255',
+            'last_name' => 'required|max:255',
+            'title' => 'required|max:255',
             'brands_of_interest' => 'required',
+            'primary_phone' => 'required|max:255',
+            'secondary_phone' => 'sometimes|max:255',
+            'contact_me_via' => 'required',
             'email' => 'required|email|max:255|unique:users',
+            'how_heard_about' => 'sometimes',
             'password' => 'required|confirmed|min:6',
         ]);
     }
@@ -66,10 +78,23 @@ class AuthController extends Controller
     protected function create(array $data)
     {
         return User::create([
-            'name' => $data['name'],
             'business_name' => $data['business_name'],
+            'business_type' => $data['business_type'],
+            'business_status' => $data['business_status'],
+            'business_address' => $data['business_address'],
+            'city' => $data['city'],
+            'state' => $data['state'],
+            'zip_code' => $data['zip_code'],
+
+            'first_name' => $data['first_name'],
+            'last_name' => $data['last_name'],
+            'title' => $data['title'],
             'brands_of_interest' => implode(',', $data['brands_of_interest']),
+            'primary_phone' => $data['primary_phone'],
+            'secondary_phone' => $data['secondary_phone'],
+            'contact_me_via' => $data['contact_me_via'],
             'email' => $data['email'],
+            'how_heard_about' => $data['how_heard_about'],
             'password' => bcrypt($data['password']),
         ]);
     }
