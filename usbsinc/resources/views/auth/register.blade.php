@@ -15,7 +15,7 @@
                             <label class="col-md-4 control-label">Business name</label>
 
                             <div class="col-md-6">
-                                <input type="text" class="form-control" name="business_name" value="Test business name">
+                                <input type="text" class="form-control" name="business_name" value="{{ old('business_name') }}">
 
                                 @if ($errors->has('business_name'))
                                     <span class="help-block">
@@ -29,7 +29,7 @@
                             <label class="col-md-4 control-label">Business type</label>
 
                             <div class="col-md-6">
-                                <input type="text" class="form-control" name="business_type" value="Test business type">
+                                <input type="text" class="form-control" name="business_type" value="{{ old('business_type') }}">
 
                                 @if ($errors->has('business_type'))
                                     <span class="help-block">
@@ -43,7 +43,7 @@
                             <label class="col-md-4 control-label">Business status</label>
 
                             <div class="col-md-6">
-                                <input type="text" class="form-control" name="business_status" value="Test business status">
+                                <input type="text" class="form-control" name="business_status" value="{{ old('business_status') }}">
 
                                 @if ($errors->has('business_status'))
                                     <span class="help-block">
@@ -57,7 +57,7 @@
                             <label class="col-md-4 control-label">Business address</label>
 
                             <div class="col-md-6">
-                                <input type="text" class="form-control" name="business_address" value="Test business address">
+                                <input type="text" class="form-control" name="business_address" value="{{ old('business_address') }}">
 
                                 @if ($errors->has('business_address'))
                                     <span class="help-block">
@@ -70,7 +70,7 @@
                             <label class="col-md-4 control-label">City</label>
 
                             <div class="col-md-6">
-                                <input type="text" class="form-control" name="city" value="Test city">
+                                <input type="text" class="form-control" name="city" value="{{ old('city') }}">
 
                                 @if ($errors->has('city'))
                                     <span class="help-block">
@@ -84,7 +84,7 @@
                             <label class="col-md-4 control-label">State</label>
 
                             <div class="col-md-6">
-                                <input type="text" class="form-control" name="state" value="Test state">
+                                <input type="text" class="form-control" name="state" value="{{ old('state') }}">
 
                                 @if ($errors->has('state'))
                                     <span class="help-block">
@@ -97,7 +97,7 @@
                             <label class="col-md-4 control-label">Zip code</label>
 
                             <div class="col-md-6">
-                                <input type="text" class="form-control" name="zip_code" value="12345">
+                                <input type="text" class="form-control" name="zip_code" value="{{ old('zip_code') }}">
 
                                 @if ($errors->has('zip_code'))
                                     <span class="help-block">
@@ -112,8 +112,8 @@
                             <label class="col-md-4 control-label">Brands of interest</label>
 
                             <div class="col-md-6">
-                                <input type="checkbox" class="form-control" name="brands_of_interest[]" value="company1" checked="checked">Company 1<br>
-                                <input type="checkbox" class="form-control" name="brands_of_interest[]" value="company2" checked="checked">Company 2<br>
+                                <input type="checkbox" class="form-control" name="brands_of_interest" value="company1" >Company 1<br>
+                                <input type="checkbox" class="form-control" name="brands_of_interest" value="company2" >Company 2<br>
 
                                 @if ($errors->has('brands_of_interest'))
                                     <span class="help-block">
@@ -130,7 +130,7 @@
                             <label class="col-md-4 control-label">First name</label>
 
                             <div class="col-md-6">
-                                <input type="text" class="form-control" name="first_name" value="Test first name">
+                                <input type="text" class="form-control" name="first_name" value="{{ old('first_name') }}">
 
                                 @if ($errors->has('first_name'))
                                     <span class="help-block">
@@ -144,7 +144,7 @@
                             <label class="col-md-4 control-label">Last name</label>
 
                             <div class="col-md-6">
-                                <input type="text" class="form-control" name="last_name" value="Test last name">
+                                <input type="text" class="form-control" name="last_name" value="{{ old('last_name') }}">
 
                                 @if ($errors->has('last_name'))
                                     <span class="help-block">
@@ -158,7 +158,7 @@
                             <label class="col-md-4 control-label">Title</label>
 
                             <div class="col-md-6">
-                                <input type="title" class="form-control" name="title" value="Test title">
+                                <input type="title" class="form-control" name="title" value="{{ old('title') }}">
 
                                 @if ($errors->has('title'))
                                     <span class="help-block">
@@ -174,7 +174,7 @@
                             <label class="col-md-4 control-label">Primary phone</label>
 
                             <div class="col-md-6">
-                                <input type="primary_phone" class="form-control" name="primary_phone" value="3037777777">
+                                <input type="primary_phone" class="form-control" name="primary_phone" value="{{ old('primary_phone') }}">
 
                                 @if ($errors->has('primary_phone'))
                                     <span class="help-block">
@@ -188,7 +188,7 @@
                             <label class="col-md-4 control-label">Secondary phone</label>
 
                             <div class="col-md-6">
-                                <input type="secondary_phone" class="form-control" name="secondary_phone" value="">
+                                <input type="secondary_phone" class="form-control" name="secondary_phone" value="{{ old('secondary_phone') }}">
 
                                 @if ($errors->has('secondary_phone'))
                                     <span class="help-block">
@@ -236,7 +236,7 @@
                             <label class="col-md-4 control-label">How did you hear about us?</label>
 
                             <div class="col-md-6">
-                                <textarea rows="5" name="how_heard_about" class="form-control" value="" >Test how_heard_about</textarea>
+                                <textarea rows="5" name="how_heard_about" class="form-control" value="" ></textarea>
 
                                 @if ($errors->has('how_heard_about'))
                                     <span class="help-block">

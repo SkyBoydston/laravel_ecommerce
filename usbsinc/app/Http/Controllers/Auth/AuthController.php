@@ -89,7 +89,7 @@ class AuthController extends Controller
             'first_name' => $data['first_name'],
             'last_name' => $data['last_name'],
             'title' => $data['title'],
-            'brands_of_interest' => implode(',', $data['brands_of_interest']),
+            'brands_of_interest' => is_array($data['brands_of_interest'])? implode(',', $data['brands_of_interest']) : $data['brands_of_interest'],
             'primary_phone' => $data['primary_phone'],
             'secondary_phone' => $data['secondary_phone'],
             'contact_me_via' => $data['contact_me_via'],
