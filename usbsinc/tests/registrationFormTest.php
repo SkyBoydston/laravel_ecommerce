@@ -22,7 +22,7 @@ class registrationFormTest extends TestCase
         	 ->type('test', 'city')
         	 ->type('test', 'state')
         	 ->type('12345', 'zip_code')
-        	 ->check('brands_of_interest')
+        	 ->check('brands_of_interest')  // Laravel doesn't appear to have a viable way to check both/all boxes.
         	 ->type('test name', 'first_name')
         	 ->type('test name', 'last_name')
         	 ->type('test', 'title')

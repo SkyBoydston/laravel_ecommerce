@@ -9,6 +9,7 @@
                 <div class="panel-body">
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/register') }}">
                         {!! csrf_field() !!}
+                        
                         <p class="help-block">Business Details</p>
 
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
@@ -107,7 +108,6 @@
                             </div>
                         </div>
 
-
                         <div class="form-group{{ $errors->has('brands_of_interest') ? ' has-error' : '' }}">
                             <label class="col-md-4 control-label">Brands of interest</label>
 
@@ -124,7 +124,6 @@
                         </div>
 
                         <p class="help-block">Contact Details</p>
-
 
                         <div class="form-group{{ $errors->has('first_name') ? ' has-error' : '' }}">
                             <label class="col-md-4 control-label">First name</label>
@@ -168,8 +167,6 @@
                             </div>
                         </div>
 
-
-
                         <div class="form-group{{ $errors->has('primary_phone') ? ' has-error' : '' }}">
                             <label class="col-md-4 control-label">Primary phone</label>
 
@@ -198,7 +195,6 @@
                             </div>
                         </div>
 
-
                         <div class="form-group{{ $errors->has('contact_me_via') ? ' has-error' : '' }}">
                             <label class="col-md-4 control-label">Contact me via</label>
 
@@ -213,10 +209,6 @@
                                 @endif
                             </div>
                         </div>
-
-
-
-
 
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                             <label class="col-md-4 control-label">E-Mail Address</label>
