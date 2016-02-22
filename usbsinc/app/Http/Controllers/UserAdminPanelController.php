@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-// use App\UserAdminPanel;
+use \App\User;
+
+
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -24,9 +26,8 @@ class UserAdminPanelController extends Controller
 
 	*/
 	public function index() {
-		echo 'yo';
-		// $users=db->$query->get(all);
-		// return view('useradminpanel.blade.php')->compact($users);
+		// $user = User::where('userID', the logged in user)->get();
+		return view('useradminpanel.blade.php'); //->compact($user);
 	}
 
 }
