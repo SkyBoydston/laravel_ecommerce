@@ -15,10 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/company', function() {
-	$users = \App\User::all();
-	return View::make('useradminpanel', compact('users'));
-});
+Route::get('/company', 'UserAdminPanelController@index');
 
 /*
 |--------------------------------------------------------------------------
