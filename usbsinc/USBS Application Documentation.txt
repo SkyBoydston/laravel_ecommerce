@@ -1,0 +1,38 @@
+USBS Application Documentation
+
+
+Github repository at: https://github.com/ActiveWebsite/usbsinc.git
+
+
+
+******I set the 'from' email address to my own in mail.php (line 57) and stored my credentials to that account in .env.  Change them to the user's address before going live.
+
+
+Testing note: Confirm that a user who has just registered can log in. It seemed like I could only log in after I had done a password reset.
+
+
+
+Put in a place for the company owners to make a new account for one of their reps. It's already built in to the wireframes but we need to give it a password area.
+
+
+The apply for an account page needs something done about its required/not required fields being marked and configured. Just couldn't figure out how to do it when I was in there.
+
+
+The select input on the apply for an account page needs to dynamically loop through all the brands. I'll probably grab that from the relevant question's possible answers.
+
+
+
+
+
+A change has been made to databasemigrations.php, a service that allows the database to be refreshed after running a unit test. I switched this line:
+`$this->artisan('migrate:rollback');`
+to this:
+`$this->artisan('migrate:refresh');`
+
+
+
+Last clean commit before making changes to git's crlf feature: commit ebced1a902471e0c2be6f8ae4e725576e9c4ca79
+
+
+
+Remember that for authentication to work on any route, the route has to be placed in the "web" middleware route group.
