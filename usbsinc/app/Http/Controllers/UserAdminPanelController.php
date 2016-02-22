@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+
+
 use \App\User;
 use View;
 
@@ -26,11 +28,13 @@ class UserAdminPanelController extends Controller
 	/* Display our tabbed layout. Load up the data into it. 
 
 	*/
-	public function index() {
-		$users = User::all();
+	public function index(Request $request) {
+		$user = $request->user();
+		$userID = $user['id'];
+
+		$users = User::where('id',$userID)->get();
 
 		return View::make('useradminpanel', compact('users'));
-		// $user = User::where('userID', the logged in user)->get();
 	}
 
 }
