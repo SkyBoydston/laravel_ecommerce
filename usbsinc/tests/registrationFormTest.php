@@ -6,6 +6,9 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class registrationFormTest extends TestCase
 {
+
+    use DatabaseMigrations;
+    
     /**
      * Tests whether the registration form is functioning. Does not check to see if the 
      * database will accept multiple checkboxes being checked from the form.
@@ -22,7 +25,7 @@ class registrationFormTest extends TestCase
         	 ->type('test', 'city')
         	 ->type('test', 'state')
         	 ->type('12345', 'zip_code')
-        	 ->check('brands_of_interest')  // Laravel doesn't appear to have a viable way to check both/all boxes.
+             ->check('brands_of_interest')  // Laravel doesn't appear to have a viable way to check both/all boxes.
         	 ->type('test name', 'first_name')
         	 ->type('test name', 'last_name')
         	 ->type('test', 'title')
@@ -36,4 +39,8 @@ class registrationFormTest extends TestCase
         	 ->press('Register')
         	 ->seePageIs('/home');
     }
+
+
+
 }
+    
