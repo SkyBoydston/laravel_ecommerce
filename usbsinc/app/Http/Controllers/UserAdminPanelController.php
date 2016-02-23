@@ -29,12 +29,11 @@ class UserAdminPanelController extends Controller
 
 	*/
 	public function index(Request $request) {
-		$user = $request->user();
-		$userID = $user['id'];
+	
 
-		$users = User::where('id',$userID)->get();
+		$user = User::where('id',$request->user()->id)->get();  
 
-		return View::make('useradminpanel', compact('users'));
+		return View::make('useradminpanel', compact('user'));
 	}
 
 }

@@ -5,7 +5,7 @@
 
 
 	<ul>
-		@foreach ($users as $user)
+		@foreach ($user as $user)
 			<li>
 				{{ $user->first_name }}
 				{{ $user->last_name }}
