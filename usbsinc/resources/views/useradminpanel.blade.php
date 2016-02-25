@@ -1,14 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-<pre>
-<?php
-	var_dump($user);
-?>
-</pre>
-
-@foreach ($user as $user)
-@endforeach
 
 
 
