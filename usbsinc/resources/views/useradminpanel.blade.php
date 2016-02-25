@@ -28,6 +28,8 @@
     {!! Form::label ('name', 'first_name') !!}
     {!! Form::text('first_name') !!}
 
+    {!! Form::submit('Update') !!}
+
    <!--  <label for="first_name">First name</label> -->
 		<!-- <input type="text" name="first_name"></input> -->
 		<label for="last_name">Last name</label>
