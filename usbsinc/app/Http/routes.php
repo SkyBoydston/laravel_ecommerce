@@ -1,5 +1,5 @@
 <?php
-
+use App\User;
 /*
 |--------------------------------------------------------------------------
 | Routes File
@@ -37,7 +37,19 @@ Route::group(['middleware' => 'web'], function () {
 	});
 
 
+	// Route::get('/company', 'UserAdminPanelController@index');
 
-	Route::get('/company', 'UserAdminPanelController@index');
+	
     Route::get('/home', 'HomeController@index');
+
+ //    Route::model('company', 'User');
+	// Route::resource('company', 'UserAdminPanelController');
+
+    Route::group(['prefix' => 'company'], function () {
+//          Route::get('update', 'UserAdminPanelController@update');
+			Route::get('/', 'UserAdminPanelController@index');
+
+			Route::match(['get','post'],'/update', 'UserAdminPanelController@update');
+
+	});
 });

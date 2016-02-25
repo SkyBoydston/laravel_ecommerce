@@ -36,4 +36,13 @@ class UserAdminPanelController extends Controller
 		return View::make('useradminpanel', compact('user'));
 	}
 
+	/* Allows the company to add/update information to its database record.
+
+
+	*/
+	public function update(Request $request) {
+		dd($request);
+
+	}
+
 }
