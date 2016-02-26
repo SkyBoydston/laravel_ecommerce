@@ -44,7 +44,7 @@ class UserAdminPanelController extends Controller
 	public function update(Request $request) {
 		
 		User::where('id', $request->user()->id)
-			->update(['first_name' => $request->first_name]);
+			->update(['business_contact_first_name' => $request->first_name]);
 		return redirect('/company');
 
 	}

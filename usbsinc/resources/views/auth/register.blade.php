@@ -54,55 +54,70 @@
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('business_address') ? ' has-error' : '' }}">
-                            <label class="col-md-4 control-label">Business address</label>
+                        <div class="form-group{{ $errors->has('business_address_line1') ? ' has-error' : '' }}">
+                            <label class="col-md-4 control-label">Business address line 1</label>
 
                             <div class="col-md-6">
-                                <input type="text" class="form-control" name="business_address" value="{{ old('business_address') }}">
+                                <input type="text" class="form-control" name="business_address_line1" value="{{ old('business_address_line1') }}">
 
-                                @if ($errors->has('business_address'))
+                                @if ($errors->has('business_address_line1'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('business_address') }}</strong>
+                                        <strong>{{ $errors->first('business_address_line1') }}</strong>
                                     </span>
                                 @endif
                             </div>
                         </div>
-                        <div class="form-group{{ $errors->has('city') ? ' has-error' : '' }}">
+
+                        <div class="form-group{{ $errors->has('business_address_line2') ? ' has-error' : '' }}">
+                            <label class="col-md-4 control-label">Business address line 2</label>
+
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="business_address_line2" value="{{ old('business_address_line2') }}">
+
+                                @if ($errors->has('business_address_line2'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('business_address_line2') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('business_city') ? ' has-error' : '' }}">
                             <label class="col-md-4 control-label">City</label>
 
                             <div class="col-md-6">
-                                <input type="text" class="form-control" name="city" value="{{ old('city') }}">
+                                <input type="text" class="form-control" name="business_city" value="{{ old('business_city') }}">
 
-                                @if ($errors->has('city'))
+                                @if ($errors->has('business_city'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('city') }}</strong>
+                                        <strong>{{ $errors->first('business_city') }}</strong>
                                     </span>
                                 @endif
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('state') ? ' has-error' : '' }}">
+                        <div class="form-group{{ $errors->has('business_state') ? ' has-error' : '' }}">
                             <label class="col-md-4 control-label">State</label>
 
                             <div class="col-md-6">
-                                <input type="text" class="form-control" name="state" value="{{ old('state') }}">
+                                <input type="text" class="form-control" name="business_state" value="{{ old('business_state') }}">
 
-                                @if ($errors->has('state'))
+                                @if ($errors->has('business_state'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('state') }}</strong>
+                                        <strong>{{ $errors->first('business_state') }}</strong>
                                     </span>
                                 @endif
                             </div>
                         </div>
-                        <div class="form-group{{ $errors->has('zip_code') ? ' has-error' : '' }}">
+                        <div class="form-group{{ $errors->has('business_zip_code') ? ' has-error' : '' }}">
                             <label class="col-md-4 control-label">Zip code</label>
 
                             <div class="col-md-6">
-                                <input type="text" class="form-control" name="zip_code" value="{{ old('zip_code') }}">
+                                <input type="text" class="form-control" name="business_zip_code" value="{{ old('business_zip_code') }}">
 
-                                @if ($errors->has('zip_code'))
+                                @if ($errors->has('business_zip_code'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('zip_code') }}</strong>
+                                        <strong>{{ $errors->first('business_zip_code') }}</strong>
                                     </span>
                                 @endif
                             </div>
@@ -125,71 +140,71 @@
 
                         <p class="help-block">Contact Details</p>
 
-                        <div class="form-group{{ $errors->has('first_name') ? ' has-error' : '' }}">
+                        <div class="form-group{{ $errors->has('business_contact_first_name') ? ' has-error' : '' }}">
                             <label class="col-md-4 control-label">First name</label>
 
                             <div class="col-md-6">
-                                <input type="text" class="form-control" name="first_name" value="{{ old('first_name') }}">
+                                <input type="text" class="form-control" name="business_contact_first_name" value="{{ old('business_contact_first_name') }}">
 
-                                @if ($errors->has('first_name'))
+                                @if ($errors->has('business_contact_first_name'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('first_name') }}</strong>
+                                        <strong>{{ $errors->first('business_contact_first_name') }}</strong>
                                     </span>
                                 @endif
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('last_name') ? ' has-error' : '' }}">
+                        <div class="form-group{{ $errors->has('business_contact_last_name') ? ' has-error' : '' }}">
                             <label class="col-md-4 control-label">Last name</label>
 
                             <div class="col-md-6">
-                                <input type="text" class="form-control" name="last_name" value="{{ old('last_name') }}">
+                                <input type="text" class="form-control" name="business_contact_last_name" value="{{ old('business_contact_last_name') }}">
 
-                                @if ($errors->has('last_name'))
+                                @if ($errors->has('business_contact_last_name'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('last_name') }}</strong>
+                                        <strong>{{ $errors->first('business_contact_last_name') }}</strong>
                                     </span>
                                 @endif
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
+                        <div class="form-group{{ $errors->has('business_contact_title') ? ' has-error' : '' }}">
                             <label class="col-md-4 control-label">Title</label>
 
                             <div class="col-md-6">
-                                <input type="title" class="form-control" name="title" value="{{ old('title') }}">
+                                <input type="business_contact_title" class="form-control" name="business_contact_title" value="{{ old('business_contact_title') }}">
 
-                                @if ($errors->has('title'))
+                                @if ($errors->has('business_contact_title'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('title') }}</strong>
+                                        <strong>{{ $errors->first('business_contact_title') }}</strong>
                                     </span>
                                 @endif
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('primary_phone') ? ' has-error' : '' }}">
+                        <div class="form-group{{ $errors->has('business_primary_phone') ? ' has-error' : '' }}">
                             <label class="col-md-4 control-label">Primary phone</label>
 
                             <div class="col-md-6">
-                                <input type="primary_phone" class="form-control" name="primary_phone" value="{{ old('primary_phone') }}">
+                                <input type="business_primary_phone" class="form-control" name="business_primary_phone" value="{{ old('business_primary_phone') }}">
 
-                                @if ($errors->has('primary_phone'))
+                                @if ($errors->has('business_primary_phone'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('primary_phone') }}</strong>
+                                        <strong>{{ $errors->first('business_primary_phone') }}</strong>
                                     </span>
                                 @endif
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('secondary_phone') ? ' has-error' : '' }}">
+                        <div class="form-group{{ $errors->has('business_secondary_phone') ? ' has-error' : '' }}">
                             <label class="col-md-4 control-label">Secondary phone</label>
 
                             <div class="col-md-6">
-                                <input type="secondary_phone" class="form-control" name="secondary_phone" value="{{ old('secondary_phone') }}">
+                                <input type="business_secondary_phone" class="form-control" name="business_secondary_phone" value="{{ old('business_secondary_phone') }}">
 
-                                @if ($errors->has('secondary_phone'))
+                                @if ($errors->has('business_secondary_phone'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('secondary_phone') }}</strong>
+                                        <strong>{{ $errors->first('business_secondary_phone') }}</strong>
                                     </span>
                                 @endif
                             </div>
@@ -210,15 +225,15 @@
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                        <div class="form-group{{ $errors->has('business_contact_email') ? ' has-error' : '' }}">
                             <label class="col-md-4 control-label">E-Mail Address</label>
 
                             <div class="col-md-6">
-                                <input type="email" class="form-control" name="email" value="{{ old('email') }}">
+                                <input type="business_contact_email" class="form-control" name="business_contact_email" value="{{ old('business_contact_email') }}">
 
-                                @if ($errors->has('email'))
+                                @if ($errors->has('business_contact_email'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
+                                        <strong>{{ $errors->first('business_contact_email') }}</strong>
                                     </span>
                                 @endif
                             </div>
