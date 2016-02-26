@@ -7,7 +7,7 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 class UserAdminPanelTest extends TestCase
 {
 
-	use DatabaseMigrations;
+	// use DatabaseMigrations;
 
     /**
      * Tests that the user/company admin panel is showing data and able to save changes.

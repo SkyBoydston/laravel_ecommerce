@@ -12,8 +12,11 @@
 	    {!! Form::label ('website', 'Website') !!}
 	    {!! Form::text('website') !!}
 
-	    {!! Form::label ('business_address', 'Address') !!}
-	    {!! Form::text('business_address') !!}
+	    {!! Form::label ('business_address_line1', 'Address line 1') !!}
+	    {!! Form::text('business_address_line1') !!}
+
+	    {!! Form::label ('business_address_line2', 'Address line 2') !!}
+	    {!! Form::text('business_address_line2') !!}
 
 	    {!! Form::label ('business_city', 'City') !!}
 	    {!! Form::text('business_city') !!}
