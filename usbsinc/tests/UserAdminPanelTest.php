@@ -14,9 +14,13 @@ class UserAdminPanelTest extends TestCase
      *
      * @return void
      */
-    public function testExample()
+    public function testUserAdminPanel()
     {
-        // $this->visit('/company')
+        $this->visit('/company')
+             ->type('useradminpaneltest', 'business_name')
+             ->visit('/home')
+             ->visit('/company')
+             ->see('test business_nameuseradminpaneltest');
 
     }
 }
