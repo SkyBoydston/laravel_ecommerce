@@ -64,7 +64,7 @@ class AuthController extends Controller
             'business_primary_phone' => 'required|max:255',
             'business_secondary_phone' => 'sometimes|max:255',
             'contact_me_via' => 'required',
-            'business_contact_email' => 'required|email|max:255|unique:users',
+            'email' => 'required|email|max:255|unique:users',
             'how_heard_about' => 'sometimes',
             'password' => 'required|confirmed|min:6',
         ]);
@@ -95,7 +95,7 @@ class AuthController extends Controller
             'business_primary_phone' => $data['business_primary_phone'],
             'business_secondary_phone' => $data['business_secondary_phone'],
             'contact_me_via' => $data['contact_me_via'],
-            'business_contact_email' => $data['business_contact_email'],
+            'email' => $data['email'],
             'how_heard_about' => $data['how_heard_about'],
             'password' => bcrypt($data['password']),
         ]);

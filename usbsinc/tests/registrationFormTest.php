@@ -33,7 +33,7 @@ class registrationFormTest extends TestCase
         	 ->type('303-888-8888', 'business_primary_phone')
         	 ->type('3038888888', 'business_secondary_phone')
         	 ->select('phone', 'contact_me_via')
-        	 ->type('test@test.com', 'business_contact_email')
+        	 ->type('test@test.com', 'email')
         	 ->type('test', 'how_heard_about')
         	 ->type('aaaaaa', 'password')
         	 ->type('aaaaaa', 'password_confirmation')

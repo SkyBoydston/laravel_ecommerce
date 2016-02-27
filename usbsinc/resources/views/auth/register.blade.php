@@ -12,7 +12,7 @@
                         
                         <p class="help-block">Business Details</p>
 
-                        <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+                        <div class="form-group{{ $errors->has('business_name') ? ' has-error' : '' }}">
                             <label class="col-md-4 control-label">Business name</label>
 
                             <div class="col-md-6">
@@ -225,15 +225,15 @@
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('business_contact_email') ? ' has-error' : '' }}">
+                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                             <label class="col-md-4 control-label">E-Mail Address</label>
 
                             <div class="col-md-6">
-                                <input type="business_contact_email" class="form-control" name="business_contact_email" value="{{ old('business_contact_email') }}">
+                                <input type="email" class="form-control" name="email" value="{{ old('email') }}">
 
-                                @if ($errors->has('business_contact_email'))
+                                @if ($errors->has('email'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('business_contact_email') }}</strong>
+                                        <strong>{{ $errors->first('email') }}</strong>
                                     </span>
                                 @endif
                             </div>

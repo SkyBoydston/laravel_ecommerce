@@ -31,7 +31,7 @@ class CreateUsersTable extends Migration
             $table->string('business_secondary_phone');
             $table->string('contact_me_via');
 
-            $table->string('business_contact_email')->unique();
+            $table->string('email')->unique();
             $table->mediumtext('how_heard_about');
             $table->string('password', 60);
             $table->rememberToken();

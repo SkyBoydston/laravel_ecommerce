@@ -27,7 +27,7 @@ class User extends Authenticatable
             'business_primary_phone',
             'business_secondary_phone',
             'contact_me_via',
-            'business_contact_email',
+            'email',
             'how_heard_about', 
             'password',
     ];
