@@ -21,6 +21,7 @@ class UserAdminPanelTest extends TestCase
              ->withSession(['foo' => 'bar'])
              ->visit('/company')
              ->type('useradminpaneltest', 'business_name')
+             ->type('website test', 'business_website')
              ->press('Update')
              ->visit('/home')
              ->visit('/company')

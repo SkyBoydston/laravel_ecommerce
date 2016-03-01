@@ -40,15 +40,15 @@
 						    </div>
 						</div>
 
-						<div class="form-group{{ $errors->has('website') ? ' has-error' : '' }}">
-							{!! Form::label ('website', 'Website', array('class' => 'col-md-4 control-label')) !!}
+						<div class="form-group{{ $errors->has('business_website') ? ' has-error' : '' }}">
+							{!! Form::label ('business_website', 'Website', array('class' => 'col-md-4 control-label')) !!}
 					    
 						    <div class="col-md-6">
-							    {!! Form::text('website', null, array('class' => 'form-control')) !!}
+							    {!! Form::text('business_website', null, array('class' => 'form-control')) !!}
 
-							    @if ($errors->has('website'))
+							    @if ($errors->has('business_website'))
 	                                    <span class="help-block">
-	                                        <strong>{{ $errors->first('website') }}</strong>
+	                                        <strong>{{ $errors->first('business_website') }}</strong>
 	                                    </span>
 	                            @endif
 						    </div>

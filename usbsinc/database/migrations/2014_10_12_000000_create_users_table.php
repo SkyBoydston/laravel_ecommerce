@@ -15,6 +15,7 @@ class CreateUsersTable extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
             $table->string('business_name');
+            $table->string('business_website');
             $table->string('business_type');
             $table->string('business_status');
             $table->string('business_address_line1');
@@ -29,6 +30,8 @@ class CreateUsersTable extends Migration
             $table->string('brands_of_interest');
             $table->string('business_primary_phone');
             $table->string('business_secondary_phone');
+            $table->string('business_contact_primary_phone');
+            $table->string('business_contact_secondary_phone');
             $table->string('contact_me_via');
 
             $table->string('email')->unique();

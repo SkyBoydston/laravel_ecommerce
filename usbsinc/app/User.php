@@ -13,6 +13,7 @@ class User extends Authenticatable
      */
     protected $fillable = [
             'business_name',
+            'business_website',
             'business_type',
             'business_status',
             'business_address_line1',
@@ -26,6 +27,8 @@ class User extends Authenticatable
             'brands_of_interest', 
             'business_primary_phone',
             'business_secondary_phone',
+            'business_contact_primary_phone',
+            'business_contact_secondary_phone',
             'contact_me_via',
             'email',
             'how_heard_about', 
