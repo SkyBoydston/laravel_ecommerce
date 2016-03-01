@@ -6,8 +6,7 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class UserAdminPanelTest extends TestCase
 {
-
-	// use DatabaseMigrations;
+	use DatabaseMigrations;
 
     /**
      * Tests that the user/company admin panel is showing data and able to save changes.
@@ -16,11 +15,16 @@ class UserAdminPanelTest extends TestCase
      */
     public function testUserAdminPanel()
     {
-        $this->visit('/company')
+        $user = factory(App\User::class)->create();
+
+        $this->actingAs($user)
+             ->withSession(['foo' => 'bar'])
+             ->visit('/company')
              ->type('useradminpaneltest', 'business_name')
+             ->press('Update')
              ->visit('/home')
              ->visit('/company')
-             ->see('test business_nameuseradminpaneltest');
+             ->see('useradminpaneltest');
 
     }
 }

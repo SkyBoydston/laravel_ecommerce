@@ -36,3 +36,6 @@ Last clean commit before making changes to git's crlf feature: commit ebced1a902
 
 
 Remember that for authentication to work on any route, the route has to be placed in the "web" middleware route group.
+
+
+ModelFactory.php was modified to make it possible to run tests with authenication. It can be modified further to log in to seeded user or create a fuller user.
