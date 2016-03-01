@@ -14,6 +14,7 @@ class UserSeeder extends Seeder
         DB::table('users')->insert([
 		        	[
 		        		'business_name' => 'test business_name',
+		        		'business_website' => 'www.business_website.com',
 						'business_type' => 'test business_type',
 						'business_status' => 'test business_status',
 						'business_address_line1' => 'test business_address line1',
@@ -27,6 +28,8 @@ class UserSeeder extends Seeder
 						'business_contact_title' => 'test title',
 						'business_primary_phone' => 'test primary_phone',
 						'business_secondary_phone' => 'test secondary_phone',
+						'business_contact_primary_phone' => 'test contact primary_phone',
+						'business_contact_secondary_phone' => 'test contact secondary_phone',
 						'contact_me_via' => 'test contact_me_via',
 						'email' => 'email@email.com',
 						'how_heard_about' => 'test how_heard_about',
@@ -34,6 +37,7 @@ class UserSeeder extends Seeder
 		        	],
 		        	[
 		        		'business_name' => 'another test business_name',
+		        		'business_website' => 'another test business_website',
 						'business_type' => 'another test business_type',
 						'business_status' => 'another test business_status',
 						'business_address_line1' => 'another test business_address line1',
@@ -47,6 +51,8 @@ class UserSeeder extends Seeder
 						'business_contact_title' => 'another test title',
 						'business_primary_phone' => 'another test primary_phone',
 						'business_secondary_phone' => 'another test secondary_phone',
+						'business_contact_primary_phone' => 'another test contact primary_phone',
+						'business_contact_secondary_phone' => 'another test contact secondary_phone',
 						'contact_me_via' => 'another test contact_me_via',
 						'email' => 'anotheremail@email.com',
 						'how_heard_about' => 'another test how_heard_about',
