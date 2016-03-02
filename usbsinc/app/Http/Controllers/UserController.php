@@ -8,6 +8,8 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\User;
 use Requests\UserRequest;
+use Redirect;
+use Auth;
 
 class UserController extends Controller
 {
@@ -18,7 +20,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        return Redirect::action('UserController@show');
+        $id = Auth::user()->id;
+
+        return Redirect::action('UserController@show', $id);
     }
 
     /**
@@ -68,7 +72,7 @@ class UserController extends Controller
             'email'
             )); 
 
-        
+
         return view('user/show', compact('user'));
     }
 
@@ -80,7 +84,10 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        return $id;
+    
+        $user = User::where('id', $id)->first();  
+
+        return view('user/edit', compact('user'));
     }
 
     /**
