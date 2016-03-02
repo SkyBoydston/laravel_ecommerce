@@ -73,7 +73,7 @@ class UserController extends Controller
             )); 
 
 
-        return view('user/show', compact('user'));
+        return view('user/show', compact('user', 'id'));
     }
 
     /**
@@ -87,7 +87,7 @@ class UserController extends Controller
     
         $user = User::where('id', $id)->first();  
 
-        return view('user/edit', compact('user'));
+        return view('user/edit', compact('user', 'id'));
     }
 
     /**
