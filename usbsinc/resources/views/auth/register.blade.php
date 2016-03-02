@@ -54,29 +54,29 @@
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('business_address_line1') ? ' has-error' : '' }}">
+                        <div class="form-group{{ $errors->has('business_address_line_1') ? ' has-error' : '' }}">
                             <label class="col-md-4 control-label">Business address line 1</label>
 
                             <div class="col-md-6">
-                                <input type="text" class="form-control" name="business_address_line1" value="{{ old('business_address_line1') }}">
+                                <input type="text" class="form-control" name="business_address_line_1" value="{{ old('business_address_line_1') }}">
 
-                                @if ($errors->has('business_address_line1'))
+                                @if ($errors->has('business_address_line_1'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('business_address_line1') }}</strong>
+                                        <strong>{{ $errors->first('business_address_line_1') }}</strong>
                                     </span>
                                 @endif
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('business_address_line2') ? ' has-error' : '' }}">
+                        <div class="form-group{{ $errors->has('business_address_line_2') ? ' has-error' : '' }}">
                             <label class="col-md-4 control-label">Business address line 2</label>
 
                             <div class="col-md-6">
-                                <input type="text" class="form-control" name="business_address_line2" value="{{ old('business_address_line2') }}">
+                                <input type="text" class="form-control" name="business_address_line_2" value="{{ old('business_address_line_2') }}">
 
-                                @if ($errors->has('business_address_line2'))
+                                @if ($errors->has('business_address_line_2'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('business_address_line2') }}</strong>
+                                        <strong>{{ $errors->first('business_address_line_2') }}</strong>
                                     </span>
                                 @endif
                             </div>

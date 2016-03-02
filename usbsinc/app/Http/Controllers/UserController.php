@@ -50,7 +50,25 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        $user = User::findOrFail($id);
+        $user = User::findOrFail($id, $columns = array(
+            'business_name',
+            'business_website',
+            'business_address_line_1',
+            'business_address_line_2',
+            'business_city',
+            'business_state',
+            'business_zip_code',
+            'business_contact_first_name', 
+            'business_contact_last_name',
+            'business_contact_title', 
+            'business_primary_phone',
+            'business_secondary_phone',
+            'business_contact_primary_phone',
+            'business_contact_secondary_phone',
+            'email'
+            )); 
+
+        
         return view('user/show', compact('user'));
     }
 
