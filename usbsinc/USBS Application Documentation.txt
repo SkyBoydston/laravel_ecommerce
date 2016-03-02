@@ -39,3 +39,6 @@ Remember that for authentication to work on any route, the route has to be place
 
 
 ModelFactory.php was modified to make it possible to run tests with authenication. It can be modified further to log in to seeded user or create a fuller user.
+
+
+In order to deal with an issue with XAMPP's treatment of document roots, I created a variable in .env, DOC_ROOT, which I intend to use throughout the application to write href's. It'll need to be changed to the correct root for the production server when we go live.
