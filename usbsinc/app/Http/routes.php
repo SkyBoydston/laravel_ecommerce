@@ -45,11 +45,14 @@ Route::group(['middleware' => 'web'], function () {
  //    Route::model('company', 'User');
 	// Route::resource('company', 'UserAdminPanelController');
 
-    Route::group(['prefix' => 'company'], function () {
-//          Route::get('update', 'UserAdminPanelController@update');
-			Route::get('/', 'UserAdminPanelController@index');
+    Route::resource('user', 'UserController');
 
-			Route::match(['get','post'],'/update', 'UserAdminPanelController@update');
 
-	});
+//     Route::group(['prefix' => 'company'], function () {
+// //          Route::get('update', 'UserAdminPanelController@update');
+// 			Route::get('/', 'UserAdminPanelController@index');
+
+// 			Route::match(['get','post'],'/update', 'UserAdminPanelController@update');
+
+	// });
 });
