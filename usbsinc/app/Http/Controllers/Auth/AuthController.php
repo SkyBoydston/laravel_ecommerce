@@ -53,7 +53,7 @@ class AuthController extends Controller
             'business_type' => 'sometimes|max:255|string',
             'business_status' => 'sometimes|max:255|string',
             'business_address_line_1' => 'required|max:255|string',
-            'business_address_line_2' => 'required|max:255|string',
+            'business_address_line_2' => 'sometimes|max:255|string',
             'business_city' => 'required|max:255|string',
             'business_state' => 'required|max:255|string',
             'business_zip_code' => 'required|max:255|string',

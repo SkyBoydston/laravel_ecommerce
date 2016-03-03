@@ -44,10 +44,11 @@ Route::group(['middleware' => 'web'], function () {
 
  //    Route::model('company', 'User');
 	// Route::resource('company', 'UserAdminPanelController');
+	Route::group(['middleware' => 'auth'], function () {
+	    Route::resource('user', 'UserController',
+	    	['except' => ['create', 'store', 'destroy']]);
 
-    Route::resource('user', 'UserController');
-
-
+	});
 //     Route::group(['prefix' => 'company'], function () {
 // //          Route::get('update', 'UserAdminPanelController@update');
 // 			Route::get('/', 'UserAdminPanelController@index');

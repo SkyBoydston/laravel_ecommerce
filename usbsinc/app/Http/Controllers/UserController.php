@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\User;
-use Requests\UserRequest;
+use App\Http\Requests\UserRequest;
 use Redirect;
 use Auth;
 
@@ -25,26 +25,6 @@ class UserController extends Controller
         return Redirect::action('UserController@show', $id);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
 
     /**
      * Display the specified resource.
@@ -54,7 +34,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        $user = User::findOrFail($id, $columns = array(
+        $user = User::findOrFail($id, $columns = array(   // These are being specified because otherwise things like password and brands of interest shows.
             'business_name',
             'business_website',
             'business_address_line_1',
@@ -97,19 +77,15 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UserRequest $request, $id)
     {
-        //
+        $user = User::findOrFail($id);
+        
+        $user->update($request->all());
+
+        return redirect('user');
+
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
+    
 }
