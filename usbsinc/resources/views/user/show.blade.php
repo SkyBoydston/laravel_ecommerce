@@ -15,7 +15,7 @@
 
 
 					
-					<a href="{{ env('DOC_ROOT') . "/user/" . $id . "/edit" }}">Edit</a>
+					<a href="{{ "/user/" . $id . "/edit" }}">Edit</a>
 
 				</div>
 				</div>
