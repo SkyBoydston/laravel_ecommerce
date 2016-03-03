@@ -10,7 +10,7 @@
                 <div class="panel-body">
 					
 					@foreach ($user['attributes'] as $key => $value)
-						<h4>{{ ucfirst(str_replace('_', ' ', $key)) }}</h4> <br/>{{ $value }} <br/><br/>
+						<h4>{{ ucfirst(str_replace('_', ' ', $key)) }}</h4> <br/>{{ $value }} <br/>
 					@endforeach
 
 

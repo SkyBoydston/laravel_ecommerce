@@ -42,6 +42,14 @@ Route::group(['middleware' => 'web'], function () {
 	
     Route::get('/home', 'HomeController@index');
 
+
+    // Route::filter('isSelf', function($id) {
+    // 	if (!$id==Auth::user()->id) {
+    // 		return abort('Forbidden');
+    // 	}
+
+    // });
+
  //    Route::model('company', 'User');
 	// Route::resource('company', 'UserAdminPanelController');
 	Route::group(['middleware' => 'auth'], function () {

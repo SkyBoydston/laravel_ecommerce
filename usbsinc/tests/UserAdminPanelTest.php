@@ -4,6 +4,8 @@ use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
+use App\User;
+
 class UserAdminPanelTest extends TestCase
 {
 	use DatabaseMigrations;
@@ -15,15 +17,16 @@ class UserAdminPanelTest extends TestCase
      */
     public function testUserAdminPanel()
     {
-        $user = factory(App\User::class)->create();
+        // $user = factory(App\User::class)->create();
+        $user = User::findOrFail(1);
 
         $this->actingAs($user)
-             ->withSession(['foo' => 'bar'])
+             // ->withSession(['foo' => 'bar'])
              ->visit('/')
              ->click('User')
-             ->seePageIs('/user/3')
+             ->seePageIs('/user/1')
              ->see('Edit')
-             ->see('foo bar')
+             // ->see('foo bar')
              ->click('Edit');
              // ->type('test business_name', 'business_name')
              // ->type('www.business_website.com', 'business_website')
