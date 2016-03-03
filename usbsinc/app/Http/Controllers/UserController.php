@@ -20,6 +20,7 @@ class UserController extends Controller
      */
     public function index()
     {
+
         $id = Auth::user()->id;
 
         return Redirect::action('UserController@show', $id);
