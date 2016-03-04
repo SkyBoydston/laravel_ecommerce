@@ -12,14 +12,14 @@ class CreateAddressesTable extends Migration
      */
     public function up()
     {
-        Schema::create('addresses', Blueprint $table) {
+        Schema::create('addresses', function (Blueprint $table) {
             $table->increments('id');
             $table->string('address_line_1');
             $table->string('address_line_2');
             $table->string('city');
             $table->string('state');
             $table->string('zip_code');
-        }
+        });
     }
 
     /**

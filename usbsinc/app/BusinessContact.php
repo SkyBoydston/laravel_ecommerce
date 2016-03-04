@@ -25,4 +25,8 @@ class BusinessContact extends Model
     protected $hidden = [
         
     ];
+
+    public function phone_number() {
+    	$this->hasOne('App\PhoneNumber');
+    }
 }

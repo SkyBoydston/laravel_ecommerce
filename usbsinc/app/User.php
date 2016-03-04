@@ -26,6 +26,10 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    public function company() {
+        $this->hasOne('App\Company');
+    }
+
     
 
 }

@@ -12,14 +12,14 @@ class CreateBusinessContactsTable extends Migration
      */
     public function up()
     {
-        Schema::create('business_contacts', Blueprint $table) {
+        Schema::create('business_contacts', function (Blueprint $table) {
             $table->increments('id');
             $table->string('first_name');
             $table->string('last_name');
             $table->string('title');
             $table->timestamps();
 
-        }
+        });
     }
 
     /**

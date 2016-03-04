@@ -12,12 +12,12 @@ class CreatePhoneNumbersTable extends Migration
      */
     public function up()
     {
-        Schema::create('phone_numbers', Blueprint $table) {
+        Schema::create('phone_numbers', function (Blueprint $table) {
             $table->increments('id');
             $table->string('primary_phone');
             $table->string('secondary_phone');
             $table->timestamps();
-        }
+        });
     }
 
     /**

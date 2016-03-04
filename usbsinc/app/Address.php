@@ -29,4 +29,5 @@ class Address extends Model
     protected $hidden = [
         
     ];
+    
 }

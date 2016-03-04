@@ -28,4 +28,12 @@ class Company extends Model
     protected $hidden = [
         
     ];
+
+    public function address() {
+    	$this->hasMany('App\Address');
+    }
+
+    public function phone_number() {
+    	$this->hasOne('App\PhoneNumber');
+    }
 }
