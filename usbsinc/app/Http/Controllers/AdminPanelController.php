@@ -11,7 +11,7 @@ use App\Http\Requests\UserRequest;
 use Redirect;
 use Auth;
 
-class UserController extends Controller
+class AdminPanelController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -23,7 +23,7 @@ class UserController extends Controller
 
         $id = Auth::user()->id;
 
-        return Redirect::action('UserController@show', $id);
+        return Redirect::action('AdminPanelController@show', $id);
     }
 
 

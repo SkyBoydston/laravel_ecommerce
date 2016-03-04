@@ -9,7 +9,7 @@
                 <div class="panel-heading">Admin panel</div>
                 <div class="panel-body">
 
-					{!! Form::model($user, ['method' => 'PATCH', 'action' => ['UserController@update', $id], 'class' => 'form-horizontal']) !!}
+					{!! Form::model($user, ['method' => 'PATCH', 'action' => ['AdminPanelController@update', $id], 'class' => 'form-horizontal']) !!}
 
 
 

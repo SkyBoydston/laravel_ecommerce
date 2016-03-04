@@ -2,9 +2,9 @@
 
 namespace App;
 
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Model;
 
-class User extends Authenticatable
+class BusinessContact extends Model
 {
     /**
      * The attributes that are mass assignable.
@@ -12,9 +12,9 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-            
-            'email',
-            
+            'first_name', 
+            'last_name',
+            'title',            
     ];
 
     /**
@@ -23,9 +23,6 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        
     ];
-
-    
-
 }

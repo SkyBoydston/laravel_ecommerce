@@ -53,7 +53,7 @@ Route::group(['middleware' => 'web'], function () {
  //    Route::model('company', 'User');
 	// Route::resource('company', 'UserAdminPanelController');
 	Route::group(['middleware' => 'auth'], function () {
-	    Route::resource('user', 'UserController',
+	    Route::resource('user', 'AdminPanelController',
 	    	['except' => ['create', 'store', 'destroy']]);
 
 	});
