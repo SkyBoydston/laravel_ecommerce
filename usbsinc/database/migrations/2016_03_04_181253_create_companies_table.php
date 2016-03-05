@@ -15,7 +15,7 @@ class CreateCompaniesTable extends Migration
         Schema::create('companies', function (Blueprint $table) {
             
             $table->increments('id');
-
+            $table->integer('user_id')->unsigned();
             $table->string('name');
             $table->string('website');
             $table->string('type');
@@ -24,6 +24,9 @@ class CreateCompaniesTable extends Migration
             $table->string('contact_me_via');
             $table->mediumtext('how_heard_about');
             $table->timestamps();
+
+            $table->foreign('user_id')
+                  ->references('id')->on('users');
 
         });
     }

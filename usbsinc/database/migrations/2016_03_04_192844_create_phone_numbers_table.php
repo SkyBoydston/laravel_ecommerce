@@ -14,9 +14,13 @@ class CreatePhoneNumbersTable extends Migration
     {
         Schema::create('phone_numbers', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('user_id')->unsigned();
             $table->string('primary_phone');
             $table->string('secondary_phone');
             $table->timestamps();
+
+            $table->foreign('user_id')
+                  ->references('id')->on('users');
         });
     }
 

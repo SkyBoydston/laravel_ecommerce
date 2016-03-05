@@ -13,6 +13,7 @@ class CompanySeeder extends Seeder
     {
         DB::table('companies')->insert([
         			[
+        				'user_id' => '1',
 		        		'name' => 'test business_name',
 		        		'website' => 'www.business_website.com',
 						'type' => 'test business_type',
@@ -22,6 +23,7 @@ class CompanySeeder extends Seeder
 						'how_heard_about' => 'test how_heard_about',
 					],
 		        	[
+        				'user_id' => '2',
 		        		'name' => 'another test business_name',
 		        		'website' => 'another test business_website',
 						'type' => 'another test business_type',
