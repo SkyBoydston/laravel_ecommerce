@@ -17,12 +17,12 @@ class CreateCompaniesTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->string('name');
-            $table->string('website');
-            $table->string('type');
-            $table->string('status');
-            $table->string('brands_of_interest');
-            $table->string('contact_me_via');
-            $table->mediumtext('how_heard_about');
+            $table->string('website')->nullable();
+            $table->string('type')->nullable();
+            $table->string('status')->nullable();
+            $table->string('brands_of_interest')->nullable();
+            $table->string('contact_me_via')->nullable();
+            $table->mediumtext('how_heard_about')->nullable();
             $table->timestamps();
 
             $table->foreign('user_id')

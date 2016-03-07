@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use App\Company;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
@@ -49,24 +50,24 @@ class AuthController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'business_name' => 'required|max:255|string',
-            'business_type' => 'sometimes|max:255|string',
-            'business_status' => 'sometimes|max:255|string',
-            'business_address_line_1' => 'required|max:255|string',
-            'business_address_line_2' => 'sometimes|max:255|string',
-            'business_city' => 'required|max:255|string',
-            'business_state' => 'required|max:255|string',
-            'business_zip_code' => 'required|max:255|string',
-            'business_contact_first_name' => 'required|max:255',
-            'business_contact_last_name' => 'required|max:255',
-            'business_contact_title' => 'required|max:255',
-            'brands_of_interest' => 'required',
-            'business_primary_phone' => 'required|max:255',
-            'business_secondary_phone' => 'sometimes|max:255',
-            'contact_me_via' => 'required',
-            'email' => 'required|email|max:255|unique:users',
-            'how_heard_about' => 'sometimes',
-            'password' => 'required|confirmed|min:6',
+            // 'business_name' => 'required|max:255|string',
+            // 'business_type' => 'sometimes|max:255|string',
+            // 'business_status' => 'sometimes|max:255|string',
+            // 'business_address_line_1' => 'required|max:255|string',
+            // 'business_address_line_2' => 'sometimes|max:255|string',
+            // 'business_city' => 'required|max:255|string',
+            // 'business_state' => 'required|max:255|string',
+            // 'business_zip_code' => 'required|max:255|string',
+            // 'business_contact_first_name' => 'required|max:255',
+            // 'business_contact_last_name' => 'required|max:255',
+            // 'business_contact_title' => 'required|max:255',
+            // 'brands_of_interest' => 'required',
+            // 'business_primary_phone' => 'required|max:255',
+            // 'business_secondary_phone' => 'sometimes|max:255',
+            // 'contact_me_via' => 'required',
+            // 'email' => 'required|email|max:255|unique:users',
+            // 'how_heard_about' => 'sometimes',
+            // 'password' => 'required|confirmed|min:6',
         ]);
     }
 
@@ -78,26 +79,28 @@ class AuthController extends Controller
      */
     protected function create(array $data)
     {
+        // dd($data);
         return User::create([
-            'business_name' => $data['business_name'],
-            'business_type' => $data['business_type'],
-            'business_status' => $data['business_status'],
-            'business_address_line_1' => $data['business_address_line_1'],
-            'business_address_line_2' => $data['business_address_line_2'],
-            'business_business_city' => $data['business_city'],
-            'business_state' => $data['business_state'],
-            'business_zip_code' => $data['business_zip_code'],
+            // 'business_name' => $data['business_name'],
+            // 'business_type' => $data['business_type'],
+            // 'business_status' => $data['business_status'],
+            // 'business_address_line_1' => $data['business_address_line_1'],
+            // 'business_address_line_2' => $data['business_address_line_2'],
+            // 'business_business_city' => $data['business_city'],
+            // 'business_state' => $data['business_state'],
+            // 'business_zip_code' => $data['business_zip_code'],
 
-            'business_contact_first_name' => $data['business_contact_first_name'],
-            'business_contact_last_name' => $data['business_contact_last_name'],
-            'business_contact_title' => $data['business_contact_title'],
-            'brands_of_interest' => is_array($data['brands_of_interest'])? implode(',', $data['brands_of_interest']) : $data['brands_of_interest'],
-            'business_primary_phone' => $data['business_primary_phone'],
-            'business_secondary_phone' => $data['business_secondary_phone'],
-            'contact_me_via' => $data['contact_me_via'],
+            // 'business_contact_first_name' => $data['business_contact_first_name'],
+            // 'business_contact_last_name' => $data['business_contact_last_name'],
+            // 'business_contact_title' => $data['business_contact_title'],
+            // 'brands_of_interest' => is_array($data['brands_of_interest'])? implode(',', $data['brands_of_interest']) : $data['brands_of_interest'],
+            // 'business_primary_phone' => $data['business_primary_phone'],
+            // 'business_secondary_phone' => $data['business_secondary_phone'],
+            // 'contact_me_via' => $data['contact_me_via'],
             'email' => $data['email'],
-            'how_heard_about' => $data['how_heard_about'],
+            // 'how_heard_about' => $data['how_heard_about'],
             'password' => bcrypt($data['password']),
         ]);
+        
     }
 }

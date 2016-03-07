@@ -12,20 +12,20 @@
                         
                         <p class="help-block">Business Details</p>
 
-                        <div class="form-group{{ $errors->has('business_name') ? ' has-error' : '' }}">
+                        <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                             <label class="col-md-4 control-label">Business name</label>
 
                             <div class="col-md-6">
-                                <input type="text" class="form-control" name="business_name" value="{{ old('business_name') }}">
+                                <input type="text" class="form-control" name="name" value="{{ old('name') }}">
 
-                                @if ($errors->has('business_name'))
+                                @if ($errors->has('name'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('business_name') }}</strong>
+                                        <strong>{{ $errors->first('name') }}</strong>
                                     </span>
                                 @endif
                             </div>
                         </div>
-
+<!-- 
                         <div class="form-group{{ $errors->has('business_type') ? ' has-error' : '' }}">
                             <label class="col-md-4 control-label">Business type</label>
 
@@ -224,7 +224,7 @@
                                 @endif
                             </div>
                         </div>
-
+ -->
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                             <label class="col-md-4 control-label">E-Mail Address</label>
 
@@ -239,7 +239,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('how_heard_about') ? ' has-error' : '' }}">
+<!--                         <div class="form-group{{ $errors->has('how_heard_about') ? ' has-error' : '' }}">
                             <label class="col-md-4 control-label">How did you hear about us?</label>
 
                             <div class="col-md-6">
@@ -252,7 +252,7 @@
                                 @endif
                             </div>
                         </div>
-
+ -->
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                             <label class="col-md-4 control-label">Password</label>
 
