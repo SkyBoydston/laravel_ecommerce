@@ -51,6 +51,7 @@ class AuthController extends Controller
     {
         return Validator::make($data, [
             // 'business_name' => 'required|max:255|string',
+            // 'business_website' => 'required|max:255|string',
             // 'business_type' => 'sometimes|max:255|string',
             // 'business_status' => 'sometimes|max:255|string',
             // 'business_address_line_1' => 'required|max:255|string',
@@ -80,8 +81,11 @@ class AuthController extends Controller
     protected function create(array $data)
     {
         // dd($data);
+
+        Company::create(['user_id' => '1', 'name' => 'foo' ]);
         return User::create([
             // 'business_name' => $data['business_name'],
+            // 'business_website' => $data['business_website'],
             // 'business_type' => $data['business_type'],
             // 'business_status' => $data['business_status'],
             // 'business_address_line_1' => $data['business_address_line_1'],
@@ -101,6 +105,8 @@ class AuthController extends Controller
             // 'how_heard_about' => $data['how_heard_about'],
             'password' => bcrypt($data['password']),
         ]);
+
+
         
     }
 }

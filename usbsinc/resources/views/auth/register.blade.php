@@ -12,20 +12,34 @@
                         
                         <p class="help-block">Business Details</p>
 
-                        <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+                        <div class="form-group{{ $errors->has('business_name') ? ' has-error' : '' }}">
                             <label class="col-md-4 control-label">Business name</label>
 
                             <div class="col-md-6">
-                                <input type="text" class="form-control" name="name" value="{{ old('name') }}">
+                                <input type="text" class="form-control" name="business_name" value="{{ old('business_name') }}">
 
-                                @if ($errors->has('name'))
+                                @if ($errors->has('business_name'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('name') }}</strong>
+                                        <strong>{{ $errors->first('business_name') }}</strong>
                                     </span>
                                 @endif
                             </div>
                         </div>
 <!-- 
+                        <div class="form-group{{ $errors->has('business_website') ? ' has-error' : '' }}">
+                            <label class="col-md-4 control-label">Business website</label>
+
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="business_website" value="{{ old('business_website') }}">
+
+                                @if ($errors->has('business_website'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('business_website') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
                         <div class="form-group{{ $errors->has('business_type') ? ' has-error' : '' }}">
                             <label class="col-md-4 control-label">Business type</label>
 
