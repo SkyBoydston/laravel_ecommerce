@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Laravel</title>
+    <title>USBS Advantage</title>
 
     <!-- Fonts -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel='stylesheet' type='text/css'>
@@ -60,7 +60,7 @@
                     @else
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                {{ Auth::user()->first_name }} {{ Auth::user()->last_name }} <span class="caret"></span>
+                                {{ App\User::findOrFail(Auth::user()->id)->company->businessContact->first_name }} {{ App\User::findOrFail(Auth::user()->id)->company->businessContact->last_name }} <span class="caret"></span>
                             </a>
 
                             <ul class="dropdown-menu" role="menu">

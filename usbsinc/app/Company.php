@@ -32,10 +32,16 @@ class Company extends Model
     ];
 
     public function address() {
-    	$this->hasMany('App\Address');
+    	return $this->hasMany('App\Address');
     }
 
-    public function phone_number() {
-    	$this->hasOne('App\PhoneNumber');
+    public function phoneNumber() {
+    	return $this->hasOne('App\PhoneNumber');
     }
+
+    public function businessContact() {
+        return $this->hasOne('App\BusinessContact');
+    }
+
+    
 }

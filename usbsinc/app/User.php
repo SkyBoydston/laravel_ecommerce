@@ -27,7 +27,7 @@ class User extends Authenticatable
     ];
 
     public function company() {
-        $this->hasOne('App\Company');
+        return $this->hasOne('App\Company');
     }
 
     

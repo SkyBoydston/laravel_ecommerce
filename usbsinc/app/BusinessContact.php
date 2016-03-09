@@ -26,7 +26,15 @@ class BusinessContact extends Model
         
     ];
 
+    // public function company() {
+    //     $this->belongsToOne('App\Company');
+    // }
+
     public function phone_number() {
-    	$this->hasOne('App\PhoneNumber');
+    	return $this->hasOne('App\PhoneNumber');
     }
+
+    // public function getFirstNameAttribute() {
+    //     return $this->first_name;
+    // }
 }
