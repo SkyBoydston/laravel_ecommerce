@@ -14,7 +14,7 @@ class CreateBusinessContactsTable extends Migration
     {
         Schema::create('business_contacts', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('company_id')->unsigned();
+            $table->integer('company_id')->nullable()->unsigned();
             $table->string('first_name');
             $table->string('last_name');
             $table->string('title');
