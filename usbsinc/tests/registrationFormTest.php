@@ -18,7 +18,8 @@ class registrationFormTest extends TestCase
     public function testRegistrationForm()
     {
         $this->visit('/register')
-        	 ->type('test', 'business_name')
+             ->type('test', 'business_name')
+        	 ->type('test', 'website')
         	 ->type('test', 'type')
         	 ->type('test', 'status')
              ->type('test', 'address_line_1')

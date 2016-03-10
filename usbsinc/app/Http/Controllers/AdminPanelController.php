@@ -23,13 +23,20 @@ class AdminPanelController extends Controller
     {
         $id = Auth::user()->id;
         $user = User::findOrFail($id);
-        $company = User::findOrFail($id)->company;
-        $business_contact = User::findOrFail($id)->company->business_contact;
-        $phone_number = User::findOrFail($id)->company->phone_number;
-        $address = User::findOrFail($id)->company->address()->where('company_id', Auth::user()->company->id)->first();
+        if (is_object($user)) {
+            $company = User::findOrFail($id)->company;
+            $business_contact = User::findOrFail($id)->company->business_contact;
+            $phone_number = User::findOrFail($id)->company->phone_number;
+            $address = User::findOrFail($id)->company->address()->where('company_id', Auth::user()->company->id)->first();
+        } else {
+            $company = null;
+            $business_contact = null;
+            $phone_number = null;
+            $address = null;
+        }
 
 
-        return view('user/show', compact('user', 'company', 'business_contact', 'phone_number', 'address', 'id'));
+        return view('admin_panel/show', compact('user', 'company', 'business_contact', 'phone_number', 'address', 'id'));
     }
 
 

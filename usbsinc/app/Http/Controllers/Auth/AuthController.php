@@ -85,7 +85,7 @@ class AuthController extends Controller
      */
     protected function create(array $data)
     {
-
+        
         Company::create([
             'business_name' => $data['business_name'],
             'website' => $data['website'],

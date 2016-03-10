@@ -6,13 +6,12 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\User;
 use Auth;
+use App\User;
+use App\PhoneNumber;
 
-class UserController extends Controller
+class PhoneNumberController extends Controller
 {
-    
-
     /**
      * Show the form for editing the specified resource.
      *
@@ -21,10 +20,12 @@ class UserController extends Controller
      */
     public function edit()
     {
+    
         $id = Auth::user()->id;
-        $user = User::where('id', $id)->first();  
+        $phone_number = User::findOrFail($id)->company->phone_number; 
+        $phone_number_id = $phone_number->id;
 
-        return view('user/edit', compact('user', 'id'));
+        return view('phone_number/edit', compact('phone_number', 'phone_number_id'));
     }
 
     /**
@@ -34,15 +35,13 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $phone_number_id)
     {
-        $user = User::findOrFail($id);
+        $phone_number = PhoneNumber::findOrFail($phone_number_id);
         
-        $user->update($request->all());
+        $phone_number->update($request->all());
 
         return redirect('/admin_panel');
-
     }
 
-    
 }

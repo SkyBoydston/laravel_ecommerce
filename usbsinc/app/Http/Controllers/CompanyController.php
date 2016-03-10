@@ -6,12 +6,13 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\User;
 use Auth;
+use App\User;
+use App\Company;
 
-class UserController extends Controller
+class CompanyController extends Controller
 {
-    
+   
 
     /**
      * Show the form for editing the specified resource.
@@ -21,10 +22,12 @@ class UserController extends Controller
      */
     public function edit()
     {
+    
         $id = Auth::user()->id;
-        $user = User::where('id', $id)->first();  
+        $company = User::findOrFail($id)->company; 
+        $company_id = $company->id;
 
-        return view('user/edit', compact('user', 'id'));
+        return view('company/edit', compact('company', 'company_id'));
     }
 
     /**
@@ -34,15 +37,14 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $company_id)
     {
-        $user = User::findOrFail($id);
+        $company = Company::findOrFail($company_id);
         
-        $user->update($request->all());
+        $company->update($request->all());
 
         return redirect('/admin_panel');
-
     }
 
-    
+   
 }

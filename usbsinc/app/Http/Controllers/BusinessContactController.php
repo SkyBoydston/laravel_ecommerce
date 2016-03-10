@@ -6,13 +6,12 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\User;
 use Auth;
+use App\User;
+use App\BusinessContact;
 
-class UserController extends Controller
+class BusinessContactController extends Controller
 {
-    
-
     /**
      * Show the form for editing the specified resource.
      *
@@ -21,10 +20,12 @@ class UserController extends Controller
      */
     public function edit()
     {
+    
         $id = Auth::user()->id;
-        $user = User::where('id', $id)->first();  
+        $business_contact = User::findOrFail($id)->company->business_contact; 
+        $business_contact_id = $business_contact->id;
 
-        return view('user/edit', compact('user', 'id'));
+        return view('business_contact/edit', compact('business_contact', 'business_contact_id'));
     }
 
     /**
@@ -34,15 +35,13 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $business_contact_id)
     {
-        $user = User::findOrFail($id);
+        $business_contact = BusinessContact::findOrFail($business_contact_id);
         
-        $user->update($request->all());
+        $business_contact->update($request->all());
 
         return redirect('/admin_panel');
-
     }
 
-    
 }
