@@ -12,6 +12,7 @@ class BusinessContact extends Model
      * @var array
      */
     protected $fillable = [
+            'company_id',
             'first_name', 
             'last_name',
             'title',            

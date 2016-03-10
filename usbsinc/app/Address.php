@@ -12,12 +12,13 @@ class Address extends Model
      * @var array
      */
     protected $fillable = [
-            
+            'company_id',
             'address_line_1',
             'address_line_2',
             'city',
             'state',
             'zip_code',
+            'type'
             
     ];
 

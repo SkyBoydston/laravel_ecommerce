@@ -12,6 +12,9 @@ class PhoneNumber extends Model
      * @var array
      */
     protected $fillable = [
+            'business_contact_id',
+            'company_id',
+            'user_id',
             'primary_phone',
             'secondary_phone',            
     ];

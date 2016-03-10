@@ -35,11 +35,11 @@ class Company extends Model
     	return $this->hasMany('App\Address');
     }
 
-    public function phoneNumber() {
+    public function phone_number() {
     	return $this->hasOne('App\PhoneNumber');
     }
 
-    public function businessContact() {
+    public function business_contact() {
         return $this->hasOne('App\BusinessContact');
     }
 

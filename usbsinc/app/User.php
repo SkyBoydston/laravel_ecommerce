@@ -30,6 +30,8 @@ class User extends Authenticatable
         return $this->hasOne('App\Company');
     }
 
-    
+    public function phone_number() {
+        return $this->hasOne('App\PhoneNumber');
+    }    
 
 }

@@ -35,26 +35,32 @@ class AdminPanelController extends Controller
      */
     public function show($id)
     {
-        $user = User::findOrFail($id, $columns = array(   // These are being specified because otherwise things like password and brands of interest shows.
-            'business_name',
-            'business_website',
-            'business_address_line_1',
-            'business_address_line_2',
-            'business_city',
-            'business_state',
-            'business_zip_code',
-            'business_contact_first_name', 
-            'business_contact_last_name',
-            'business_contact_title', 
-            'business_primary_phone',
-            'business_secondary_phone',
-            'business_contact_primary_phone',
-            'business_contact_secondary_phone',
-            'email'
-            )); 
+        $user = User::findOrFail($id);
+        $company = User::findOrFail($id)->company;
+        $business_contact = User::findOrFail($id)->company->business_contact;
+        $phone_number = User::findOrFail($id)->company->business_contact->phone_number;
+        $address = User::findOrFail($id)->company->address()->where('company_id', '1')->first();
+
+        //, $columns = array(   // These are being specified because otherwise things like password and brands of interest shows.
+            // 'business_name',
+            // 'business_website',
+            // 'business_address_line_1',
+            // 'business_address_line_2',
+            // 'business_city',
+            // 'business_state',
+            // 'business_zip_code',
+            // 'business_contact_first_name', 
+            // 'business_contact_last_name',
+            // 'business_contact_title', 
+            // 'business_primary_phone',
+            // 'business_secondary_phone',
+            // 'business_contact_primary_phone',
+            // 'business_contact_secondary_phone',
+            // 'email'
+            // )); 
 
 
-        return view('user/show', compact('user', 'id'));
+        return view('user/show', compact('user', 'company', 'business_contact', 'phone_number', 'address', 'id'));
     }
 
     /**
