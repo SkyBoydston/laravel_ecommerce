@@ -8,7 +8,6 @@ use App\User;
 
 class UserAdminPanelTest extends TestCase
 {
-	use DatabaseMigrations;
 
     /**
      * Tests that the user/company admin panel is showing data and able to save changes.
@@ -65,4 +64,6 @@ class UserAdminPanelTest extends TestCase
              // ->see('test contact secondary_phone');
              ->see('test');
     }
+    use DatabaseMigrations;
+    
 }

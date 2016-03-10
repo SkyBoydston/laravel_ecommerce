@@ -7,7 +7,7 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 class registrationFormTest extends TestCase
 {
 
-    use DatabaseMigrations;
+    
     
     /**
      * Tests whether the registration form is functioning. Does not check to see if the 
@@ -44,7 +44,7 @@ class registrationFormTest extends TestCase
         	 ->seePageIs('/home');
     }
 
-
+    use DatabaseMigrations;
 
 }
     
