@@ -53,8 +53,9 @@ Route::group(['middleware' => 'web'], function () {
  //    Route::model('company', 'User');
 	// Route::resource('company', 'UserAdminPanelController');
 	Route::group(['middleware' => 'auth'], function () {
-	    Route::resource('user', 'AdminPanelController',
+	    Route::resource('user', 'UserController',
 	    	['except' => ['create', 'store', 'destroy']]);
+	    Route::get('admin_panel', 'AdminPanelController@show');
 
 	});
 //     Route::group(['prefix' => 'company'], function () {

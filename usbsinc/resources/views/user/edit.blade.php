@@ -6,10 +6,10 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Admin panel</div>
+                <div class="panel-heading">User panel</div>
                 <div class="panel-body">
 
-					{!! Form::model($user, ['method' => 'PATCH', 'action' => ['AdminPanelController@update', $id], 'class' => 'form-horizontal']) !!}
+					{!! Form::model($user, ['method' => 'PATCH', 'action' => ['UserController@update', $id], 'class' => 'form-horizontal']) !!}
 
 
 
@@ -18,7 +18,7 @@
 
 
 
-                        <p class="help-block">Business Details</p>
+                        <!-- <p class="help-block">Business Details</p> -->
 
 
 
@@ -26,7 +26,7 @@
 
 
 
-					    <div class="form-group{{ $errors->has('business_name') ? ' has-error' : '' }}">
+					    <!-- <div class="form-group{{ $errors->has('business_name') ? ' has-error' : '' }}">
 						    {!! Form::label ('business_name', 'Company name', array('class' => 'col-md-4 control-label')) !!}
 					    
 						    <div class="col-md-6">
@@ -151,6 +151,16 @@
 	                            @endif
 						    </div>
 					    </div>
+ -->
+
+
+
+
+
+
+
+
+					    <!-- <p class="help-block">Owner Contact</p> -->
 
 
 
@@ -160,18 +170,8 @@
 
 
 
-					    <p class="help-block">Owner Contact</p>
 
-
-
-
-
-
-
-
-
-
-						<div class="form-group{{ $errors->has('business_contact_first_name') ? ' has-error' : '' }}">
+						<!-- <div class="form-group{{ $errors->has('business_contact_first_name') ? ' has-error' : '' }}">
 						    {!! Form::label ('business_contact_first_name', 'First name', array('class' => 'col-md-4 control-label')) !!}
 					    
 						    <div class="col-md-6">
@@ -240,7 +240,7 @@
 	                            @endif
 						    </div>
 					    </div>
-
+ -->
 					    <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
 						    {!! Form::label ('email', 'Email', array('class' => 'col-md-4 control-label')) !!}
 					    
