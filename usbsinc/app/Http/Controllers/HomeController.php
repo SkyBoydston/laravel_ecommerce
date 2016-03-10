@@ -34,21 +34,24 @@ class HomeController extends Controller
         $user_id = Auth::user()->id;
 
 
+
         $company = Company::where('user_id', null)->first();
         if ($company) {
             $company->user_id = $user_id;
             $company->save();
         }
 
-        $phoneNumber = PhoneNumber::where('user_id', null)->first();
-        if ($phoneNumber) {
-            $phoneNumber->user_id = $user_id;
-            $phoneNumber->save();
-        }
-
+        
 
         $company_id = Company::where('user_id', $user_id)->first()->id;
 
+
+
+        $phoneNumber = PhoneNumber::where([['company_id', null],['business_contact_id', null],['user_id', null]])->first();
+        if ($phoneNumber) {
+            $phoneNumber->company_id = $company_id;
+            $phoneNumber->save();
+        }
 
         $address = Address::where('company_id', null)->first();
         if ($address) {

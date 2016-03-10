@@ -38,8 +38,8 @@ class AdminPanelController extends Controller
         $user = User::findOrFail($id);
         $company = User::findOrFail($id)->company;
         $business_contact = User::findOrFail($id)->company->business_contact;
-        $phone_number = User::findOrFail($id)->company->business_contact->phone_number;
-        $address = User::findOrFail($id)->company->address()->where('company_id', '1')->first();
+        $phone_number = User::findOrFail($id)->company->phone_number;
+        $address = User::findOrFail($id)->company->address()->where('company_id', Auth::user()->company->id)->first();
 
         //, $columns = array(   // These are being specified because otherwise things like password and brands of interest shows.
             // 'business_name',
