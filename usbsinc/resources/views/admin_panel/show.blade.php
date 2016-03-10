@@ -28,7 +28,7 @@
 								@endforeach
 
 
-								<a href="{{ "/user/" . $id . "/edit" }}">Edit</a>
+								<a href="{{ "/user/" . $user_id . "/edit" }}">Edit</a>
 
 							</div>
 					</div>
@@ -44,7 +44,7 @@
 								@endforeach
 
 													
-								<a href="{{ "/company/" . $id . "/edit" }}">Edit</a>
+								<a href="{{ "/company/" . $company_id . "/edit" }}">Edit</a>
 
 							</div>
 
@@ -54,14 +54,24 @@
 					<div class="panel panel-default">
 		                <div class="panel-heading">Company address details</div>
 			                <div class="panel-body">
+
+			                	<h3>Office</h3>
 								
-								@foreach ($address['attributes'] as $key => $value)
+								@foreach ($company_office_address['attributes'] as $key => $value)
 									<h4>{{ ucfirst(str_replace('_', ' ', $key)) }}</h4> {{ $value }} <br/>
 								@endforeach
 
 													
-								<a href="{{ "/address/" . $id . "/edit" }}">Edit</a>
+								<a href="{{ "/address/" . $company_office_address_id . "/edit" }}">Edit</a>
 
+			                	<h3>Default shipping</h3>
+								
+								@foreach ($company_default_shipping_address['attributes'] as $key => $value)
+									<h4>{{ ucfirst(str_replace('_', ' ', $key)) }}</h4> {{ $value }} <br/>
+								@endforeach
+
+													
+								<a href="{{ "/address/" . $company_default_shipping_address_id . "/edit" }}">Edit</a>
 							</div>
 
 					</div>					
@@ -76,7 +86,7 @@
 								@endforeach
 
 													
-								<a href="{{ "/business_contact/" . $id . "/edit" }}">Edit</a>
+								<a href="{{ "/business_contact/" . $business_contact_id . "/edit" }}">Edit</a>
 
 							</div>
 
@@ -87,12 +97,12 @@
 		                <div class="panel-heading">Company phone number details</div>
 			                <div class="panel-body">
 								
-								@foreach ($phone_number['attributes'] as $key => $value)
+								@foreach ($company_phone_number['attributes'] as $key => $value)
 									<h4>{{ ucfirst(str_replace('_', ' ', $key)) }}</h4> {{ $value }} <br/>
 								@endforeach
 
 													
-								<a href="{{ "/phone_number/" . $id . "/edit" }}">Edit</a>
+								<a href="{{ "/phone_number/" . $company_phone_number_id . "/edit" }}">Edit</a>
 
 							</div>
 

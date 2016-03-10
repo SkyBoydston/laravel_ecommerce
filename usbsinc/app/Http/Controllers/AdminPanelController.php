@@ -21,26 +21,33 @@ class AdminPanelController extends Controller
      */
     public function show()
     {
-        $id = Auth::user()->id;
-        $user = User::findOrFail($id);
-        if (is_object($user)) {
-            $company = User::findOrFail($id)->company;
-            $business_contact = User::findOrFail($id)->company->business_contact;
-            $phone_number = User::findOrFail($id)->company->phone_number;
-            $address = User::findOrFail($id)->company->address()->where('company_id', Auth::user()->company->id)->first();
-        } else {
-            $company = null;
-            $business_contact = null;
-            $phone_number = null;
-            $address = null;
-        }
+        $user_id = Auth::user()->id;
+        $user = User::findOrFail($user_id);
+        
+        $company = User::findOrFail($user_id)->company;
+        $company_id = $company->id;
+        
+        $business_contact = User::findOrFail($user_id)->company->business_contact;
+        $business_contact_id = $business_contact->id;
+        
+        $company_phone_number = User::findOrFail($user_id)->company->phone_number;
+        $company_phone_number_id = $company_phone_number->id;
+        
+        $company_office_address = User::findOrFail($user_id)->company->address()->where([['company_id', Auth::user()->company->id], ['type', 'office']])->first();
+        $company_office_address_id = $company_office_address->id;
+        
+        $company_default_shipping_address = User::findOrFail($user_id)->company->address()->where([['company_id', Auth::user()->company->id], ['type', 'default_shipping']])->first();
+        $company_default_shipping_address_id = $company_default_shipping_address->id;
 
+        return view('admin_panel/show', compact(
+                        'user', 'user_id',
+                        'company', 'company_id', 
+                        'business_contact', 'business_contact_id', 
+                        'company_phone_number', 'company_phone_number_id', 
+                        'company_default_shipping_address', 'company_default_shipping_address_id', 
+                        'company_office_address', 'company_office_address_id'
+                        ));
 
-        return view('admin_panel/show', compact('user', 'company', 'business_contact', 'phone_number', 'address', 'id'));
     }
 
-
-    
-
-    
 }
