@@ -23,12 +23,18 @@ class AdminPanelController extends Controller
     {
         $user_id = Auth::user()->id;
         $user = User::findOrFail($user_id);
-        
+
+        $user_phone_number = $user->phone_number;
+        $user_phone_number_id = $user_phone_number->id;
+
         $company = User::findOrFail($user_id)->company;
         $company_id = $company->id;
         
         $business_contact = User::findOrFail($user_id)->company->business_contact;
         $business_contact_id = $business_contact->id;
+
+        $business_contact_phone_number = User::findOrFail($user_id)->company->business_contact->phone_number;
+        $business_contact_phone_number_id = $business_contact_phone_number->id;
         
         $company_phone_number = User::findOrFail($user_id)->company->phone_number;
         $company_phone_number_id = $company_phone_number->id;
@@ -41,8 +47,10 @@ class AdminPanelController extends Controller
 
         return view('admin_panel/show', compact(
                         'user', 'user_id',
+                        'user_phone_number', 'user_phone_number_id',
                         'company', 'company_id', 
                         'business_contact', 'business_contact_id', 
+                        'business_contact_phone_number', 'business_contact_phone_number_id', 
                         'company_phone_number', 'company_phone_number_id', 
                         'company_default_shipping_address', 'company_default_shipping_address_id', 
                         'company_office_address', 'company_office_address_id'
