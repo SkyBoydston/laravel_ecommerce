@@ -124,19 +124,16 @@
 						    </div>
 					    </div>
 
-					    <div class="form-group{{ $errors->has('type') ? ' has-error' : '' }}">
-						    {!! Form::label ('type', 'Type', array('class' => 'col-md-4 control-label')) !!}
+					    
+						    
 					    
 						    <div class="col-md-6">
-							    {!! Form::text('type', null, array('class' => 'form-control')) !!}
+							    {!! Form::hidden('type', null, array('class' => 'form-control')) !!}
 
-							    @if ($errors->has('type'))
-	                                    <span class="help-block">
-	                                        <strong>{{ $errors->first('type') }}</strong>
-	                                    </span>
-	                            @endif
+							    
 						    </div>
-					    </div>
+						    <div class="clearfix"></div>
+					    
 <!-- 
 					    <div class="form-group{{ $errors->has('business_primary_phone') ? ' has-error' : '' }}">
 						    {!! Form::label ('business_primary_phone', 'Primary phone', array('class' => 'col-md-4 control-label')) !!}

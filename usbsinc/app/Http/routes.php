@@ -1,5 +1,7 @@
 <?php
 use App\User;
+
+
 /*
 |--------------------------------------------------------------------------
 | Routes File
@@ -35,12 +37,17 @@ Route::group(['middleware' => 'web'], function () {
 	Route::get('/', function () {	
 	    return view('welcome');
 	});
-
+	// Route::get('/test', function(){
+	// 	return Redirect::to("http://localhost/tests/UserAdminPanelTest.php");
+	// });
 
 	// Route::get('/company', 'UserAdminPanelController@index');
 
 	
     Route::get('/home', 'HomeController@index');
+
+
+
 
 
     // Route::filter('isSelf', function($id) {
