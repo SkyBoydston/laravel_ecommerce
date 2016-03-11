@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use App\Http\Requests\BusinessContactRequest;
 use App\Http\Controllers\Controller;
 use Auth;
 use App\User;
@@ -35,7 +36,7 @@ class BusinessContactController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $business_contact_id)
+    public function update(BusinessContactRequest $request, $business_contact_id)
     {
         $business_contact = BusinessContact::findOrFail($business_contact_id);
         

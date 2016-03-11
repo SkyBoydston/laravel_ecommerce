@@ -60,7 +60,7 @@ Route::group(['middleware' => 'web'], function () {
 	    Route::resource('business_contact', 'BusinessContactController',
 	    	['except' => ['index', 'create', 'store', 'destroy']]);
 	    Route::resource('address', 'AddressController',
-	    	['except' => ['index', 'create', 'store', 'destroy']]);
+	    	['except' => ['index', 'destroy']]);
 	    Route::resource('phone_number', 'PhoneNumberController',
 	    	['except' => ['index', 'destroy']]);
 	    

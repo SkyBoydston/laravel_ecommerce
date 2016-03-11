@@ -5,11 +5,14 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use App\Http\Requests\PhoneNumberRequest;
 use App\Http\Controllers\Controller;
 use Auth;
 use App\User;
 use App\PhoneNumber;
 use Illuminate\Support\Facades\Input;
+use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
+use App;
 
 class PhoneNumberController extends Controller
 {
@@ -43,7 +46,7 @@ class PhoneNumberController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PhoneNumberRequest $request)
     {
         if ($request->user_id == '') {
             $user_id = null;
@@ -80,12 +83,20 @@ class PhoneNumberController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit()
+    public function edit($phone_number_id)
     {
     
-        $id = Auth::user()->id;
-        $phone_number = User::findOrFail($id)->company->phone_number; 
-        $phone_number_id = $phone_number->id;
+        // $id = Auth::user()->id;
+        $phone_number = PhoneNumber::findOrFail($phone_number_id); 
+
+        if (!($phone_number == Auth::user()->phone_number || $phone_number == Auth::user()->company->phone_number || $phone_number == Auth::user()->company->business_contact->phone_number)) {
+            // throw new AccessDeniedHttpException("Not authorized.");
+            // App::abort(403, 'Unauthorized action.');
+            // App::error(function(AuthizationException $exception) {
+                return 'You are not authorized for this action!';
+            // });
+        }
+        // $phone_number_id = $phone_number->id;
 
         return view('phone_number/edit', compact('phone_number', 'phone_number_id'));
     }
@@ -97,7 +108,7 @@ class PhoneNumberController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $phone_number_id)
+    public function update(PhoneNumberRequest $request, $phone_number_id)
     {
         $phone_number = PhoneNumber::findOrFail($phone_number_id);
         

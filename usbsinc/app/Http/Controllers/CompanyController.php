@@ -5,10 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+
 use App\Http\Controllers\Controller;
 use Auth;
 use App\User;
 use App\Company;
+use App\Http\Requests\CompanyRequest;
 
 class CompanyController extends Controller
 {
@@ -37,7 +39,7 @@ class CompanyController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $company_id)
+    public function update(CompanyRequest $request, $company_id)
     {
         $company = Company::findOrFail($company_id);
         

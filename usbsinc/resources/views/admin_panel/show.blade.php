@@ -99,9 +99,12 @@
 									@foreach ($company_office_address['attributes'] as $key => $value)
 										<h4>{{ ucfirst(str_replace('_', ' ', $key)) }}</h4> {{ $value }} <br/>
 									@endforeach
-								@endif
 													
-								<a href="{{ "/address/" . $company_office_address_id . "/edit" }}">Edit</a>
+									<a href="{{ "/address/" . $company_office_address_id . "/edit" }}">Edit</a>
+								@else
+									<a href="{{ action('AddressController@create', ['company_id' => $company_id, 'type' => 'office']) }}">Create</a>
+
+								@endif
 
 			                	<h3>Default shipping</h3>
 								
@@ -109,10 +112,16 @@
 									@foreach ($company_default_shipping_address['attributes'] as $key => $value)
 										<h4>{{ ucfirst(str_replace('_', ' ', $key)) }}</h4> {{ $value }} <br/>
 									@endforeach
+
+									<a href="{{ "/address/" . $company_default_shipping_address_id . "/edit" }}">Edit</a>
+									
+								@else
+
+									<a href="{{ action('AddressController@create', ['company_id' => $company_id, 'type' => 'default_shipping']) }}">Create</a>
+
 								@endif
 
 													
-								<a href="{{ "/address/" . $company_default_shipping_address_id . "/edit" }}">Edit</a>
 							</div>
 
 					</div>					
