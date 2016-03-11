@@ -62,7 +62,8 @@ Route::group(['middleware' => 'web'], function () {
 	    Route::resource('address', 'AddressController',
 	    	['except' => ['index', 'create', 'store', 'destroy']]);
 	    Route::resource('phone_number', 'PhoneNumberController',
-	    	['except' => ['index', 'create', 'store', 'destroy']]);
+	    	['except' => ['index', 'destroy']]);
+	    
 	    Route::get('admin_panel', 'AdminPanelController@show');
 
 	});

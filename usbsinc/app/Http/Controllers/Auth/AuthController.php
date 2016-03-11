@@ -102,6 +102,7 @@ class AuthController extends Controller
             'city' => $data['city'],
             'state' => $data['state'],
             'zip_code' => $data['zip_code'],
+            'type' => 'office'
         ]);
 
         BusinessContact::create([
@@ -121,6 +122,8 @@ class AuthController extends Controller
         ]);
 
         return User::create([
+            'first_name' => $data['first_name'],
+            'last_name' => $data['last_name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);

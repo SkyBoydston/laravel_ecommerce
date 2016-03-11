@@ -39,10 +39,13 @@
 									@foreach ($user_phone_number['attributes'] as $key => $value)
 										<h4>{{ ucfirst(str_replace('_', ' ', $key)) }}</h4> {{ $value }} <br/>
 									@endforeach
+								
+
+									<a href="{{ "/phone_number/" . $user_phone_number_id . "/edit" }}">Edit</a>
+								@else
+									
+									<a href="{{ action('PhoneNumberController@create', ['user_id' => $user_id]) }}">Create</a>
 								@endif
-
-								<a href="{{ "/phone_number/" . $user_phone_number_id . "/edit" }}">Edit</a>
-
 							</div>
 					</div>
 
@@ -59,12 +62,9 @@
 									@foreach ($company['attributes'] as $key => $value)
 										<h4>{{ ucfirst(str_replace('_', ' ', $key)) }}</h4> {{ $value }} <br/>
 									@endforeach
-								@endif
-
-													
+								
+								
 								<a href="{{ "/company/" . $company_id . "/edit" }}">Edit</a>
-
-
 								<br/><br/>
 
 								<h3>Phone number</h3>
@@ -77,7 +77,12 @@
 								@endif
 
 													
-								<a href="{{ "/phone_number/" . $company_phone_number_id . "/edit" }}">Edit</a>
+									<a href="{{ "/phone_number/" . $company_phone_number_id . "/edit" }}">Edit</a>
+
+								@else
+									
+									<a href="{{ action('PhoneNumberController@create', ['company_id' => $company_id]) }}">Create</a>
+								@endif
 
 							</div>
 
@@ -136,9 +141,14 @@
 									@foreach ($business_contact_phone_number['attributes'] as $key => $value)
 										<h4>{{ ucfirst(str_replace('_', ' ', $key)) }}</h4> {{ $value }} <br/>
 									@endforeach
+
+									<a href="{{ "/phone_number/" . $business_contact_phone_number_id . "/edit" }}">Edit</a>
+								@else
+									
+									<a href="{{ action('PhoneNumberController@create', ['business_contact_id' => $business_contact_id]) }}">Create</a>
 								@endif
 
-								<a href="{{ "/phone_number/" . $business_contact_phone_number_id . "/edit" }}">Edit</a>
+								
 
 							</div>
 
