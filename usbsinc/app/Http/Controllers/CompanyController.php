@@ -43,7 +43,12 @@ class CompanyController extends Controller
     {
         $company = Company::findOrFail($company_id);
         
-        $company->update($request->all());
+        $company->update([
+            'business_name' => $request->business_name,
+            'website' => $request->website,
+            'status' => $request->status,
+            'brands_of_interest' => is_array($request->brands_of_interest)? implode(', ', $request->brands_of_interest) : $request->brands_of_interest
+            ]);
 
         return redirect('/admin_panel');
     }
