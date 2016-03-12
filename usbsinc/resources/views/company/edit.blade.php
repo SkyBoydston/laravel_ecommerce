@@ -72,8 +72,8 @@
                             <label class="col-md-4 control-label">Brands of interest</label>
 
                             <div class="col-md-6">
-                                <input type="checkbox" class="form-control" name="brands_of_interest" value="company1" >Company 1<br>
-                                <input type="checkbox" class="form-control" name="brands_of_interest" value="company2" >Company 2<br>
+                                <input type="checkbox" class="form-control" name="brands_of_interest[]" value="company1" >Company 1<br>
+                                <input type="checkbox" class="form-control" name="brands_of_interest[]" value="company2" >Company 2<br>
 
                                 @if ($errors->has('brands_of_interest'))
                                     <span class="help-block">

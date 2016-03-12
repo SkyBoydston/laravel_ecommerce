@@ -52,7 +52,7 @@ class UserAdminPanelTest extends TestCase
                  ->type('test city', 'city')
                  ->type('test state', 'state')
                  ->type('55555', 'zip_code')
-                 ->check('brands_of_interest')
+                 ->check('brands_of_interest[]')
                  ->type('test first_name', 'first_name')
                  ->type('test last_name', 'last_name')
                  ->type('test title', 'title')
