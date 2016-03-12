@@ -40,3 +40,4 @@ Remember that for authentication to work on any route, the route has to be place
 
 ModelFactory.php was modified to make it possible to run tests with authenication. It can be modified further to log in to seeded user or create a fuller user.
 
+vendor/symfony/dom-crawler/Link.php was modified in order to make the tests run. A variable was set to give the constructor there the base uri of the application. It may need to be changed for the application to run live. The code added was marked with "// This code added by me" and was commited to git on the splitTables branch.
