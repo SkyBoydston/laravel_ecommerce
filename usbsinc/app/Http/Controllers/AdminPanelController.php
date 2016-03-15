@@ -10,6 +10,7 @@ use App\User;
 use App\Http\Requests\UserRequest;
 use Redirect;
 use Auth;
+use DB;
 
 class AdminPanelController extends Controller
 {
@@ -37,6 +38,10 @@ class AdminPanelController extends Controller
         } else {
             $company_id = null;
         }
+
+
+        $companies = DB::select('select * from companies');
+        
         
         
         $business_contact = User::findOrFail($user_id)->company->business_contact;
@@ -82,6 +87,7 @@ class AdminPanelController extends Controller
                         'user', 'user_id',
                         'user_phone_number', 'user_phone_number_id',
                         'company', 'company_id', 
+                        'companies',
                         'business_contact', 'business_contact_id', 
                         'business_contact_phone_number', 'business_contact_phone_number_id', 
                         'company_phone_number', 'company_phone_number_id', 

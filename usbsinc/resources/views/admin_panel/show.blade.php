@@ -8,9 +8,11 @@
         
         	<ul class="nav nav-tabs">
         		<li class="active"><a data-toggle="tab" href="#User">User</a></li>
+        		<li class=""><a data-toggle="tab" href="#Companies">Companies</a></li>
         		<li class=""><a data-toggle="tab" href="#Company">Company</a></li>
         		<li class=""><a data-toggle="tab" href="#Company_address">Company addresses</a></li>
         		<li class=""><a data-toggle="tab" href="#Company_contact">Company contact</a></li>
+        		<li class=""><a data-toggle="tab" href="#Agents">Agents</a></li>
 
 
         	</ul>
@@ -50,6 +52,30 @@
 					</div>
 
 				</div>
+
+				<div id="Companies" class="tab-pane fade">
+					<div class="panel panel-default">
+		                <div class="panel-heading">All companies</div>
+			                <div class="panel-body">
+								
+								<h3>Companies</h3>
+
+			                	@if ($companies)
+			                		@for ($i = 0; $i<count($companies); $i++)
+											<a href="{{ "/company/" . $companies[$i]->id }}">
+												<h4>Business name</h4> {{ $companies[$i]->business_name }} <br/>
+											</a>
+									@endfor
+								@endif
+
+
+								<br/><br/>
+
+							</div>
+					</div>
+
+				</div>
+
 				<div id="Company" class="tab-pane fade">
 					<div class="panel panel-default">
 		                <div class="panel-heading">Company details</div>
@@ -158,6 +184,29 @@
 								@endif
 
 								
+
+							</div>
+
+					</div>					
+				</div>
+
+				<div id="Agents" class="tab-pane fade">
+					<div class="panel panel-default">
+		                <div class="panel-heading">All agents</div>
+			                <div class="panel-body">
+
+								<h3>Agents</h3>
+
+								@if ($business_contact)
+									@foreach ($business_contact['attributes'] as $key => $value)
+										<h4>{{ ucfirst(str_replace('_', ' ', $key)) }}</h4> {{ $value }} <br/>
+									@endforeach
+								@endif
+
+													
+								<a href="{{ "/business_contact/" . $business_contact_id . "/edit" }}">Edit</a>
+
+								<br/><br/>
 
 							</div>
 

@@ -15,6 +15,18 @@ use App\Http\Requests\CompanyRequest;
 class CompanyController extends Controller
 {
    
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        $company = Company::findOrFail($id);
+
+        return view('company/show', compact('company'));
+    }
 
     /**
      * Show the form for editing the specified resource.
