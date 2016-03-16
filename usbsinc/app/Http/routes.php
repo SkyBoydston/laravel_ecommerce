@@ -37,9 +37,9 @@ Route::group(['middleware' => 'web'], function () {
 	Route::get('/', function () {	
 	    return view('welcome');
 	});
-	// Route::get('/test', function(){
-	// 	return Redirect::to("http://localhost/tests/UserAdminPanelTest.php");
-	// });
+	Route::get('/test', function(){
+		return Auth::user()->role;
+	});
 
 	// Route::get('/company', 'UserAdminPanelController@index');
 
@@ -70,6 +70,8 @@ Route::group(['middleware' => 'web'], function () {
 	    	['except' => ['index', 'destroy']]);
 	    Route::resource('phone_number', 'PhoneNumberController',
 	    	['except' => ['index', 'destroy']]);
+	    Route::resource('agent', 'AgentController',
+	    	['except' => ['index', 'create', 'store', 'destroy']]);
 	    
 	    Route::get('admin_panel', 'AdminPanelController@show');
 

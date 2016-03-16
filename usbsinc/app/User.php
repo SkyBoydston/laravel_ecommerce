@@ -13,7 +13,7 @@ class User extends Authenticatable
      */
     protected $fillable = [
             
-            'first_name', 'last_name', 'email', 'password', 'name',
+            'first_name', 'last_name', 'email', 'password', 'name', 'company_id', 'role',
             
     ];
 
@@ -27,11 +27,15 @@ class User extends Authenticatable
     ];
 
     public function company() {
-        return $this->hasOne('App\Company');
+        return $this->belongsTo('App\Company');
     }
 
     public function phone_number() {
         return $this->hasOne('App\PhoneNumber');
     }    
+
+    public function hasRole($role) {
+        return $this->role == $role;
+    }
 
 }

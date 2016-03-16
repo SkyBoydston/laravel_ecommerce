@@ -81,6 +81,8 @@ class AdminPanelController extends Controller
         } else {
             $company_default_shipping_address_id = null;
         }
+
+        $agents = $company->user()->where('role', 'agent')->get();
         
 
         return view('admin_panel/show', compact(
@@ -92,7 +94,8 @@ class AdminPanelController extends Controller
                         'business_contact_phone_number', 'business_contact_phone_number_id', 
                         'company_phone_number', 'company_phone_number_id', 
                         'company_default_shipping_address', 'company_default_shipping_address_id', 
-                        'company_office_address', 'company_office_address_id'
+                        'company_office_address', 'company_office_address_id',
+                        'agents'
                         ));
 
     }

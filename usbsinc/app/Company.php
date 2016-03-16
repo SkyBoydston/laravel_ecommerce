@@ -12,7 +12,6 @@ class Company extends Model
      * @var array
      */
     protected $fillable = [
-            'user_id',
             'business_name',
             'website',
             'type',
@@ -41,6 +40,10 @@ class Company extends Model
 
     public function business_contact() {
         return $this->hasOne('App\BusinessContact');
+    }
+
+    public function user() {
+        return $this->hasMany('App\User');
     }
 
     

@@ -30,21 +30,25 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $user=Auth::user();
+        $user_id = $user->id;
 
-        $user_id = Auth::user()->id;
 
 
-
-        $company = Company::where('user_id', null)->first();
-        if ($company) {
-            $company->user_id = $user_id;
-            $company->save();
-        }
+        // $company = Company::where('user_id', null)->first();
+        // if ($company) {
+        //     $company->user_id = $user_id;
+        //     $company->save();
+        // }
 
         
 
-        $company_id = Company::where('user_id', $user_id)->first()->id;
-
+        $company_id = Company::orderBy('id', 'desc')->first()->id;
+        if ($user->role == null) {
+            $user->company_id = $company_id;
+            $user->role = 'company';
+            $user->save();
+        }
 
 
         $phoneNumber = PhoneNumber::where([['company_id', null],['business_contact_id', null],['user_id', null]])->first();

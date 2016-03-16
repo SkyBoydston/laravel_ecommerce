@@ -197,14 +197,16 @@
 
 								<h3>Agents</h3>
 
-								@if ($business_contact)
-									@foreach ($business_contact['attributes'] as $key => $value)
-										<h4>{{ ucfirst(str_replace('_', ' ', $key)) }}</h4> {{ $value }} <br/>
-									@endforeach
+								@if ($agents)
+									@for ($i=0; $i<count($agents); $i++)
+										@foreach ($agents[$i]['attributes'] as $key => $value)
+											<h4>{{ ucfirst(str_replace('_', ' ', $key)) }}</h4> {{ $value }} <br/>
+										@endforeach
+											<a href="{{ "/agent/" . $agents[$i]->id }}">View</a>
+									@endfor
 								@endif
 
 													
-								<a href="{{ "/business_contact/" . $business_contact_id . "/edit" }}">Edit</a>
 
 								<br/><br/>
 
