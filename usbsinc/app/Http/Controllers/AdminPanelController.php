@@ -12,16 +12,42 @@ use Redirect;
 use Auth;
 use DB;
 
+
+
 class AdminPanelController extends Controller
 {
+  
+
      /**
      * Display the specified resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show()
+    public function admin()
     {
+        if (Auth::user()->role !== 'admin') {
+            return 'You are not authorized.';
+        }
+        $companies = DB::select('select * from companies');
+
+        return view('admin_panel.admin', compact('companies'));
+        
+
+    }
+
+     /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function company()
+    {
+        if (Auth::user()->role !== 'company') {
+            return 'You are not authorized.';
+        }
+
         $user_id = Auth::user()->id;
         $user = User::findOrFail($user_id);
 
@@ -40,7 +66,7 @@ class AdminPanelController extends Controller
         }
 
 
-        $companies = DB::select('select * from companies');
+        
         
         
         
@@ -85,7 +111,7 @@ class AdminPanelController extends Controller
         $agents = $company->user()->where('role', 'agent')->get();
         
 
-        return view('admin_panel/show', compact(
+        return view('admin_panel/company', compact(
                         'user', 'user_id',
                         'user_phone_number', 'user_phone_number_id',
                         'company', 'company_id', 
@@ -98,6 +124,14 @@ class AdminPanelController extends Controller
                         'agents'
                         ));
 
+    }
+
+    public function agent() {
+        if (Auth::user()->role !== 'agent') {
+            return 'You are not authorized.';
+        }
+
+        return view('admin_panel.agent');
     }
 
 }

@@ -73,7 +73,26 @@ Route::group(['middleware' => 'web'], function () {
 	    Route::resource('agent', 'AgentController',
 	    	['except' => ['index', 'create', 'store', 'destroy']]);
 	    
-	    Route::get('admin_panel', 'AdminPanelController@show');
+	    Route::get('admin_panel/admin', 'AdminPanelController@admin');
+	    Route::get('admin_panel/company_admin', 'AdminPanelController@company');
+	    Route::get('admin_panel/agent_admin', 'AdminPanelController@agent');
+
+	    Route::get('admin_panel', function(){
+	    	if (Auth::user()->role == 'admin') {
+	    		// $user = Auth::user();
+	    		// dd($user);
+	            return redirect('admin_panel/admin');
+	        
+	        } elseif (Auth::user()->role == 'company') {
+	        
+	            return redirect('admin_panel/company_admin');
+	        
+	        } elseif (Auth::user()->role == 'agent') {
+	        
+	            return redirect('admin_panel/agent_admin');
+	        
+	        }
+	    });
 
 	});
 //     Route::group(['prefix' => 'company'], function () {

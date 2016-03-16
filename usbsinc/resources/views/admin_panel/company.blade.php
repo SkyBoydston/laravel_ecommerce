@@ -8,7 +8,6 @@
         
         	<ul class="nav nav-tabs">
         		<li class="active"><a data-toggle="tab" href="#User">User</a></li>
-        		<li class=""><a data-toggle="tab" href="#Companies">Companies</a></li>
         		<li class=""><a data-toggle="tab" href="#Company">Company</a></li>
         		<li class=""><a data-toggle="tab" href="#Company_address">Company addresses</a></li>
         		<li class=""><a data-toggle="tab" href="#Company_contact">Company contact</a></li>
@@ -53,28 +52,7 @@
 
 				</div>
 
-				<div id="Companies" class="tab-pane fade">
-					<div class="panel panel-default">
-		                <div class="panel-heading">All companies</div>
-			                <div class="panel-body">
-								
-								<h3>Companies</h3>
-
-			                	@if ($companies)
-			                		@for ($i = 0; $i<count($companies); $i++)
-											<a href="{{ "/company/" . $companies[$i]->id }}">
-												<h4>Business name</h4> {{ $companies[$i]->business_name }} <br/>
-											</a>
-									@endfor
-								@endif
-
-
-								<br/><br/>
-
-							</div>
-					</div>
-
-				</div>
+				
 
 				<div id="Company" class="tab-pane fade">
 					<div class="panel panel-default">
