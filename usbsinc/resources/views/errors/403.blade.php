@@ -40,7 +40,10 @@
     <body>
         <div class="container">
             <div class="content">
-                <div ><h1>We're sorry. You are not authorized for this action.</h1></div>
+                <div >
+                    <h1>We're sorry. You are not authorized for this action.</h1>
+                    <h2>If you feel you have reached this message in error, please contact the administrator.</h2>
+                </div>
             </div>
         </div>
     </body>
