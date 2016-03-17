@@ -26,7 +26,7 @@ class AdminPanelController extends Controller
      */
     public function admin()
     {
-        if (Auth::user()->role !== 'admin') {
+        if (!Auth::user()->hasRole('admin')) {
             return 'You are not authorized.';
         }
         $companies = DB::select('select * from companies');
@@ -44,7 +44,7 @@ class AdminPanelController extends Controller
      */
     public function company()
     {
-        if (Auth::user()->role !== 'company') {
+        if (!Auth::user()->hasRole('company')) {
             return 'You are not authorized.';
         }
 
@@ -127,7 +127,7 @@ class AdminPanelController extends Controller
     }
 
     public function agent() {
-        if (Auth::user()->role !== 'agent') {
+        if (!Auth::user()->hasRole('agent')) {
             return 'You are not authorized.';
         }
 

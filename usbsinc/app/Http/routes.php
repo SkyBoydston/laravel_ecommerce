@@ -78,16 +78,16 @@ Route::group(['middleware' => 'web'], function () {
 	    Route::get('admin_panel/agent_admin', 'AdminPanelController@agent');
 
 	    Route::get('admin_panel', function(){
-	    	if (Auth::user()->role == 'admin') {
+	    	if (Auth::user()->hasRole('admin')) {
 	    		// $user = Auth::user();
 	    		// dd($user);
 	            return redirect('admin_panel/admin');
 	        
-	        } elseif (Auth::user()->role == 'company') {
+	        } elseif (Auth::user()->hasRole('company')) {
 	        
 	            return redirect('admin_panel/company_admin');
 	        
-	        } elseif (Auth::user()->role == 'agent') {
+	        } elseif (Auth::user()->hasRole('agent')) {
 	        
 	            return redirect('admin_panel/agent_admin');
 	        
