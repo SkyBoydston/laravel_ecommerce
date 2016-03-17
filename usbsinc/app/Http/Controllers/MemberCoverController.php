@@ -30,6 +30,8 @@ class MemberCoverController extends Controller
      */
     public function index()
     {
+        
+
         $user=Auth::user();
         $user_id = $user->id;
 
