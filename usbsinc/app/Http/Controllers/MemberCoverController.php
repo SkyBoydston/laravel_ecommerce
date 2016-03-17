@@ -11,7 +11,7 @@ use App\Address;
 use App\BusinessContact;
 use App\User;
 
-class HomeController extends Controller
+class MemberCoverController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -75,6 +75,6 @@ class HomeController extends Controller
         //     ->first_name);
 
 
-        return view('home');
+        return view('member_cover');
     }
 }

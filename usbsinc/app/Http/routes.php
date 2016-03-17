@@ -35,7 +35,7 @@ Route::group(['middleware' => 'web'], function () {
     Route::auth();
 
 	Route::get('/', function () {	
-	    return view('welcome');
+	    return view('public_site');
 	});
 	Route::get('/test', function(){
 		return Auth::user()->role;
@@ -44,7 +44,7 @@ Route::group(['middleware' => 'web'], function () {
 	// Route::get('/company', 'UserAdminPanelController@index');
 
 	
-    Route::get('/home', 'HomeController@index');
+    Route::get('/member_cover', 'MemberCoverController@index');
 
 
 

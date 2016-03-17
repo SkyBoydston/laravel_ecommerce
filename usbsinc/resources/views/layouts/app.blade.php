@@ -47,7 +47,7 @@
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
-                    <li><a href="{{ url('/home') }}">Home</a></li>
+                    <li><a href="{{ url('/member_cover') }}">Member site</a></li>
                     <li><a href="{{ url('/admin_panel') }}">Admin panel</a></li>
                     <li><a href="{{ url('/test') }}">Test</a></li>
                 </ul>
