@@ -40,6 +40,37 @@ class SaleDocumentsSeeder extends Seeder
 			'converted_to_retail_quote' => '2016-03-17 20:19:49',
 			'shipped' => '',
 			'estimated_arrival' => ''],
+
+			// Added a bunch more
+
+			// Only quoted
+        	['user_id' => '2',
+			'number' => 'G2-456123BH',
+			'converted_to_order' => '',
+			'converted_to_retail_quote' => '',
+			'shipped' => '',
+			'estimated_arrival' => ''],
+			// Never converted to retail but shipped
+			['user_id' => '3',
+			'number' => 'G2-189123VV',
+			'converted_to_order' => '2016-03-17 20:19:49',
+			'converted_to_retail_quote' => '',
+			'shipped' => '2016-03-17 20:19:49',
+			'estimated_arrival' => '2016-03-17 20:19:49'],
+			// Never converted to retail
+			['user_id' => '4',
+			'number' => 'G2-756453BH',
+			'converted_to_order' => '',
+			'converted_to_retail_quote' => '',
+			'shipped' => '',
+			'estimated_arrival' => ''],
+			// Ready to ship
+			['user_id' => '4',
+			'number' => 'G2-855553VD',
+			'converted_to_order' => '2016-03-17 20:19:50',
+			'converted_to_retail_quote' => '2016-03-17 20:19:49',
+			'shipped' => '',
+			'estimated_arrival' => ''],
         ]);
     }
 }

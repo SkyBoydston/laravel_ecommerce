@@ -38,4 +38,8 @@ class User extends Authenticatable
         return $this->role == $role;
     }
 
+    public function sale_documents() {
+        return $this->hasMany('App\SaleDocument');
+    }
+
 }

@@ -92,6 +92,8 @@ Route::group(['middleware' => 'web'], function () {
 	    	['except' => ['create', 'store', 'destroy']]);
 	    Route::resource('order', 'OrderController',
 	    	['except' => ['create', 'store', 'destroy']]);
+	    Route::resource('retail_quote', 'RetailQuoteController',
+	    	['except' => ['create', 'store', 'destroy']]);
 	    Route::resource('item', 'ItemController',
 	    	['except' => ['index', 'create', 'store', 'destroy']]);  // Create may need to be enabled and serve as the route to the item selection wizard
 	    

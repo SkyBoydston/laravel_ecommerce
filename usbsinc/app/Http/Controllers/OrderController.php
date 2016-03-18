@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\SaleDocument;
+use Auth;
 
 class OrderController extends Controller
 {
@@ -16,7 +17,21 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $orders = SaleDocument::IsOrder()->get();
+        if (Auth::user()->hasRole('admin')) {
+
+            $orders = SaleDocument::IsOrder()->get();
+
+        } elseif (Auth::user()->hasRole('company')) {
+
+            $company_id = Auth::user()->company->id;  
+
+            $orders = SaleDocument::BelongsToCompany($company_id)->IsOrder()->get();
+
+        } elseif (Auth::user()->hasRole('agent')) {
+
+            $orders = Auth::user()->sale_documents()->IsOrder()->get();
+        
+        }
 
         return view('order.index', compact('orders'));
     }

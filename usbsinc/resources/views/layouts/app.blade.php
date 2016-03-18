@@ -52,9 +52,14 @@
                 <ul class="nav navbar-nav">
                     <li><a href="{{ url('/quote') }}">Quotes</a></li>
                     <li><a href="{{ url('/order') }}">Orders</a></li>
-                    <li><a href="{{ url('/company') }}">Clients</a></li>
-                    <li><a href="{{ url('/item_wizard') }}">Products</a></li>
-                    <li><a href="{{ url('/site_content') }}">Site content</a></li>
+                    @if (Auth::user()->hasRole('admin'))
+                        <li><a href="{{ url('/company') }}">Clients</a></li>
+                        <li><a href="{{ url('/item_wizard') }}">Products</a></li>
+                        <li><a href="{{ url('/site_content') }}">Site content</a></li>
+                    @endif
+                    @if (!Auth::user()->hasRole('admin'))
+                        <li><a href="{{ url('/retail_quote') }}">Retail quotes</a></li>
+                    @endif
                 </ul>
 
                 <!-- Right Side Of Navbar -->
@@ -70,7 +75,7 @@
                             </a>
 
                             <ul class="dropdown-menu" role="menu">
-                                @if (Auth::user()->hasRole('company'))
+                                @if (!Auth::user()->hasRole('admin'))
                                     <li><a href="{{ url('/company', [Auth::user()->company->id]) }}"><i class="fa fa-btn fa-user"></i>Profile</a></li>
                                 @endif
                                 <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>

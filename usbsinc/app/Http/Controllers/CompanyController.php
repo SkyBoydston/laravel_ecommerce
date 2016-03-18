@@ -35,10 +35,11 @@ class CompanyController extends Controller
     public function show($id)
     {
         $company = Company::findOrFail($id);
+        
 
         if (Auth::user()->hasRole('admin')) {
-            $user_id = $id;
-        } elseif (Auth::user()->hasRole('company')) {
+            $user_id = $company->user()->where('role', 'company')->first()->id;
+        } else {
             $user_id = Auth::user()->id;
         }
 
@@ -88,7 +89,7 @@ class CompanyController extends Controller
             $company_phone_number_id = null;
         }
         
-        $company_office_address = User::findOrFail($user_id)->company->address()->where([['company_id', Auth::user()->company->id], ['type', 'office']])->first();
+        $company_office_address = User::findOrFail($user_id)->company->address()->where([['company_id', User::findOrFail($user_id)->company->id], ['type', 'office']])->first();
         if (!$company_office_address == null) {
             $company_office_address_id = $company_office_address->id;
         } else {
@@ -96,7 +97,7 @@ class CompanyController extends Controller
         }
         
         
-        $company_default_shipping_address = User::findOrFail($user_id)->company->address()->where([['company_id', Auth::user()->company->id], ['type', 'default_shipping']])->first();
+        $company_default_shipping_address = User::findOrFail($user_id)->company->address()->where([['company_id', User::findOrFail($user_id)->company->id], ['type', 'default_shipping']])->first();
         if (!$company_default_shipping_address == null) {
             $company_default_shipping_address_id = $company_default_shipping_address->id;
         } else {

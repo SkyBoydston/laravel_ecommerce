@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Company;
 
 class SaleDocument extends Model
 {
@@ -40,6 +41,18 @@ class SaleDocument extends Model
     	return $query->where('converted_to_order', '=', '0000-00-00 00:00:00');
     }
 
+    public function scopeIsRetailQuote($query) {
+        return $query->where('converted_to_retail_quote', '!=', '0000-00-00 00:00:00');
+    }
+
+    public function scopeBelongsToCompany($query, $company_id) {
+        $company_users = Company::findOrFail($company_id)->user()->get();
+        $ids_of_users_in_company = array();
+        foreach ($company_users as $company_user) {
+            $ids_of_users_in_company[] = $company_user->id;
+        }
+        return $query->whereIn('user_id', $ids_of_users_in_company);
+    }
 
 
     public function user() {

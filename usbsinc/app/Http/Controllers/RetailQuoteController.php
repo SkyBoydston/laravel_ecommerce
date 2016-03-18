@@ -7,8 +7,9 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\SaleDocument;
 use Auth;
+use App\Company;
 
-class QuoteController extends Controller
+class RetailQuoteController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,25 +18,26 @@ class QuoteController extends Controller
      */
     public function index()
     {
-        if (Auth::user()->hasRole('admin')) {
+        if (Auth::user()->hasRole('company')) {
+            $company_id = Auth::user()->company->id;
 
-            $quotes = SaleDocument::IsQuote()->get();
+            // $retail_quotes = Company::with('user.sale_documents')->toArray()->IsRetailQuote()->findOrFail($company_id); // This is necessary because of a lack of functionality in the ORM to access this information like this:
+            // Company::findOrFail($company_id)->user()->sale_documents()->IsRetailQuote()->get();
 
-        } elseif (Auth::user()->hasRole('company')) {
+            // $company=Company::findOrFail($company_id)->user;
+            // dd($company);
+            // $retail_quotes = Company::with('user.sale_documents')->findOrFail($company_id);
+            // dd($users);
+            // $docs = $users;
+            $retail_quotes = SaleDocument::BelongsToCompany($company_id)->IsRetailQuote()->get();
 
-            $company_id = Auth::user()->company->id;  
-
-            $quotes = SaleDocument::BelongsToCompany($company_id)->IsQuote()->get();
+            // dd($retail_quotes);
 
         } elseif (Auth::user()->hasRole('agent')) {
-
-            $quotes = Auth::user()->sale_documents()->IsQuote()->get();
-        
+            $retail_quotes = Auth::user()->sale_documents()->IsRetailQuote()->get();
         }
 
-        
-
-        return view('quote.index', compact('quotes'));
+        return view('retail_quote.index', compact('retail_quotes'));
     }
 
     /**
@@ -67,9 +69,9 @@ class QuoteController extends Controller
      */
     public function show($id)
     {
-        $quote = SaleDocument::with('items')->findOrFail($id);
+        $retail_quote = SaleDocument::with('items')->findOrFail($id);
 
-        return view('quote.show', compact('quote'));
+        return view('retail_quote.show', compact('retail_quote'));
     }
 
     /**
