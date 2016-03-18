@@ -8,7 +8,11 @@
                 <div class="panel-heading">Member site</div>
 
                 <div class="panel-body">
-                    You are logged in! This is where the member site content will live.
+                    <h1 style="text-align: center;">News/specials</h1>
+                    <h1 style="text-align: center;">Promotions</h1>
+                    <h1 style="text-align: center;">Webinars</h1>
+                    <h1 style="text-align: center;">Financial</h1>
+                    <h1 style="text-align: center;">Social media links</h1>
                 </div>
             </div>
         </div>

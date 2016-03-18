@@ -13,7 +13,7 @@ class UserSeeder extends Seeder
     {
         DB::table('users')->insert([
 		        	[
-                        'company_id' => '1',
+                        'company_id' => null,
                         'first_name' => 'test first name',
 		        		'last_name' => 'test last name',
                         'email' => 'email@email.com',
@@ -21,7 +21,7 @@ class UserSeeder extends Seeder
                         'role' => 'admin'
 		        	],
 		        	[
-                        'company_id' => '2',
+                        'company_id' => '1',
 		        		'first_name' => 'test first name',
                         'last_name' => 'test last name',
                         'email' => 'company@email.com',
@@ -29,6 +29,15 @@ class UserSeeder extends Seeder
                         'role' => 'company'
 
 		        	],
+                    [
+                        'company_id' => '2',
+                        'first_name' => 'test first name',
+                        'last_name' => 'test last name',
+                        'email' => 'company2@email.com',
+                        'password' => bcrypt('111111'),
+                        'role' => 'company'
+
+                    ],
                     [
                         'company_id' => '2',
                         'first_name' => 'test first name',

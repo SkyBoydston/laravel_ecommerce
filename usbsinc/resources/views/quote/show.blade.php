@@ -15,7 +15,7 @@
 
                		<h3>Item(s):</h3>
                 	@foreach ($quote->items as $item)
-                		<a href="../item/{{ $item->id }}"> {{ $item->number }} </a><br>
+                		<a href="{{url('/item', [$item->id]) }}"> {{ $item->number }} </a><br>
                 	@endforeach
 				</div>
 			</div>

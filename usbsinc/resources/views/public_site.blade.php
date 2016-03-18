@@ -1,15 +1,13 @@
-@extends('layouts.app')
+@extends('layouts.public')
 
 @section('content')
 <div class="container">
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
-            <div class="panel panel-default">
-                <div class="panel-heading">Welcome</div>
+            <div class="sleek">
+                <h1>Welcome</h1>
 
-                <div class="panel-body">
-                    This is where the public site will live.
-                </div>
+                <h2>This is where the public site will live.</h2>
             </div>
         </div>
     </div>

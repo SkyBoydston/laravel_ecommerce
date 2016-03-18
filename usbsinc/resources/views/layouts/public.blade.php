@@ -18,6 +18,14 @@
     <style>
         body {
             font-family: 'Lato';
+        }    
+        .sleek {
+                width: 100%;
+                color: #B0BEC5;
+                display: table;
+                font-weight: 100;
+                font-family: 'Lato';
+                text-align: center;
         }
 
         .fa-btn {
@@ -32,7 +40,7 @@
     <nav class="navbar navbar-default">
         <div class="container">
             <div class="navbar-header">
-
+                
                 <!-- Collapsed Hamburger -->
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
                     <span class="sr-only">Toggle Navigation</span>
@@ -42,20 +50,14 @@
                 </button>
 
                 <!-- Branding Image -->
-                <a class="navbar-brand" href="{{ url('/member_cover') }}">
-                    USBS Advantage
+                <a class="navbar-brand" href="{{ url('/') }}">
+                    USBS Advantage Public Site
                 </a>
             </div>
 
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
                 <!-- Left Side Of Navbar -->
-                <ul class="nav navbar-nav">
-                    <li><a href="{{ url('/quote') }}">Quotes</a></li>
-                    <li><a href="{{ url('/order') }}">Orders</a></li>
-                    <li><a href="{{ url('/company') }}">Clients</a></li>
-                    <li><a href="{{ url('/item_wizard') }}">Products</a></li>
-                    <li><a href="{{ url('/site_content') }}">Site content</a></li>
-                </ul>
+                
 
                 <!-- Right Side Of Navbar -->
                 <ul class="nav navbar-nav navbar-right">
@@ -63,19 +65,7 @@
                     @if (Auth::guest())
                         <li><a href="{{ url('/login') }}">Login</a></li>
                         <li><a href="{{ url('/register') }}">Register</a></li>
-                    @else
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                {{ ucfirst(Auth::user()->first_name) }} {{ ucfirst(Auth::user()->last_name) }} <span class="caret"></span>
-                            </a>
-
-                            <ul class="dropdown-menu" role="menu">
-                                @if (Auth::user()->hasRole('company'))
-                                    <li><a href="{{ url('/company', [Auth::user()->company->id]) }}"><i class="fa fa-btn fa-user"></i>Profile</a></li>
-                                @endif
-                                <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
-                            </ul>
-                        </li>
+                    
                     @endif
                 </ul>
             </div>

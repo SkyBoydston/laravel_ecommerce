@@ -34,7 +34,10 @@ Route::group(['middleware' => ['web']], function () {
 Route::group(['middleware' => 'web'], function () {
     Route::auth();
 
-	Route::get('/', function () {	
+	Route::get('/', function () {
+		if (Auth::user()) {
+		    return redirect('/member_cover');
+		}
 	    return view('public_site');
 	});
 	// Route::get('/test', function(){
@@ -45,6 +48,12 @@ Route::group(['middleware' => 'web'], function () {
 
 	
     Route::get('/member_cover', 'MemberCoverController@index');
+    Route::get('/item_wizard', function(){
+		return 'This is where the system for adding and editing items will live. We need to know what this will look like to continue building it.';
+	});
+    Route::get('/site_content', function(){
+		return 'This will essentially be a link to the CMS or, possibly, CMS\'s plural.';
+	});
 
 
 
@@ -86,26 +95,26 @@ Route::group(['middleware' => 'web'], function () {
 	    Route::resource('item', 'ItemController',
 	    	['except' => ['index', 'create', 'store', 'destroy']]);  // Create may need to be enabled and serve as the route to the item selection wizard
 	    
-	    Route::get('admin_panel/admin', 'AdminPanelController@admin');
-	    Route::get('admin_panel/company_admin', 'AdminPanelController@company');
-	    Route::get('admin_panel/agent_admin', 'AdminPanelController@agent');
+	    // Route::get('admin_panel/admin', 'AdminPanelController@admin');
+	    // Route::get('admin_panel/company_admin', 'AdminPanelController@company');
+	    // Route::get('admin_panel/agent_admin', 'AdminPanelController@agent');
 
-	    Route::get('admin_panel', function(){
-	    	if (Auth::user()->hasRole('admin')) {
-	    		// $user = Auth::user();
-	    		// dd($user);
-	            return redirect('admin_panel/admin');
+	    // Route::get('admin_panel', function(){
+	    // 	if (Auth::user()->hasRole('admin')) {
+	    // 		// $user = Auth::user();
+	    // 		// dd($user);
+	    //         return redirect('admin_panel/admin');
 	        
-	        } elseif (Auth::user()->hasRole('company')) {
+	    //     } elseif (Auth::user()->hasRole('company')) {
 	        
-	            return redirect('admin_panel/company_admin');
+	    //         return redirect('admin_panel/company_admin');
 	        
-	        } elseif (Auth::user()->hasRole('agent')) {
+	    //     } elseif (Auth::user()->hasRole('agent')) {
 	        
-	            return redirect('admin_panel/agent_admin');
+	    //         return redirect('admin_panel/agent_admin');
 	        
-	        }
-	    });
+	    //     }
+	    // });
 
 	});
 //     Route::group(['prefix' => 'company'], function () {
