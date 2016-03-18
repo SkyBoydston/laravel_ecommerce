@@ -49,7 +49,7 @@
                 <ul class="nav navbar-nav">
                     <li><a href="{{ url('/member_cover') }}">Member site</a></li>
                     <li><a href="{{ url('/admin_panel') }}">Admin panel</a></li>
-                    <li><a href="{{ url('/test') }}">Test</a></li>
+                    <!-- <li><a href="{{ url('/test') }}">Test</a></li> -->
                     <li><a href="{{ url('/quote') }}">Quotes</a></li>
                     <li><a href="{{ url('/order') }}">Orders</a></li>
                     <li><a href="{{ url('/company') }}">Clients</a></li>

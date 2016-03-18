@@ -30,6 +30,18 @@ class SaleDocument extends Model
         
     ];
 
+
+
+    public function scopeIsOrder($query) {
+    	return $query->where('converted_to_order', '!=', '0000-00-00 00:00:00');
+    }
+
+    public function scopeIsQuote($query) {
+    	return $query->where('converted_to_order', '=', '0000-00-00 00:00:00');
+    }
+
+
+
     public function user() {
     	return $this->belongsTo('App\User');
     }

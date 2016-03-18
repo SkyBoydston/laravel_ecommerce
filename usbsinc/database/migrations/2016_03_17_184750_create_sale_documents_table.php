@@ -16,10 +16,10 @@ class CreateSaleDocumentsTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->nullable()->unsigned();
             $table->string('number');
-            $table->timestamp('converted_to_order')->nullable();
-            $table->timestamp('converted_to_retail_quote')->nullable();
-            $table->timestamp('shipped')->nullable();
-            $table->timestamp('estimated_arrival')->nullable();
+            $table->timestamp('converted_to_order');
+            $table->timestamp('converted_to_retail_quote');
+            $table->timestamp('shipped');
+            $table->timestamp('estimated_arrival');
 
             $table->timestamps();
 

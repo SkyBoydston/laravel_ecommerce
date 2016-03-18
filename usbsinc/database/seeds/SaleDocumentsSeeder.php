@@ -22,10 +22,10 @@ class SaleDocumentsSeeder extends Seeder
 			// Only converted to retail
 			['user_id' => '3',
 			'number' => '189123VV',
-			'converted_to_order' => null,
+			'converted_to_order' => '',
 			'converted_to_retail_quote' => '2016-03-17 20:19:49',
-			'shipped' => null,
-			'estimated_arrival' => null],
+			'shipped' => '',
+			'estimated_arrival' => ''],
 			// Totally complete
 			['user_id' => '3',
 			'number' => '756453BH',
@@ -38,8 +38,8 @@ class SaleDocumentsSeeder extends Seeder
 			'number' => '855553VD',
 			'converted_to_order' => '2016-03-17 20:19:50',
 			'converted_to_retail_quote' => '2016-03-17 20:19:49',
-			'shipped' => null,
-			'estimated_arrival' => null],
+			'shipped' => '',
+			'estimated_arrival' => ''],
         ]);
     }
 }

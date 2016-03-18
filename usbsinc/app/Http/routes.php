@@ -37,9 +37,9 @@ Route::group(['middleware' => 'web'], function () {
 	Route::get('/', function () {	
 	    return view('public_site');
 	});
-	Route::get('/test', function(){
-		return Auth::user()->role;
-	});
+	// Route::get('/test', function(){
+	// 	return Auth::user()->role;
+	// });
 
 	// Route::get('/company', 'UserAdminPanelController@index');
 
@@ -72,6 +72,19 @@ Route::group(['middleware' => 'web'], function () {
 	    	['except' => ['index', 'destroy']]);
 	    Route::resource('agent', 'AgentController',
 	    	['except' => ['index', 'create', 'store', 'destroy']]);
+
+	    // Route::resource('question', 'QuestionController',
+	    // 	['except' => ['index', 'create', 'store', 'destroy']]);
+	    // Route::resource('answer', 'AnswerController',
+	    // 	['except' => ['index', 'create', 'store', 'destroy']]);
+	    // Route::resource('price', 'PriceController',
+	    // 	['except' => ['index', 'create', 'store', 'destroy']]);
+	    Route::resource('quote', 'QuoteController',
+	    	['except' => ['create', 'store', 'destroy']]);
+	    Route::resource('order', 'OrderController',
+	    	['except' => ['create', 'store', 'destroy']]);
+	    Route::resource('item', 'ItemController',
+	    	['except' => ['index', 'create', 'store', 'destroy']]);  // Create may need to be enabled and serve as the route to the item selection wizard
 	    
 	    Route::get('admin_panel/admin', 'AdminPanelController@admin');
 	    Route::get('admin_panel/company_admin', 'AdminPanelController@company');
