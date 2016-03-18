@@ -63,7 +63,7 @@ Route::group(['middleware' => 'web'], function () {
 	    Route::resource('user', 'UserController',
 	    	['except' => ['index', 'create', 'store', 'destroy']]);
 	    Route::resource('company', 'CompanyController',
-	    	['except' => ['index', 'create', 'store', 'destroy']]);
+	    	['except' => ['create', 'store', 'destroy']]);
 	    Route::resource('business_contact', 'BusinessContactController',
 	    	['except' => ['index', 'create', 'store', 'destroy']]);
 	    Route::resource('address', 'AddressController',

@@ -14,7 +14,18 @@ use App\Http\Requests\CompanyRequest;
 
 class CompanyController extends Controller
 {
-   
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        $companies = Company::all();
+
+        return view('company.index', compact('companies'));
+    }
+
     /**
      * Display the specified resource.
      *
