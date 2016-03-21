@@ -57,7 +57,7 @@
                         <li><a href="{{ url('/item_wizard') }}">Products</a></li>
                         <li><a href="{{ url('/site_content') }}">Site content</a></li>
                     @endif
-                    @if (!Auth::user()->hasRole('admin'))
+                    @if (Auth::user()->hasRole('agent') || Auth::user()->hasRole('company'))
                         <li><a href="{{ url('/retail_quote') }}">Retail quotes</a></li>
                     @endif
                 </ul>
@@ -75,7 +75,7 @@
                             </a>
 
                             <ul class="dropdown-menu" role="menu">
-                                @if (!Auth::user()->hasRole('admin'))
+                                @if (Auth::user()->hasRole('agent') || Auth::user()->hasRole('company'))
                                     <li><a href="{{ url('/company', [Auth::user()->company->id]) }}"><i class="fa fa-btn fa-user"></i>Profile</a></li>
                                 @endif
                                 <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>

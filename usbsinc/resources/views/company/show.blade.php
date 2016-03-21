@@ -10,7 +10,7 @@
         		<li class="active"><a data-toggle="tab" href="#User">User</a></li>
         		<li class=""><a data-toggle="tab" href="#Company">Company</a></li>
         		<li class=""><a data-toggle="tab" href="#Company_address">Company addresses</a></li>
-        		@if (!Auth::user()->hasRole('agent'))
+        		@if (Auth::user()->hasRole('admin') || Auth::user()->hasRole('company'))
 	        		<li class=""><a data-toggle="tab" href="#Company_contact">Company contact</a></li>
 	        		<li class=""><a data-toggle="tab" href="#Agents">Agents</a></li>
 	        	@endif
@@ -71,7 +71,7 @@
 										<h4>{{ ucfirst(str_replace('_', ' ', $key)) }}</h4> {{ $value }} <br/>
 									@endforeach
 								
-								@if (!Auth::user()->hasRole('agent'))
+								@if (Auth::user()->hasRole('admin') || Auth::user()->hasRole('company'))
 									<a href="{{ "/company/" . $company_id . "/edit" }}">Edit</a>
 								@endif
 
@@ -87,13 +87,13 @@
 									@endforeach
 								
 
-									@if (!Auth::user()->hasRole('agent'))				
+									@if (Auth::user()->hasRole('admin') || Auth::user()->hasRole('company'))				
 										<a href="{{ "/phone_number/" . $company_phone_number_id . "/edit" }}">Edit</a>
 									@endif
 
 								@else
 									
-									@if (!Auth::user()->hasRole('agent'))
+									@if (Auth::user()->hasRole('admin') || Auth::user()->hasRole('company'))
 										<a href="{{ action('PhoneNumberController@create', ['company_id' => $company_id]) }}">Create</a>
 									@endif
 
@@ -115,13 +115,13 @@
 										<h4>{{ ucfirst(str_replace('_', ' ', $key)) }}</h4> {{ $value }} <br/>
 									@endforeach
 									
-									@if (!Auth::user()->hasRole('agent'))				
+									@if (Auth::user()->hasRole('admin') || Auth::user()->hasRole('company'))				
 										<a href="{{ "/address/" . $company_office_address_id . "/edit" }}">Edit</a>
 									@endif
 
 								@else
 
-									@if (!Auth::user()->hasRole('agent'))
+									@if (Auth::user()->hasRole('admin') || Auth::user()->hasRole('company'))
 										<a href="{{ action('AddressController@create', ['company_id' => $company_id, 'type' => 'office']) }}">Create</a>
 									@endif
 
@@ -134,13 +134,13 @@
 										<h4>{{ ucfirst(str_replace('_', ' ', $key)) }}</h4> {{ $value }} <br/>
 									@endforeach
 
-									@if (!Auth::user()->hasRole('agent'))
+									@if (Auth::user()->hasRole('admin') || Auth::user()->hasRole('company'))
 										<a href="{{ "/address/" . $company_default_shipping_address_id . "/edit" }}">Edit</a>
 									@endif
 									
 								@else
 
-									@if (!Auth::user()->hasRole('agent'))
+									@if (Auth::user()->hasRole('admin') || Auth::user()->hasRole('company'))
 										<a href="{{ action('AddressController@create', ['company_id' => $company_id, 'type' => 'default_shipping']) }}">Create</a>
 									@endif
 
@@ -152,7 +152,7 @@
 					</div>					
 				</div>
 
-				@if (!Auth::user()->hasRole('agent'))
+				@if (Auth::user()->hasRole('admin') || Auth::user()->hasRole('company'))
 					<div id="Company_contact" class="tab-pane fade">
 						<div class="panel panel-default">
 			                <div class="panel-heading">Company contact details</div>

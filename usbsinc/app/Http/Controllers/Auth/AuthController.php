@@ -122,6 +122,7 @@ class AuthController extends Controller
         ]);
 
         return User::create([
+            'role' => 'pending',
             'first_name' => $data['first_name'],
             'last_name' => $data['last_name'],
             'email' => $data['email'],
