@@ -52,6 +52,26 @@ class AddressSeeder extends Seeder
 						'type' => 'default_shipping'
 						
 		        	],
+		        	[
+        				'company_id' => '3',
+		        		'address_line_1' => 'pending test business_address line1',
+						'address_line_2' => 'pending test business_address line2',
+						'city' => 'pending test city',
+						'state' => 'pending test state',
+						'zip_code' => 'pending test zip_code',
+						'type' => 'office'
+						
+		        	],
+		        	[
+        				'company_id' => '4',
+		        		'address_line_1' => 'another pending test business_address line1',
+						'address_line_2' => 'another pending test business_address line2',
+						'city' => 'another pending test city',
+						'state' => 'another pending test state',
+						'zip_code' => 'another pending test zip_code',
+						'type' => 'office'
+						
+		        	],
         	]);
     }
 }

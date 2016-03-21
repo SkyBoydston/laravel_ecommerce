@@ -42,4 +42,8 @@ class User extends Authenticatable
         return $this->hasMany('App\SaleDocument');
     }
 
+    public function scopeApplicant($query) {
+        return $query->where('role', 'company')->orWhere('role', 'denied');
+    }
+
 }

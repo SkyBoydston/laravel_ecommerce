@@ -96,7 +96,13 @@ Route::group(['middleware' => 'web'], function () {
 	    	['except' => ['create', 'store', 'destroy']]);
 	    Route::resource('item', 'ItemController',
 	    	['except' => ['index', 'create', 'store', 'destroy']]);  // Create may need to be enabled and serve as the route to the item selection wizard
-	    
+
+
+	    Route::get('inbox', 'InboxController@index');
+	    Route::get('inbox/confirm', 'InboxController@confirm');
+	    Route::get('inbox/deny', 'InboxController@deny');
+	    Route::get('inbox/history', 'InboxController@history');
+
 	    // Route::get('admin_panel/admin', 'AdminPanelController@admin');
 	    // Route::get('admin_panel/company_admin', 'AdminPanelController@company');
 	    // Route::get('admin_panel/agent_admin', 'AdminPanelController@agent');
@@ -119,6 +125,8 @@ Route::group(['middleware' => 'web'], function () {
 	    // });
 
 	});
+
+	
 //     Route::group(['prefix' => 'company'], function () {
 // //          Route::get('update', 'UserAdminPanelController@update');
 // 			Route::get('/', 'UserAdminPanelController@index');

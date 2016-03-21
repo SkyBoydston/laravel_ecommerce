@@ -26,6 +26,20 @@ class BusinessContactSeeder extends Seeder
 						'title' => 'another test title',
 						
 		        	],
+                    [
+                        'company_id' => '3',
+                        'first_name' => 'pending test first_name',
+                        'last_name' => 'pending test last_name',
+                        'title' => 'pending 1 test title',
+                        
+                    ],
+                    [
+                        'company_id' => '4',
+                        'first_name' => 'another pending test first_name',
+                        'last_name' => 'another pending test last_name',
+                        'title' => 'pending 2 test title',
+                        
+                    ],
     		]);
     }
 }

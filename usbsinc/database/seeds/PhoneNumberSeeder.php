@@ -54,6 +54,34 @@ class PhoneNumberSeeder extends Seeder
                         'primary_phone' => 'another test primary_phone',
                         'secondary_phone' => 'another test secondary_phone',
                     ],
+                    [
+                        'business_contact_id' => '3',
+                        'company_id' => null,
+                        'user_id' => null,
+                        'primary_phone' => 'test primary_phone',
+                        'secondary_phone' => 'test secondary_phone',
+                    ],
+                    [
+                        'business_contact_id' => '4',
+                        'company_id' => null,
+                        'user_id' => null,
+                        'primary_phone' => 'test primary_phone',
+                        'secondary_phone' => 'test secondary_phone',
+                    ],
+                    [
+                        'business_contact_id' => null,
+                        'company_id' => '3',
+                        'user_id' => null,
+                        'primary_phone' => 'pending test primary_phone',
+                        'secondary_phone' => 'pending test secondary_phone',
+                    ],
+                    [
+                        'business_contact_id' => null,
+                        'company_id' => '4',
+                        'user_id' => null,
+                        'primary_phone' => 'another pending test primary_phone',
+                        'secondary_phone' => 'another pending test secondary_phone',
+                    ],
         	]);
     }
 }

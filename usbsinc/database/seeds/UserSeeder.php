@@ -18,7 +18,9 @@ class UserSeeder extends Seeder
 		        		'last_name' => 'test last name',
                         'email' => 'email@email.com',
 						'password' => bcrypt('111111'),
-                        'role' => 'admin'
+                        'role' => 'admin',
+                        'approved_denied_at' => '',
+
 		        	],
 		        	[
                         'company_id' => '1',
@@ -26,7 +28,8 @@ class UserSeeder extends Seeder
                         'last_name' => 'test last name',
                         'email' => 'company@email.com',
 						'password' => bcrypt('111111'),
-                        'role' => 'company'
+                        'approved_denied_at' => '2015-11-11 04:50:22',
+                        'role' => 'company',
 
 		        	],
                     [
@@ -35,7 +38,9 @@ class UserSeeder extends Seeder
                         'last_name' => 'test last name',
                         'email' => 'company2@email.com',
                         'password' => bcrypt('111111'),
-                        'role' => 'company'
+                        'role' => 'company',
+                        'approved_denied_at' => '2016-03-21 16:01:43'
+
 
                     ],
                     [
@@ -44,7 +49,31 @@ class UserSeeder extends Seeder
                         'last_name' => 'test last name',
                         'email' => 'agent@email.com',
                         'password' => bcrypt('111111'),
-                        'role' => 'agent'
+                        'role' => 'agent',
+                        'approved_denied_at' => '',
+
+
+                    ],
+                    [
+                        'company_id' => '3',
+                        'first_name' => 'Pending user',
+                        'last_name' => 'test last name',
+                        'email' => 'pending@email.com',
+                        'password' => bcrypt('111111'),
+                        'role' => 'pending',
+                        'approved_denied_at' => '',
+
+
+                    ],
+                    [
+                        'company_id' => '4',
+                        'first_name' => 'Another pending user',
+                        'last_name' => 'test last name',
+                        'email' => 'pending2@email.com',
+                        'password' => bcrypt('111111'),
+                        'role' => 'pending',
+                        'approved_denied_at' => '',
+
 
                     ],
 

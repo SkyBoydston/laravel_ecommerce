@@ -38,7 +38,7 @@ class CompanyController extends Controller
         
 
         if (Auth::user()->hasRole('admin')) {
-            $user_id = $company->user()->where('role', 'company')->first()->id;
+            $user_id = $company->user()->where('role', 'company')->orWhere('role', 'pending')->orWhere('role', 'denied')->first()->id;
         } else {
             $user_id = Auth::user()->id;
         }
