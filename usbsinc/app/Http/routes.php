@@ -34,6 +34,9 @@ Route::group(['middleware' => ['web']], function () {
 Route::group(['middleware' => 'web'], function () {
     Route::auth();
 
+    Route::get('user/set_password', 'UserController@setPasswordCreate');
+    Route::post('user/set_password', 'UserController@setPasswordStore');
+
 	Route::get('/', function () {
 		if (Auth::user()) {
 		    return redirect('/member_cover');
@@ -69,6 +72,7 @@ Route::group(['middleware' => 'web'], function () {
  //    Route::model('company', 'User');
 	// Route::resource('company', 'UserAdminPanelController');
 	Route::group(['middleware' => 'auth'], function () {
+
 	    Route::resource('user', 'UserController',
 	    	['except' => ['index', 'destroy']]);
 	    Route::resource('company', 'CompanyController',

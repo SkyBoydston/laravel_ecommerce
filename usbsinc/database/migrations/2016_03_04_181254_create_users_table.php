@@ -20,6 +20,7 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('password', 60);
             $table->string('role');
+            $table->string('access_code');
             $table->timestamp('approved_denied_at');
             $table->rememberToken();
             $table->timestamps();
