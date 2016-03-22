@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use App\User;
 
 class AgentController extends Controller
 {
@@ -15,7 +16,9 @@ class AgentController extends Controller
      */
     public function index()
     {
-        //
+        $agents = User::onlyTrashed()->get();
+
+        return view('agent.index', compact('agents'));
     }
 
     /**
@@ -47,7 +50,7 @@ class AgentController extends Controller
      */
     public function show($id)
     {
-        $agent = \App\User::findOrFail($id);
+        $agent = User::withTrashed()->findOrFail($id);
 
         return view('agent.show', compact('agent'));
     }

@@ -12,6 +12,7 @@ use App\Http\Requests\UserRequest;
 use Carbon;
 use Mail;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Redirect;
 
 class UserController extends Controller
 {
@@ -66,7 +67,6 @@ class UserController extends Controller
     public function setPasswordCreate(Request $request) {
         // This still needs validation
 
-        // This should only be accessible to users with access_codes. otherwise they should redirect.
 
         $access_code = Input::get('access_code');
 
@@ -81,16 +81,14 @@ class UserController extends Controller
     public function setPasswordStore(Request $request) {
         // This still needs validation
 
-        //check to make sure its the right access code
-
-        //remove the access code from the db on save
         $user = User::where('access_code', $request->access_code)->first();
-        // dd($user);
+        if(!$user) {
+            return 'There was a problem. Please contact the system administrator.';
+        }
         $user->update(['password' => bcrypt($request->password), 'access_code' => '']);
 
         return redirect('/login');
 
-        // redirect to login
     }
 
     /**
@@ -128,6 +126,35 @@ class UserController extends Controller
         return redirect('/admin_panel');
 
     }
+    /**
+     * Soft delete an agent.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        $user = User::findOrFail($id);
+        $company_id = $user->company->id;
+        $user->delete();
 
+
+        return redirect('company/' . $company_id);
+    }
     
+    /**
+     * Restore a soft deleted agent.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function reactivate($id)
+    {
+        $user = User::withTrashed()->findOrFail($id);
+        $company_id = $user->company->id;
+        $user->restore();
+
+
+        return redirect('company/' . $company_id);
+    }
 }

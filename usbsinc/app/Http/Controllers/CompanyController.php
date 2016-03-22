@@ -186,7 +186,7 @@ class CompanyController extends Controller
                     }
                 
                 } else {
-                    return Redirect::back()->withErrors(['Your file is too large.']);
+                    return Redirect::back()->withErrors(['Your file is too large.']);  // These errors can also be passed back in a better way (in a later version) if I use the Validator::make method and then something like $errors->add('logo', 'Your file is too large.')
                 }
             } else {
                 return Redirect::back()->withErrors(['Your file is not the correct type.']);

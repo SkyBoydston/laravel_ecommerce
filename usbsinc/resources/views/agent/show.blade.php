@@ -12,6 +12,16 @@
 								@foreach ($agent['attributes'] as $key => $value)
 									<h4>{{ ucfirst(str_replace('_', ' ', $key)) }}</h4> {{ $value }} <br/>
 								@endforeach
+
+								@if ($agent->deleted_at == null)
+									{!! Form::open(['action' => ['UserController@destroy', $agent->id], 'method' => 'delete']) !!}
+									  {!! Form::submit('Deactivate', ['class'=>'btn btn-danger btn-xs']) !!}
+									{!! Form::close() !!}
+								@else
+									<a href="{{ url('user/reactivate', ['id' => $agent->id]) }}">Reactivate</a>
+
+								@endif
+
 						</div>
 				
 				</div>

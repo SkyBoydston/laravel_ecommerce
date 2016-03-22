@@ -24,6 +24,7 @@ class CreateUsersTable extends Migration
             $table->timestamp('approved_denied_at');
             $table->rememberToken();
             $table->timestamps();
+            $table->softDeletes();
 
             $table->foreign('company_id')
                   ->references('id')->on('companies');

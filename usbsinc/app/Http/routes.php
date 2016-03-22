@@ -34,7 +34,7 @@ Route::group(['middleware' => ['web']], function () {
 Route::group(['middleware' => 'web'], function () {
     Route::auth();
 
-    Route::get('user/set_password', 'UserController@setPasswordCreate');
+    Route::get('user/set_password', 'UserController@setPasswordCreate'); // These need to come before the user resource route and be accessible to guests (because they're setting their passwords).
     Route::post('user/set_password', 'UserController@setPasswordStore');
 
 	Route::get('/', function () {
@@ -49,14 +49,6 @@ Route::group(['middleware' => 'web'], function () {
 
 	// Route::get('/company', 'UserAdminPanelController@index');
 
-	
-    Route::get('/member_cover', 'MemberCoverController@index');
-    Route::get('/item_wizard', function(){
-		return 'This is where the system for adding and editing items will live. We need to know what this will look like to continue building it.';
-	});
-    Route::get('/site_content', function(){
-		return 'This will essentially be a link to the CMS or, possibly, CMS\'s plural.';
-	});
 
 
 
@@ -72,9 +64,18 @@ Route::group(['middleware' => 'web'], function () {
  //    Route::model('company', 'User');
 	// Route::resource('company', 'UserAdminPanelController');
 	Route::group(['middleware' => 'auth'], function () {
+		
+	    Route::get('/member_cover', 'MemberCoverController@index');
+	    Route::get('/item_wizard', function(){
+			return 'This is where the system for adding and editing items will live. We need to know what this will look like to continue building it.';
+		});
+	    Route::get('/site_content', function(){
+			return 'This will essentially be a link to the CMS or, possibly, CMS\'s plural.';
+		});
 
+	    Route::get('user/reactivate/{user}', 'UserController@reactivate');
 	    Route::resource('user', 'UserController',
-	    	['except' => ['index', 'destroy']]);
+	    	['except' => ['index']]);
 	    Route::resource('company', 'CompanyController',
 	    	['except' => ['create', 'store', 'destroy']]);
 	    Route::resource('business_contact', 'BusinessContactController',
@@ -84,7 +85,7 @@ Route::group(['middleware' => 'web'], function () {
 	    Route::resource('phone_number', 'PhoneNumberController',
 	    	['except' => ['index', 'destroy']]);
 	    Route::resource('agent', 'AgentController',
-	    	['except' => ['index', 'create', 'store', 'destroy']]);
+	    	['except' => [ 'create', 'store', 'destroy']]);
 
 	    // Route::resource('question', 'QuestionController',
 	    // 	['except' => ['index', 'create', 'store', 'destroy']]);

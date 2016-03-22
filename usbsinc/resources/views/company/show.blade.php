@@ -199,18 +199,23 @@
 
 					                <a href="{{ url('user/create') }}">Add agent</a>
 
-									<h3>Agents</h3>
+									<h3>Active agents</h3>
+
 
 									@if ($agents)
 										
 											@foreach ($agents as $agent)
 												<a href="{{ "/agent/" . $agent->id }}">
-													<h4>Name</h4> {{ ucfirst($agent->first_name) }} {{ ucfirst($agent->last_name) }}<br/>
+													<h4>Name</h4> {{ ucfirst($agent->first_name) }} {{ ucfirst($agent->last_name) }}<br/><hr>
 
 												</a>
 											@endforeach
 										
 									@endif
+
+									<a href="/agent/"><h3>View deactivated agents</h3></a>
+									
+
 
 														
 
