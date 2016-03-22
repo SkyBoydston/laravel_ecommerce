@@ -6,7 +6,7 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">User panel</div>
+                <div class="panel-heading">Create agent</div>
                 <div class="panel-body">
 
 					{!! Form::open(['method' => 'POST', 'url' => 'user', 'class' => 'form-horizontal']) !!}
@@ -97,7 +97,7 @@
 					    <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
-                                    <i class="fa fa-btn fa-check-circle"></i>Update
+                                    <i class="fa fa-btn fa-user"></i>Create
                                 </button>
                             </div>
                         </div>

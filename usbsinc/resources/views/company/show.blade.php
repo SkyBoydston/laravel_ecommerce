@@ -202,12 +202,14 @@
 									<h3>Agents</h3>
 
 									@if ($agents)
-										@for ($i=0; $i<count($agents); $i++)
-											@foreach ($agents[$i]['attributes'] as $key => $value)
-												<h4>{{ ucfirst(str_replace('_', ' ', $key)) }}</h4> {{ $value }} <br/>
+										
+											@foreach ($agents as $agent)
+												<a href="{{ "/agent/" . $agent->id }}">
+													<h4>Name</h4> {{ ucfirst($agent->first_name) }} {{ ucfirst($agent->last_name) }}<br/>
+
+												</a>
 											@endforeach
-												<a href="{{ "/agent/" . $agents[$i]->id }}">View</a>
-										@endfor
+										
 									@endif
 
 														

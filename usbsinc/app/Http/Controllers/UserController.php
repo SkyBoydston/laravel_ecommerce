@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use App\User;
 use Auth;
 use App\Http\Requests\UserRequest;
+use Carbon;
 
 class UserController extends Controller
 {
@@ -29,9 +30,18 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request) {
-        User::create([$request->all()]);
+        User::create([
+                'first_name' => $request->first_name,
+                'last_name' => $request->last_name,
+                'company_id' => Auth::user()->company->id,
+                'email' => $request->email,
+                'password' => bcrypt($request->password),
+                'role' => $request->role,
+                'approved_denied_at' => Carbon\Carbon::now()
 
-        return view('company/', Auth::user()->company->id);
+            ]);
+
+        return redirect('company/'. Auth::user()->company->id);
     }
 
     /**
