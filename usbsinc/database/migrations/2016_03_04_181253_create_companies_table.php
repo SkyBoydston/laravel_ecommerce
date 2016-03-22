@@ -21,6 +21,7 @@ class CreateCompaniesTable extends Migration
             $table->string('status');
             $table->string('brands_of_interest');
             $table->string('contact_me_via');
+            $table->string('logo');
             $table->mediumtext('how_heard_about');
             $table->timestamps();
 

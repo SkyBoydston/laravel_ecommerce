@@ -7,7 +7,7 @@
         <div class="col-md-8 col-md-offset-2">
         
 				<div class="panel panel-default">
-	                <div class="panel-heading">Deactivated agent details</div>
+	                <div class="panel-heading">Deactivated agents</div>
 		                <div class="panel-body">
 								@foreach ($agents as $agent)
 									<a href="{{ "/agent/" . $agent->id }}">

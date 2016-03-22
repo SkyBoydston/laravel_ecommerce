@@ -111,7 +111,7 @@ class CompanyController extends Controller
             $company_default_shipping_address_id = null;
         }
 
-        $agents = $company->user()->where('role', 'agent')->get();
+        $agents = $company->user()->where('role', 'agent')->where('access_code', '')->get();
         
 
         return view('company.show', compact(
