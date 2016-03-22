@@ -10,6 +10,7 @@ use App\User;
 use Auth;
 use App\Http\Requests\UserRequest;
 use Carbon;
+use Mail;
 
 class UserController extends Controller
 {
@@ -40,6 +41,12 @@ class UserController extends Controller
                 'approved_denied_at' => Carbon\Carbon::now()
 
             ]);
+
+        Mail::send('emails.new_agent_account', ['request' => $request], function ($m) use ($request) {
+            // $m->from(env('MAIL_FROM'), env('MAIL_FROM_NAME'));
+            // $m->replyTo(env('MAIL_NO_REPLY_ADDRESS'), env('MAIL_NO_REPLY_NAME'));
+            $m->to($request->email, ucfirst($request->first_name) . ' ' . ucfirst($request->last_name))->subject('You have a new agent account');
+        });
 
         return redirect('company/'. Auth::user()->company->id);
     }
