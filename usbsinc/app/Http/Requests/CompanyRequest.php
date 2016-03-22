@@ -38,6 +38,7 @@ class CompanyRequest extends Request
             'website' => 'required|max:255|string',
             'status' => 'sometimes|max:255|string',
             'brands_of_interest' => 'required',
+            'logo' => 'sometimes',
         ];
     }
 }

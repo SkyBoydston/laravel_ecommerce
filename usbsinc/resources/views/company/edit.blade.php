@@ -9,7 +9,7 @@
                 <div class="panel-heading">Company panel</div>
                 <div class="panel-body">
 
-					{!! Form::model($company, ['method' => 'PATCH', 'action' => ['CompanyController@update', $company_id], 'class' => 'form-horizontal']) !!}
+					{!! Form::model($company, ['method' => 'PATCH', 'action' => ['CompanyController@update', $company_id], 'class' => 'form-horizontal', 'files' => true]) !!}
 
 
 
@@ -83,6 +83,35 @@
                             </div>
                         </div>
 						
+					    <div class="form-group{{ $errors->has('logo') ? ' has-error' : '' }}">
+							{!! Form::label ('logo', 'Upload logo', array('class' => 'col-md-4 control-label')) !!}
+					    
+						    <div class="col-md-6">
+							    {!! Form::file('logo', '', array('class' => 'form-control')) !!}
+
+							    @if ($errors->has('logo'))
+	                                    <span class="help-block">
+	                                        <strong>{{ $errors->first('logo') }}</strong>
+	                                    </span>
+	                            @endif
+						    </div>
+						    <div class="clearfix"></div>
+						    <div class="col-md-offset-4 col-md-6 text-muted">
+						    Recommended image dimensions: 1600px x 400 px. 
+						    Maximum image dimensions: 2600px x 1000px.
+						    Maximum upload size: 1 MB.
+						    </div>
+					    </div>
+
+
+
+
+
+
+
+
+
+
 					    <!-- <div class="form-group{{ $errors->has('business_address_line_1') ? ' has-error' : '' }}">
 						    {!! Form::label ('business_address_line_1', 'Address line 1', array('class' => 'col-md-4 control-label')) !!}
 					    

@@ -11,6 +11,8 @@ use Auth;
 use App\User;
 use App\Company;
 use App\Http\Requests\CompanyRequest;
+use Illuminate\Support\Facades\Input;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class CompanyController extends Controller
 {
@@ -21,9 +23,13 @@ class CompanyController extends Controller
      */
     public function index()
     {
-        $companies = Company::all();
+        if (Auth::user()->hasRole('admin')) {
+            $companies = Company::all();
 
-        return view('company.index', compact('companies'));
+            return view('company.index', compact('companies'));
+        } else {
+            return redirect('company/'. Auth::user()->company->id);
+        }
     }
 
     /**
@@ -154,15 +160,25 @@ class CompanyController extends Controller
     public function update(CompanyRequest $request, $company_id)
     {
         $company = Company::findOrFail($company_id);
+
+        $logo = $request->logo;
+
+        if ($logo->isValid()) {
+            
+            $modName = 'logo_' . str_random(8) . $logo->getClientOriginalName();
+            $path = $_SERVER['DOCUMENT_ROOT'] . '/client_logo_files/';
+            $logo->move($path, $modName);
+        }
         
         $company->update([
             'business_name' => $request->business_name,
             'website' => $request->website,
             'status' => $request->status,
-            'brands_of_interest' => is_array($request->brands_of_interest)? implode(', ', $request->brands_of_interest) : $request->brands_of_interest
+            'brands_of_interest' => is_array($request->brands_of_interest)? implode(', ', $request->brands_of_interest) : $request->brands_of_interest,
+            'logo' => $modName
             ]);
 
-        return redirect('/admin_panel');
+        return redirect('/company');
     }
 
    

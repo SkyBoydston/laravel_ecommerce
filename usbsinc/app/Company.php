@@ -19,6 +19,7 @@ class Company extends Model
             'brands_of_interest', 
             'contact_me_via',
             'how_heard_about',
+            'logo'
     ];
 
     /**

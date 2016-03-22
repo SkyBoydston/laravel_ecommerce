@@ -8,6 +8,9 @@
                 <div class="panel-heading">Member site</div>
 
                 <div class="panel-body">
+
+                    <img style="display:block;margin: 0 auto;" src="{{ url('/client_logo_files/') . '/' . Auth::user()->company->logo }}"/>
+
                     <h1 style="text-align: center;">News/specials</h1>
                     <h1 style="text-align: center;">Promotions</h1>
                     <h1 style="text-align: center;">Webinars</h1>
