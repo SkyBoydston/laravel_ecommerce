@@ -89,17 +89,18 @@
 						    <div class="col-md-6">
 							    {!! Form::file('logo', '', array('class' => 'form-control')) !!}
 
-							    @if ($errors->has('logo'))
-	                                    <span class="help-block">
-	                                        <strong>{{ $errors->first('logo') }}</strong>
+							    @if ($errors->any())
+	                                    <span class="error">
+	                                        <strong>{{ $errors->first() }}</strong>
 	                                    </span>
 	                            @endif
 						    </div>
 						    <div class="clearfix"></div>
 						    <div class="col-md-offset-4 col-md-6 text-muted">
-						    Recommended image dimensions: 1600px x 400 px. 
+						    Recommended image dimensions: 600px x 200 px. 
 						    Maximum image dimensions: 2600px x 1000px.
 						    Maximum upload size: 1 MB.
+						    File types: .jpg, .jpeg, .png, .bmp, .gif, .tiff.
 						    </div>
 					    </div>
 

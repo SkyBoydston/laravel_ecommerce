@@ -13,6 +13,7 @@ use App\Company;
 use App\Http\Requests\CompanyRequest;
 use Illuminate\Support\Facades\Input;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Redirect;
 
 class CompanyController extends Controller
 {
@@ -161,14 +162,38 @@ class CompanyController extends Controller
     {
         $company = Company::findOrFail($company_id);
 
-        $logo = $request->logo;
 
-        if ($logo->isValid()) {
-            
-            $modName = 'logo_' . str_random(8) . $logo->getClientOriginalName();
-            $path = $_SERVER['DOCUMENT_ROOT'] . '/client_logo_files/';
-            $logo->move($path, $modName);
+        $modName = $company->logo;
+        if ($request->logo) {
+
+            $logo = $request->logo;
+            $origExtension = strtolower($logo->getClientOriginalExtension());
+            if (in_array($origExtension, ['jpg', 'jpeg', 'png', 'bmp', 'gif', 'tiff'], true)) {
+                $size = $logo->getClientSize();
+                if ($size <= 1000000) {
+                    if ($logo->isValid()) {
+                        
+                        $modName = 'logo_' . str_random(8) . $logo->getClientOriginalName();
+                        $path = $_SERVER['DOCUMENT_ROOT'] . '/client_logo_files/';
+                        $logo->move($path, $modName);
+                    } else {
+                        return $logo->getError();
+                    }
+                
+                } else {
+                    return Redirect::back()->withErrors(['Your file is too large.']);
+                }
+            } else {
+                return Redirect::back()->withErrors(['Your file is not the correct type.']);
+                // return 'Your file is not the correct type.';
+            }
         }
+
+
+
+
+
+        
         
         $company->update([
             'business_name' => $request->business_name,
