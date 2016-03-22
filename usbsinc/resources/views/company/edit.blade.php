@@ -83,26 +83,28 @@
                             </div>
                         </div>
 						
-					    <div class="form-group{{ $errors->has('logo') ? ' has-error' : '' }}">
-							{!! Form::label ('logo', 'Upload logo', array('class' => 'col-md-4 control-label')) !!}
-					    
-						    <div class="col-md-6">
-							    {!! Form::file('logo', '', array('class' => 'form-control')) !!}
+						@if (Auth::user()->hasRole('company'))
+						    <div class="form-group{{ $errors->has('logo') ? ' has-error' : '' }}">
+								{!! Form::label ('logo', 'Upload logo', array('class' => 'col-md-4 control-label')) !!}
+						    
+							    <div class="col-md-6">
+								    {!! Form::file('logo', '', array('class' => 'form-control')) !!}
 
-							    @if ($errors->any())
-	                                    <span class="error">
-	                                        <strong>{{ $errors->first() }}</strong>
-	                                    </span>
-	                            @endif
+								    @if ($errors->any())
+		                                    <span class="error">
+		                                        <strong>{{ $errors->first() }}</strong>
+		                                    </span>
+		                            @endif
+							    </div>
+							    <div class="clearfix"></div>
+							    <div class="col-md-offset-4 col-md-6 text-muted">
+							    Recommended image dimensions: 600px x 200 px. 
+							    Maximum image dimensions: 2600px x 1000px.
+							    Maximum upload size: 1 MB.
+							    File types: .jpg, .jpeg, .png, .bmp, .gif, .tiff.
+							    </div>
 						    </div>
-						    <div class="clearfix"></div>
-						    <div class="col-md-offset-4 col-md-6 text-muted">
-						    Recommended image dimensions: 600px x 200 px. 
-						    Maximum image dimensions: 2600px x 1000px.
-						    Maximum upload size: 1 MB.
-						    File types: .jpg, .jpeg, .png, .bmp, .gif, .tiff.
-						    </div>
-					    </div>
+					    @endif
 
 
 

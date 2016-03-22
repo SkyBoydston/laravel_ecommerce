@@ -70,7 +70,7 @@ Route::group(['middleware' => 'web'], function () {
 	// Route::resource('company', 'UserAdminPanelController');
 	Route::group(['middleware' => 'auth'], function () {
 	    Route::resource('user', 'UserController',
-	    	['except' => ['index', 'create', 'store', 'destroy']]);
+	    	['except' => ['index', 'destroy']]);
 	    Route::resource('company', 'CompanyController',
 	    	['except' => ['create', 'store', 'destroy']]);
 	    Route::resource('business_contact', 'BusinessContactController',

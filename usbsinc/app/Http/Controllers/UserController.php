@@ -13,6 +13,26 @@ use App\Http\Requests\UserRequest;
 class UserController extends Controller
 {
     
+    /**
+     * Show the form to create an agent.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create() {
+        return view('user/create');
+
+    }
+
+    /**
+     * Put a new agent in the database.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request) {
+        User::create([$request->all()]);
+
+        return view('company/', Auth::user()->company->id);
+    }
 
     /**
      * Show the form for editing the specified resource.
@@ -22,7 +42,7 @@ class UserController extends Controller
      */
     public function edit()
     {
-        $id = Auth::user()->id;
+        $id = Auth::user()->id;   // Candidate for the daily wtf.
         $user = User::where('id', $id)->first();  
 
         return view('user/edit', compact('user', 'id'));

@@ -197,6 +197,8 @@
 			                <div class="panel-heading">All agents</div>
 				                <div class="panel-body">
 
+					                <a href="{{ url('user/create') }}">Add agent</a>
+
 									<h3>Agents</h3>
 
 									@if ($agents)

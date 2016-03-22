@@ -141,11 +141,16 @@ class CompanyController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit()
+    public function edit($id)
     {
-    
-        $id = Auth::user()->id;
-        $company = User::findOrFail($id)->company; 
+        // if (Auth::user()->hasRole('admin')) {
+        //     $user_id = $company->user()->where('role', 'company')->orWhere('role', 'pending')->orWhere('role', 'denied')->first()->id;
+        // } else {
+        //     $user_id = Auth::user()->id;
+        // }
+        // $id = Auth::user()->id;
+        // $company = User::findOrFail($id)->company; 
+        $company = Company::findOrFail($id); 
         $company_id = $company->id;
 
         return view('company/edit', compact('company', 'company_id'));
