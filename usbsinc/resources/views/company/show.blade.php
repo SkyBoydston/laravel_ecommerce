@@ -14,6 +14,9 @@
 	        		<li class=""><a data-toggle="tab" href="#Company_contact">Company contact</a></li>
 	        		<li class=""><a data-toggle="tab" href="#Agents">Agents</a></li>
 	        	@endif
+	        	@if (Auth::user()->hasRole('company'))
+	        		<li class=""><a data-toggle="tab" href="#Transactions">Transactions</a></li>
+	        	@endif
 
 
         	</ul>
@@ -225,7 +228,85 @@
 
 						</div>					
 					</div>
-				@endif	
+				@endif
+				@if (Auth::user()->hasRole('company'))	
+				<div id="Transactions" class="tab-pane fade">
+					<div class="panel panel-default">
+		                <div class="panel-heading">Transactions</div>
+			                <div class="panel-body">
+								
+								<h3>All company transactions (this should actually be a history)</h3>
+									@if(count($transactions))
+
+
+										@foreach ($transactions->user as $user)
+												{{-- $user->first_name --}}<br>
+											@foreach ($user['sale_documents'] as $doc)
+												Submission date:<br>
+												{{ $doc->created_at }}<br>
+												Type:<br>
+												@if ($doc->isOrder())
+													Order<br>
+												@endif
+												@if ($doc->isQuote())
+													Quote<br>
+												@endif
+
+												Number:<br>
+												{{ $doc->number }}<br>
+												Client reference (field to come later):<br>
+												Agent:<br>
+												{{ $doc->user->first_name }} {{ $doc->user->last_name }}<br>
+												Status:<br>
+												Total value:<br>
+												<hr>
+											@endforeach
+
+										@endforeach
+
+
+
+									@endif 
+<!--
+
+								@if ($company)
+									@foreach ($company['attributes'] as $key => $value)
+										<h4>{{ ucfirst(str_replace('_', ' ', $key)) }}</h4> {{ $value }} <br/>
+									@endforeach
+								
+								@if (Auth::user()->hasRole('admin') || Auth::user()->hasRole('company'))
+									<a href="{{ "/company/" . $company_id . "/edit" }}">Edit</a>
+								@endif
+
+								<br/><br/>
+								@endif
+
+								<h3>Phone number</h3>
+
+
+								@if ($company_phone_number)
+									@foreach ($company_phone_number['attributes'] as $key => $value)
+										<h4>{{ ucfirst(str_replace('_', ' ', $key)) }}</h4> {{ $value }} <br/>
+									@endforeach
+								
+
+									@if (Auth::user()->hasRole('admin') || Auth::user()->hasRole('company'))				
+										<a href="{{ "/phone_number/" . $company_phone_number_id . "/edit" }}">Edit</a>
+									@endif
+
+								@else
+									
+									@if (Auth::user()->hasRole('admin') || Auth::user()->hasRole('company'))
+										<a href="{{ action('PhoneNumberController@create', ['company_id' => $company_id]) }}">Create</a>
+									@endif
+
+								@endif -->
+
+							</div>
+
+					</div>					
+				</div>
+				@endif
 
 				</div>
 			</div>

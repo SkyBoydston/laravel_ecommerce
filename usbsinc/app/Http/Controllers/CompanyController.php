@@ -112,6 +112,8 @@ class CompanyController extends Controller
         }
 
         $agents = $company->user()->where('role', 'agent')->where('access_code', '')->get();
+
+        $transactions = $company->with('user.sale_documents')->findOrFail($company_id);
         
 
         return view('company.show', compact(
@@ -124,7 +126,8 @@ class CompanyController extends Controller
                         'company_phone_number', 'company_phone_number_id', 
                         'company_default_shipping_address', 'company_default_shipping_address_id', 
                         'company_office_address', 'company_office_address_id',
-                        'agents'
+                        'agents',
+                        'transactions'
                         ));
 
 
