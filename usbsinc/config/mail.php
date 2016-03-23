@@ -54,7 +54,7 @@ return [
     |
     */
 
-    'from' => ['address' => 'skyb@booj.com', 'name' => 'System Administrator'],
+    'from' => ['address' => 'skyb@activewebsite.com', 'name' => 'System Administrator'],
 
     /*
     |--------------------------------------------------------------------------

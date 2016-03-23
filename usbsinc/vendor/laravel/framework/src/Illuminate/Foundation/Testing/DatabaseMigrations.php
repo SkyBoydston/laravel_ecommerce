@@ -9,8 +9,7 @@ trait DatabaseMigrations
         $this->artisan('migrate');
 
         $this->beforeApplicationDestroyed(function () {
-            $this->artisan('migrate:refresh');
-            $this->artisan('db:seed');
+            $this->artisan('migrate:rollback');
         });
     }
 }

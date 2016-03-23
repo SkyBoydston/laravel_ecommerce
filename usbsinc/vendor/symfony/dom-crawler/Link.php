@@ -44,7 +44,6 @@ class Link
      */
     public function __construct(\DOMElement $node, $currentUri, $method = 'GET')
     {
-        $currentUri = 'http://localhost'; // This code added by me
         if (!in_array(strtolower(substr($currentUri, 0, 4)), array('http', 'file'))) {
             throw new \InvalidArgumentException(sprintf('Current URI must be an absolute URL ("%s").', $currentUri));
         }
