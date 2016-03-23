@@ -75,7 +75,10 @@ class MemberCoverController extends Controller
         //     ->company
         //     ->businessContact
         //     ->first_name);
-
+        if (Auth::user()->hasRole('pending')) {
+            Auth::logout();
+            return view('pending_user');
+        }
 
         return view('member_cover');
     }
