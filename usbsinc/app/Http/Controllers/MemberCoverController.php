@@ -13,18 +13,18 @@ use App\User;
 
 class MemberCoverController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+    // /**   // This was removed because it's redundant after the logic in routes.php.
+    //  * Create a new controller instance.
+    //  *
+    //  * @return void
+    //  */
+    // public function __construct()
+    // {
+    //     $this->middleware('auth');
+    // }
 
     /**
-     * Show the application dashboard.
+     * Show the member cover. If the user has just filled out an application, set the relations for the data they entered.
      *
      * @return \Illuminate\Http\Response
      */
@@ -80,6 +80,28 @@ class MemberCoverController extends Controller
             return view('pending_user');
         }
 
-        return view('member_cover');
+        return view('member_cover.index');
     }
+    /**
+     * Show the form to modify the member cover.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function edit()
+    {
+        return view('member_cover.edit');
+    }
+
+    /**
+     * Store the user's data.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        // Store the data
+
+        return view('member_cover.index');
+    }
+
 }
