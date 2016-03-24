@@ -13,15 +13,7 @@ use App\User;
 
 class MemberCoverController extends Controller
 {
-    // /**   // This was removed because it's redundant after the logic in routes.php.
-    //  * Create a new controller instance.
-    //  *
-    //  * @return void
-    //  */
-    // public function __construct()
-    // {
-    //     $this->middleware('auth');
-    // }
+    
 
     /**
      * Show the member cover. If the user has just filled out an application, set the relations for the data they entered.
@@ -99,7 +91,8 @@ class MemberCoverController extends Controller
      */
     public function store(Request $request)
     {
-        // Store the data
+        dd($request);
+        // Store the data. There's currently no table for this data.
 
         return view('member_cover.index');
     }

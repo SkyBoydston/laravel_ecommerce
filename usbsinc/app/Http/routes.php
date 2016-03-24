@@ -67,6 +67,7 @@ Route::group(['middleware' => 'web'], function () {
 		
 	    Route::get('/member_cover', 'MemberCoverController@index');
 	    Route::post('/member_cover', 'MemberCoverController@store');
+	    Route::get('/member_cover/edit', 'MemberCoverController@edit');
 
 	    Route::get('/item_wizard', function(){
 			return 'This is where the system for adding and editing items will live. We need to know what this will look like to continue building it.';
