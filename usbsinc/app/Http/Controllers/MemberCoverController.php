@@ -10,6 +10,7 @@ use App\PhoneNumber;
 use App\Address;
 use App\BusinessContact;
 use App\User;
+use App\MemberCover;
 
 class MemberCoverController extends Controller
 {
@@ -72,7 +73,14 @@ class MemberCoverController extends Controller
             return view('pending_user');
         }
 
-        return view('member_cover.index');
+
+        $data = MemberCover::first();
+        // $news = str_replace('<', '&lt', $data->news);
+        // $news = str_replace('>', '&gt', $news);
+        $news = htmlspecialchars($data->news);
+        // dd($news);
+        
+        return view('member_cover.index', compact('data', 'news'));
     }
     /**
      * Show the form to modify the member cover.
@@ -81,7 +89,9 @@ class MemberCoverController extends Controller
      */
     public function edit()
     {
-        return view('member_cover.edit');
+        $data = MemberCover::first(); // This table should only have one row. We use 'first()' to make the results easy to access in the view.
+
+        return view('member_cover.edit', compact('data'));
     }
 
     /**
@@ -91,10 +101,11 @@ class MemberCoverController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request);
-        // Store the data. There's currently no table for this data.
+        $data = MemberCover::first();
 
-        return view('member_cover.index');
+        $data->update($request->all());
+
+        return redirect('member_cover');
     }
 
 }

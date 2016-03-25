@@ -14,81 +14,160 @@
                 <div class="panel-body">
 
 
-                    <script src='//cdn.tinymce.com/4/tinymce.min.js'></script>
+                    <script src='//cdn.tinymce.com/4/tinymce.min.js'></script> <!-- Yes, this is JS right in the middle of the view. Move it to a partial if you like.  -->
                     <script>
-                        
-
-  
-  
 
                         tinymce.init({
-                          selector: "textarea",
+                          selector: "#tinyMCE",
                           height: 400,
                           plugins: [
                             "advlist autolink autosave link image lists charmap print preview hr anchor pagebreak spellchecker",
-                            "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
-                            "table contextmenu directionality emoticons template textcolor paste textcolor colorpicker textpattern"
+                            "searchreplace wordcount visualblocks visualchars code fullscreen media nonbreaking",
+                            "table contextmenu emoticons template textcolor paste textcolor colorpicker textpattern"
                           ],
 
-                          toolbar1: "bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | styleselect formatselect fontselect fontsizeselect",
-                          toolbar2: "cut copy paste | searchreplace | bullist numlist | outdent indent blockquote | undo redo | link unlink anchor image media code | insertdatetime preview | forecolor backcolor",
-                          toolbar3: "table | hr removeformat | subscript superscript | charmap emoticons | print fullscreen | ltr rtl | spellchecker | visualchars visualblocks nonbreaking template pagebreak restoredraft",
+                          toolbar1: "undo redo | preview code | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | formatselect | fontselect | fontsizeselect ",
+                          toolbar2: "cut copy paste | searchreplace | bullist numlist | outdent indent blockquote | link unlink anchor image media ",
+                          toolbar3: "table | hr removeformat | subscript superscript | charmap emoticons | print fullscreen  | spellchecker | visualchars visualblocks nonbreaking pagebreak | forecolor backcolor",
 
                           menubar: false,
-                          toolbar_items_size: 'small',
+                          toolbar_items_size: 'medium',
 
-                          style_formats: [{
-                            title: 'Bold text',
-                            inline: 'b'
-                          }, {
-                            title: 'Red text',
-                            inline: 'span',
-                            styles: {
-                              color: '#ff0000'
-                            }
-                          }, {
-                            title: 'Red header',
-                            block: 'h1',
-                            styles: {
-                              color: '#ff0000'
-                            }
-                          }, {
-                            title: 'Example 1',
-                            inline: 'span',
-                            classes: 'example1'
-                          }, {
-                            title: 'Example 2',
-                            inline: 'span',
-                            classes: 'example2'
-                          }, {
-                            title: 'Table styles'
-                          }, {
-                            title: 'Table row 1',
-                            selector: 'tr',
-                            classes: 'tablerow1'
-                          }],
-
-                          templates: [{
-                            title: 'Test template 1',
-                            content: 'Test 1'
-                          }, {
-                            title: 'Test template 2',
-                            content: 'Test 2'
-                          }],
                           content_css: [
-                            '//fast.fonts.net/cssapi/e6dc9b99-64fe-4292-ad98-6974f93cd2a2.css',
-                            '//www.tinymce.com/css/codepen.min.css'
+                            'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css'
+                            // '//fast.fonts.net/cssapi/e6dc9b99-64fe-4292-ad98-6974f93cd2a2.css',
+                            // '//www.tinymce.com/css/codepen.min.css'
                           ]
                         });
 
+                    </script>
+                    <script>
+
+                        tinymce.init({
+                          selector: "#tinyMCE2",
+                          height: 400,
+                          plugins: [
+                            "advlist autolink autosave link image lists charmap print preview hr anchor pagebreak spellchecker",
+                            "searchreplace wordcount visualblocks visualchars code fullscreen media nonbreaking",
+                            "table contextmenu emoticons template textcolor paste textcolor colorpicker textpattern"
+                          ],
+
+                          toolbar1: "undo redo | preview code | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | formatselect | fontselect | fontsizeselect ",
+                          toolbar2: "cut copy paste | searchreplace | bullist numlist | outdent indent blockquote | link unlink anchor image media ",
+                          toolbar3: "table | hr removeformat | subscript superscript | charmap emoticons | print fullscreen  | spellchecker | visualchars visualblocks nonbreaking pagebreak | forecolor backcolor",
+
+                          menubar: false,
+                          toolbar_items_size: 'medium',
+
+                          content_css: [
+                            'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css'
+                            // '//fast.fonts.net/cssapi/e6dc9b99-64fe-4292-ad98-6974f93cd2a2.css',
+                            // '//www.tinymce.com/css/codepen.min.css'
+                          ]
+                        });
+
+                    </script>
+
+                    <script>
+
+                        tinymce.init({
+                          selector: "#tinyMCE3",
+                          height: 400,
+                          plugins: [
+                            "advlist autolink autosave link image lists charmap print preview hr anchor pagebreak spellchecker",
+                            "searchreplace wordcount visualblocks visualchars code fullscreen media nonbreaking",
+                            "table contextmenu emoticons template textcolor paste textcolor colorpicker textpattern"
+                          ],
+
+                          toolbar1: "undo redo | preview code | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | formatselect | fontselect | fontsizeselect ",
+                          toolbar2: "cut copy paste | searchreplace | bullist numlist | outdent indent blockquote | link unlink anchor image media ",
+                          toolbar3: "table | hr removeformat | subscript superscript | charmap emoticons | print fullscreen  | spellchecker | visualchars visualblocks nonbreaking pagebreak | forecolor backcolor",
+
+                          menubar: false,
+                          toolbar_items_size: 'medium',
+
+                          content_css: [
+                            'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css'
+                            // '//fast.fonts.net/cssapi/e6dc9b99-64fe-4292-ad98-6974f93cd2a2.css',
+                            // '//www.tinymce.com/css/codepen.min.css'
+                          ]
+                        });
+
+                    </script>
+
+                    <script>
+
+                        tinymce.init({
+                          selector: "#tinyMCE4",
+                          height: 400,
+                          plugins: [
+                            "advlist autolink autosave link image lists charmap print preview hr anchor pagebreak spellchecker",
+                            "searchreplace wordcount visualblocks visualchars code fullscreen media nonbreaking",
+                            "table contextmenu emoticons template textcolor paste textcolor colorpicker textpattern"
+                          ],
+
+                          toolbar1: "undo redo | preview code | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | formatselect | fontselect | fontsizeselect ",
+                          toolbar2: "cut copy paste | searchreplace | bullist numlist | outdent indent blockquote | link unlink anchor image media ",
+                          toolbar3: "table | hr removeformat | subscript superscript | charmap emoticons | print fullscreen  | spellchecker | visualchars visualblocks nonbreaking pagebreak | forecolor backcolor",
+
+                          menubar: false,
+                          toolbar_items_size: 'medium',
+
+                          content_css: [
+                            'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css'
+                            // '//fast.fonts.net/cssapi/e6dc9b99-64fe-4292-ad98-6974f93cd2a2.css',
+                            // '//www.tinymce.com/css/codepen.min.css'
+                          ]
+                        });
+
+                    </script>
+
+                    <script>
+
+                        tinymce.init({
+                          selector: "#tinyMCE5",
+                          height: 400,
+                          plugins: [
+                            "advlist autolink autosave link image lists charmap print preview hr anchor pagebreak spellchecker",
+                            "searchreplace wordcount visualblocks visualchars code fullscreen media nonbreaking",
+                            "table contextmenu emoticons template textcolor paste textcolor colorpicker textpattern"
+                          ],
+
+                          toolbar1: "undo redo | preview code | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | formatselect | fontselect | fontsizeselect ",
+                          toolbar2: "cut copy paste | searchreplace | bullist numlist | outdent indent blockquote | link unlink anchor image media ",
+                          toolbar3: "table | hr removeformat | subscript superscript | charmap emoticons | print fullscreen  | spellchecker | visualchars visualblocks nonbreaking pagebreak | forecolor backcolor",
+
+                          menubar: false,
+                          toolbar_items_size: 'medium',
+
+                          content_css: [
+                            'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css'
+                            // '//fast.fonts.net/cssapi/e6dc9b99-64fe-4292-ad98-6974f93cd2a2.css',
+                            // '//www.tinymce.com/css/codepen.min.css'
+                          ]
+                        });
 
                     </script>
 
 
-                    <h2>News</h2>
+                    <h2>This area could be improved by allowing users to save/crop images as well as retain previous versions of their member cover.</h2>
+
                     {{ Form::open(array('url' => '/member_cover')) }}
-                        <!-- {{ Form::textarea('tinyMCE', null, array('id' => 'tinyMCE')) }} -->
-                        <textarea name="tinyMCE" id="tinyMCE"> howdy again</textarea><br>
+                        <h2>News</h2>
+                        <textarea name="news" id="tinyMCE">{{ $data->news }}</textarea><br>
+    
+                        <h2>Promotions</h2>
+                        <textarea name="promotions" id="tinyMCE2">{{ $data->promotions }}</textarea><br>
+
+                        <h2>Webinars</h2>
+                        <textarea name="webinars" id="tinyMCE3">{{ $data->webinars }}</textarea><br>
+
+                        <h2>Financial</h2>
+                        <textarea name="financial" id="tinyMCE4">{{ $data->financial }}</textarea><br>
+
+                        <h2>Social media links</h2>
+                        <textarea name="social_media_links" id="tinyMCE5">{{ $data->social_media_links }}</textarea><br>
+    
                         <div class="form-group">
                             <div class="col-md-6">
                                 <button type="submit" class="btn btn-primary">
@@ -103,11 +182,6 @@
 
 
 
-                        <h1 style="text-align: center;">News/specials</h1>
-                        <h1 style="text-align: center;">Promotions</h1>
-                        <h1 style="text-align: center;">Webinars</h1>
-                        <h1 style="text-align: center;">Financial</h1>
-                        <h1 style="text-align: center;">Social media links</h1>
                    
         </div>
     </div>

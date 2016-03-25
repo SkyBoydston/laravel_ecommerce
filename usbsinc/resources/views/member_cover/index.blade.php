@@ -15,10 +15,20 @@
                     @endif
                     
                         <h1 style="text-align: center;">News/specials</h1>
+                        
+                        {{ $news }}
+
                         <h1 style="text-align: center;">Promotions</h1>
+                        {{ $data->promotions }}
+
                         <h1 style="text-align: center;">Webinars</h1>
+                        {{ $data->webinars }}
+
                         <h1 style="text-align: center;">Financial</h1>
+                        {{ $data->financial }}
+
                         <h1 style="text-align: center;">Social media links</h1>
+                        {{ $data->social_media_links }}
                     
                 </div>
             </div>

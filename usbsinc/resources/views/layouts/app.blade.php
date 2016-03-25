@@ -55,7 +55,7 @@
                     @if (Auth::user()->hasRole('admin'))
                         <li><a href="{{ url('/company') }}">Clients</a></li>
                         <li><a href="{{ url('/item_wizard') }}">Products</a></li>
-                        <li><a href="{{ url('/site_content') }}">Site content</a></li>
+                        <li><a href="{{ url('/member_cover/edit') }}">Site content</a></li>
                     @endif
                     @if (Auth::user()->hasRole('agent') || Auth::user()->hasRole('company'))
                         <li><a href="{{ url('/retail_quote') }}">Retail quotes</a></li>

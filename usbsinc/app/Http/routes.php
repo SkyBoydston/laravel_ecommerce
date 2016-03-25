@@ -72,9 +72,9 @@ Route::group(['middleware' => 'web'], function () {
 	    Route::get('/item_wizard', function(){
 			return 'This is where the system for adding and editing items will live. We need to know what this will look like to continue building it.';
 		});
-	    Route::get('/site_content', function(){
-			return 'This will essentially be a link to the CMS or, possibly, CMS\'s plural.';
-		});
+	 //    Route::get('/site_content', function(){
+		// 	return 'This will essentially be a link to the CMS or, possibly, CMS\'s plural.';
+		// });
 
 	    Route::get('user/reactivate/{user}', 'UserController@reactivate');
 	    Route::resource('user', 'UserController',
