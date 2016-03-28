@@ -77,7 +77,7 @@ class MemberCoverController extends Controller
         $data = MemberCover::first();
         // $news = str_replace('<', '&lt', $data->news);
         // $news = str_replace('>', '&gt', $news);
-        $news = htmlspecialchars($data->news);
+        $news = $data->news;
         // dd($news);
         
         return view('member_cover.index', compact('data', 'news'));
