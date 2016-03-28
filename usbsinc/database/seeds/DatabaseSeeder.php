@@ -16,11 +16,11 @@ class DatabaseSeeder extends Seeder
         $this->call(BusinessContactSeeder::class);
         $this->call(AddressSeeder::class);
         $this->call(PhoneNumberSeeder::class);
-        $this->call(QuestionsSeeder::class);
-        $this->call(AnswersSeeder::class);
         $this->call(PricesSeeder::class);
         $this->call(SaleDocumentsSeeder::class);
         $this->call(ItemsSeeder::class);
         $this->call(MemberCoversSeeder::class);
+        $this->call(ItemSaleDocumentSeeder::class);
+
     }
 }

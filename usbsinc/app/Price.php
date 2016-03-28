@@ -28,8 +28,6 @@ class Price extends Model
         
     ];
 
-    public function answer() {
-    	return $this->belongsTo('App\Answer');
-    }
+    
 
 }

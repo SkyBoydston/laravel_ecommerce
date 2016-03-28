@@ -69,14 +69,14 @@ Route::group(['middleware' => 'web'], function () {
 	    Route::post('/member_cover', 'MemberCoverController@store');
 	    Route::get('/member_cover/edit', 'MemberCoverController@edit');
 
-	    Route::get('/item_wizard', function(){
-			return 'This is where the system for adding and editing items will live. We need to know what this will look like to continue building it.';
-		});
+	 //    Route::get('/item_wizard', function(){
+		// 	return 'This is where the system for adding and editing items will live. We need to know what this will look like to continue building it.';
+		// });
 	 //    Route::get('/site_content', function(){
 		// 	return 'This will essentially be a link to the CMS or, possibly, CMS\'s plural.';
 		// });
 
-	    Route::get('user/reactivate/{user}', 'UserController@reactivate');
+	    Route::get('user/reactivate/{user}', 'UserController@reactivate');  // This is necessary for agents that get rehired.
 	    Route::resource('user', 'UserController',
 	    	['except' => ['index']]);
 	    Route::resource('company', 'CompanyController',
@@ -103,7 +103,7 @@ Route::group(['middleware' => 'web'], function () {
 	    Route::resource('retail_quote', 'RetailQuoteController',
 	    	['except' => ['create', 'store', 'destroy']]);
 	    Route::resource('item', 'ItemController',
-	    	['except' => ['index', 'create', 'store', 'destroy']]);  // Create may need to be enabled and serve as the route to the item selection wizard
+	    	['except' => ['create', 'store', 'destroy']]);  // Create may need to be enabled and serve as the route to the item selection wizard
 
 
 	    Route::get('inbox', 'InboxController@index');

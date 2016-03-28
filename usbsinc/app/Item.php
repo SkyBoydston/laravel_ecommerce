@@ -12,7 +12,6 @@ class Item extends Model
      * @var array
      */
     protected $fillable = [
-            'sale_document_id',
 			'number',
 			'option_1',
 			'option_2',
@@ -22,6 +21,7 @@ class Item extends Model
 			'option_6',
 			'how_many_screws',
 			'shipping_weight',
+            'base_price',
                         
     ];
 
@@ -34,8 +34,8 @@ class Item extends Model
         
     ];
 
-    public function sale_document() {
-    	return $this->belongsTo('App\SaleDocument');
+    public function sale_documents() {
+    	return $this->belongsToMany('App\SaleDocument');
     }
 
 }

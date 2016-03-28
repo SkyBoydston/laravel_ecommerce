@@ -1,4 +1,4 @@
-<?php
+<?php 
 
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
@@ -14,7 +14,6 @@ class CreateItemsTable extends Migration
     {
         Schema::create('items', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('sale_document_id')->nullable()->unsigned();
             
             $table->string('number');
 
@@ -27,24 +26,9 @@ class CreateItemsTable extends Migration
 
             $table->string('how_many_screws');
             $table->float('shipping_weight');
+            $table->float('base_price');
             
             $table->timestamps();
-
-            $table->foreign('sale_document_id')
-                  ->references('id')->on('sale_documents');
-
-            // $table->foreign('option_1')
-            //       ->references('id')->on('answers');
-            // $table->foreign('option_2')
-            //       ->references('id')->on('answers');
-            // $table->foreign('option_3')
-            //       ->references('id')->on('answers');
-            // $table->foreign('option_4')
-            //       ->references('id')->on('answers');
-            // $table->foreign('option_5')
-            //       ->references('id')->on('answers');
-            // $table->foreign('option_6')
-            //       ->references('id')->on('answers');
 
             
         });
