@@ -42,7 +42,7 @@ class BusinessContactController extends Controller
         
         $business_contact->update($request->all());
 
-        return redirect('/admin_panel');
+        return redirect('/company');
     }
 
 }

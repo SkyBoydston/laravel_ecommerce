@@ -123,7 +123,7 @@ class UserController extends Controller
 
             ]);
 
-        return redirect('/admin_panel');
+        return redirect('/company');
 
     }
     /**

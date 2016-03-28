@@ -74,7 +74,7 @@ class PhoneNumberController extends Controller
                 'secondary_phone' => $request->secondary_phone,
             ]);
 
-        return redirect('/admin_panel');
+        return redirect('/company');
     }
 
     /**
@@ -114,7 +114,7 @@ class PhoneNumberController extends Controller
         
         $phone_number->update($request->all());
 
-        return redirect('/admin_panel');
+        return redirect('/company');
     }
 
 }

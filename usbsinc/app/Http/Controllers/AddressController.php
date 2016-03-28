@@ -48,7 +48,7 @@ class AddressController extends Controller
         // dd($request);
         Address::create($request->all());
 
-        return redirect('/admin_panel');
+        return redirect('/company');
     }
 
     /**
@@ -80,7 +80,7 @@ class AddressController extends Controller
         
         $address->update($request->all());
 
-        return redirect('/admin_panel');
+        return redirect('/company');
     }
 
     
