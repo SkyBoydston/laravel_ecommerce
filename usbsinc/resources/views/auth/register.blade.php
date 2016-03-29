@@ -140,7 +140,7 @@
                         <div class="form-group{{ $errors->has('brands_of_interest') ? ' has-error' : '' }}">
                             <label class="col-md-4 control-label">Brands of interest</label>
 
-                            <div class="col-md-6">
+                            <div class="col-md-6">  <!-- This field shouldn't be made dynamic because the user might want to list brands that they don't actually sell. Therefore, you can't use the distinct values of the brand column from the items table to generate the checkboxes. -->
                                 <input type="checkbox" class="form-control" id="checkbox1" name="brands_of_interest[]" value="company1" >Company 1<br>
                                 <input type="checkbox" class="form-control" id="checkbox2" name="brands_of_interest[]" value="company2" >Company 2<br>
 
