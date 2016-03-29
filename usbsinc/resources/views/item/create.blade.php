@@ -24,6 +24,19 @@
 
                     <br>
 
+                    {{ Form::label('brand', 'Brand') }}
+                    {{ Form::select('brand', $brands, null, array('class' => 'form-control')) }}
+                    
+                    <br>
+
+                    -or-
+                    <br>
+
+                    {{ Form::label('new_brand', 'Create a new brand')}}
+                    {{ Form::text('new_brand', null, array('class' => 'form-control')) }}
+
+                    <br>
+
                     {{ Form::label('name', 'Item name')}}
                     {{ Form::text('name', null, array('class' => 'form-control')) }}
 

@@ -35,7 +35,7 @@
 									@endforeach
 								@endif
 
-								<a href="{{ "/user/" . $user_id . "/edit" }}">Edit</a>
+								<a class="btn btn-primary" href="{{ "/user/" . $user_id . "/edit" }}">Edit</a>
 
 								<br/><br/>
 
@@ -48,10 +48,10 @@
 										@endforeach
 									
 
-										<a href="{{ "/phone_number/" . $user_phone_number_id . "/edit" }}">Edit</a>
+										<a class="btn btn-primary" href="{{ "/phone_number/" . $user_phone_number_id . "/edit" }}">Edit</a>
 									@else
 										
-										<a href="{{ action('PhoneNumberController@create', ['user_id' => $user_id]) }}">Create</a>
+										<a class="btn btn-primary" href="{{ action('PhoneNumberController@create', ['user_id' => $user_id]) }}">Create</a>
 									@endif
 								@endif
 							</div>
@@ -75,7 +75,7 @@
 									@endforeach
 								
 								@if (Auth::user()->hasRole('admin') || Auth::user()->hasRole('company'))
-									<a href="{{ "/company/" . $company_id . "/edit" }}">Edit</a>
+									<a class="btn btn-primary" href="{{ "/company/" . $company_id . "/edit" }}">Edit</a>
 								@endif
 
 								<br/><br/>
@@ -91,13 +91,13 @@
 								
 
 									@if (Auth::user()->hasRole('admin') || Auth::user()->hasRole('company'))				
-										<a href="{{ "/phone_number/" . $company_phone_number_id . "/edit" }}">Edit</a>
+										<a class="btn btn-primary" href="{{ "/phone_number/" . $company_phone_number_id . "/edit" }}">Edit</a>
 									@endif
 
 								@else
 									
 									@if (Auth::user()->hasRole('admin') || Auth::user()->hasRole('company'))
-										<a href="{{ action('PhoneNumberController@create', ['company_id' => $company_id]) }}">Create</a>
+										<a class="btn btn-primary" href="{{ action('PhoneNumberController@create', ['company_id' => $company_id]) }}">Create</a>
 									@endif
 
 								@endif
@@ -119,13 +119,13 @@
 									@endforeach
 									
 									@if (Auth::user()->hasRole('admin') || Auth::user()->hasRole('company'))				
-										<a href="{{ "/address/" . $company_office_address_id . "/edit" }}">Edit</a>
+										<a class="btn btn-primary" href="{{ "/address/" . $company_office_address_id . "/edit" }}">Edit</a>
 									@endif
 
 								@else
 
 									@if (Auth::user()->hasRole('admin') || Auth::user()->hasRole('company'))
-										<a href="{{ action('AddressController@create', ['company_id' => $company_id, 'type' => 'office']) }}">Create</a>
+										<a class="btn btn-primary" href="{{ action('AddressController@create', ['company_id' => $company_id, 'type' => 'office']) }}">Create</a>
 									@endif
 
 								@endif
@@ -138,13 +138,13 @@
 									@endforeach
 
 									@if (Auth::user()->hasRole('admin') || Auth::user()->hasRole('company'))
-										<a href="{{ "/address/" . $company_default_shipping_address_id . "/edit" }}">Edit</a>
+										<a class="btn btn-primary" href="{{ "/address/" . $company_default_shipping_address_id . "/edit" }}">Edit</a>
 									@endif
 									
 								@else
 
 									@if (Auth::user()->hasRole('admin') || Auth::user()->hasRole('company'))
-										<a href="{{ action('AddressController@create', ['company_id' => $company_id, 'type' => 'default_shipping']) }}">Create</a>
+										<a class="btn btn-primary" href="{{ action('AddressController@create', ['company_id' => $company_id, 'type' => 'default_shipping']) }}">Create</a>
 									@endif
 
 								@endif
@@ -170,7 +170,7 @@
 									@endif
 
 														
-									<a href="{{ "/business_contact/" . $business_contact_id . "/edit" }}">Edit</a>
+									<a class="btn btn-primary" href="{{ "/business_contact/" . $business_contact_id . "/edit" }}">Edit</a>
 
 									<br/><br/>
 
@@ -181,10 +181,10 @@
 											<h4>{{ ucfirst(str_replace('_', ' ', $key)) }}</h4> {{ $value }} <br/>
 										@endforeach
 
-										<a href="{{ "/phone_number/" . $business_contact_phone_number_id . "/edit" }}">Edit</a>
+										<a class="btn btn-primary" href="{{ "/phone_number/" . $business_contact_phone_number_id . "/edit" }}">Edit</a>
 									@else
 										
-										<a href="{{ action('PhoneNumberController@create', ['business_contact_id' => $business_contact_id]) }}">Create</a>
+										<a class="btn btn-primary" href="{{ action('PhoneNumberController@create', ['business_contact_id' => $business_contact_id]) }}">Create</a>
 									@endif
 
 									
@@ -200,7 +200,7 @@
 			                <div class="panel-heading">All agents</div>
 				                <div class="panel-body">
 
-					                <a href="{{ url('user/create') }}">Add agent</a>
+					                <a class="btn btn-primary" href="{{ url('user/create') }}">Add agent</a>
 
 									<h3>Active agents</h3>
 
@@ -216,7 +216,7 @@
 										
 									@endif
 
-									<a href="/agent/"><h3>View deactivated agents</h3></a>
+									<a class="btn btn-primary" href="/agent/">View deactivated agents</a>
 									
 
 
@@ -275,7 +275,7 @@
 									@endforeach
 								
 								@if (Auth::user()->hasRole('admin') || Auth::user()->hasRole('company'))
-									<a href="{{ "/company/" . $company_id . "/edit" }}">Edit</a>
+									<a class="btn btn-primary" href="{{ "/company/" . $company_id . "/edit" }}">Edit</a>
 								@endif
 
 								<br/><br/>

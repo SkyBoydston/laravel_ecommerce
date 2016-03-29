@@ -16,6 +16,7 @@ class CreateItemsTable extends Migration
             $table->increments('id');
             
             $table->string('category');
+            $table->string('brand');
             $table->string('name');
             $table->string('number');
             $table->string('image');

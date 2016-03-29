@@ -9,7 +9,7 @@
                 <div class="panel-heading">All quotes</div>
                 <div class="panel-body">
 	                @foreach ($quotes as $quote)
-	                	<a href="quote/{{ $quote->id }}">Quote number: {{ $quote->number }} </a><br>
+	                	<a href="quote/{{ $quote->id }}">Quote number: {{ $quote->number }} </a><br><hr>
 
 	                @endforeach
 

@@ -13,7 +13,7 @@ class CompanySeeder extends Seeder
     {
         DB::table('companies')->insert([
         			[
-		        		'business_name' => 'test business_name',
+		        		'business_name' => 'Bob\'s Supply',
 		        		'website' => 'www.business_website.com',
 						'type' => 'test business_type',
 						'status' => 'test business_status',
@@ -22,7 +22,7 @@ class CompanySeeder extends Seeder
 						'how_heard_about' => 'test how_heard_about',
 					],
 		        	[
-		        		'business_name' => 'another test business_name',
+		        		'business_name' => 'PFG Manufactured Homes',
 		        		'website' => 'another test business_website',
 						'type' => 'another test business_type',
 						'status' => 'another test business_status',
@@ -31,7 +31,7 @@ class CompanySeeder extends Seeder
 						'how_heard_about' => 'another test how_heard_about',
 					],
 					[   // Pending company
-		        		'business_name' => 'pending test business_name',
+		        		'business_name' => 'Foo Bar Inc.',
 		        		'website' => 'pending test business_website',
 						'type' => 'pending test business_type',
 						'status' => 'pending test business_status',
@@ -40,7 +40,7 @@ class CompanySeeder extends Seeder
 						'how_heard_about' => 'pending test how_heard_about',
 					],
 					[   //Pending company
-		        		'business_name' => 'another pending test business_name',
+		        		'business_name' => 'Colorado Window and Door, LLC',
 		        		'website' => 'another pending test business_website',
 						'type' => 'another pending test business_type',
 						'status' => 'another pending test business_status',

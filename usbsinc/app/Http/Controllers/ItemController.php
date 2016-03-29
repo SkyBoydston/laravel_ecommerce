@@ -37,10 +37,18 @@ class ItemController extends Controller
                 $categories[$category->category] = ucfirst($category->category);
             }
         }
+
+        $brands = array();
+        $query = DB::select('select distinct brand from items');
+        foreach ($query as $brand) {
+            if ($brand->brand != "") {
+                $brands[$brand->brand] = ucfirst($brand->brand);
+            }
+        }
         
         
 
-        return view('item.create', compact('categories'));
+        return view('item.create', compact('categories', 'brands'));
     }
 
 
@@ -87,11 +95,18 @@ class ItemController extends Controller
             $category = $request->category;
         }
 
+        if ($request->new_brand != '') {
+            $brand = $request->new_brand;
+        } else {
+            $brand = $request->brand;
+        }
+
         Item::create([
-            'category' => $category,
-            'name' => $request->name,
+            'category' => ucfirst($category),
+            'brand' => ucfirst($brand),
+            'name' => ucfirst($request->name),
             'number' => $request->number,
-            'base_price' => $request->base_price,
+            'base_price' => str_replace('$', '', $request->base_price),
             'image' => $modName,
             ]);
 
@@ -129,7 +144,15 @@ class ItemController extends Controller
             }
         }
 
-        return view('item.edit', compact('item', 'categories'));
+        $brands = array();
+        $query = DB::select('select distinct brand from items');
+        foreach ($query as $brand) {
+            if ($brand->brand != "") {
+                $brands[$brand->brand] = ucfirst($brand->brand);
+            }
+        }
+
+        return view('item.edit', compact('item', 'categories', 'brands'));
     }
 
     /**
@@ -177,11 +200,18 @@ class ItemController extends Controller
             $category = $request->category;
         }
 
+        if ($request->new_brand != '') {
+            $brand = $request->new_brand;
+        } else {
+            $brand = $request->brand;
+        }
+
         $item->update([
-            'category' => $category,
-            'name' => $request->name,
+            'category' => ucfirst($category),
+            'brand' => ucfirst($brand),
+            'name' => ucfirst($request->name),
             'number' => $request->number,
-            'base_price' => $request->base_price,
+            'base_price' => str_replace('$', '', $request->base_price),
             'image' => $modName,
             ]);
 

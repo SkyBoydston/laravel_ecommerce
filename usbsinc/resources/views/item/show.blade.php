@@ -10,10 +10,29 @@
                 <div class="panel-body">
                     
 
-                    @foreach ($item['attributes'] as $key => $value)
-                        <h4>{{ ucfirst(str_replace('_', ' ', $key)) }}</h4> {{ $value }} <br/>
-                    @endforeach
-                    <a href="{{ url('item') . '/' . $item->id . '/edit' }}">Edit</a>
+                   
+
+                    <img src="{{ url('/client_item_image_files') . '/' }}{{ $item->image }}" style="width: auto;height: 170px;margin:0 auto"/>
+                    
+
+                    <h4>Category</h4>
+                    {{ $item->category }}
+
+                    <h4>Brand</h4>
+                    {{ $item->brand }}
+
+                    <h4>Name</h4>
+                    {{ $item->name }}
+
+                    <h4>Item number</h4>
+                    {{ $item->number }}
+
+                    <h4>Base price</h4>
+                    ${{ number_format($item->base_price, 2) }}
+
+                    <div class="clearfix"></div><hr>
+
+                    <a href="{{ url('item') . '/' . $item->id . '/edit' }}" class="btn btn-primary">Edit</a>
 				</div>
 			</div>
 		</div>
