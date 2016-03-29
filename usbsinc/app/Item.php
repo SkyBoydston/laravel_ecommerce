@@ -12,16 +12,11 @@ class Item extends Model
      * @var array
      */
     protected $fillable = [
+            'category',
+            'name',
 			'number',
-			'option_1',
-			'option_2',
-			'option_3',
-			'option_4',
-			'option_5',
-			'option_6',
-			'how_many_screws',
-			'shipping_weight',
             'base_price',
+            'image',
                         
     ];
 
