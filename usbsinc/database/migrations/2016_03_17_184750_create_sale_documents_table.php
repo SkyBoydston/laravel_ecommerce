@@ -16,10 +16,16 @@ class CreateSaleDocumentsTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->nullable()->unsigned();
             $table->string('number');
-            $table->timestamp('converted_to_order');
+
+            $table->timestamp('submitted_for_approval');  // Agent submits quote for approval, pending status for agent and admin
+            $table->timestamp('contact_requested');  // Contact rep
+            $table->timestamp('approved'); // Ready to submit status. Company or agent will convert to order.
+            $table->timestamp('converted_to_order'); // Is quote or order, goes to in processing (or pending in admin view)
             $table->timestamp('converted_to_retail_quote');
-            $table->timestamp('shipped');
-            $table->timestamp('estimated_arrival');
+            $table->timestamp('estimated_shipping_date');  // Estimated  // Status here is in production
+            $table->timestamp('estimated_arrival');  // Estimate
+            $table->timestamp('shipped');  // Actually shipped
+            $table->timestamp('delivered'); // Actual arrival time
 
             $table->timestamps();
 

@@ -6,7 +6,7 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
 
-        	<a href="{{ url('quote/create') }}" class="btn btn-primary">Start new quote</a>
+        	<a href="{{ url('quote/create') }}" class="btn btn-primary">Start new quote</a><br>
 
             <div class="panel panel-default">
                 <div class="panel-heading">All quotes</div>

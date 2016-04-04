@@ -13,12 +13,17 @@ class SaleDocument extends Model
      * @var array
      */
     protected $fillable = [
-             'user_id',	
-             'number',
-             'converted_to_order',
-             'converted_to_retail_quote',
-             'shipped',
-             'estimated_arrival'
+            'user_id',	
+            'number',
+            'submitted_for_approval',
+            'contact_requested',
+            'approved',
+            'converted_to_order',
+            'converted_to_retail_quote',
+            'estimated_shipping_date',
+            'estimated_arrival',
+            'shipped',
+            'delivered',
                         
     ];
 
@@ -30,6 +35,48 @@ class SaleDocument extends Model
     protected $hidden = [
         
     ];
+
+    public function scopeReadyToBeSubmitted($query) {
+        return $query->where('submitted_for_approval', '=', '0000-00-00 00:00:00');
+    }
+
+    public function scopePendingQuote($query) {
+        return $query->where('submitted_for_approval', '!=', '0000-00-00 00:00:00')
+                     ->andWhere('contact_requested', '=', '0000-00-00 00:00:00')
+                     ->andWhere('approved', '=', '0000-00-00 00:00:00');
+    }
+
+    public function scopeContactRequested($query) {
+        return $query->where('contact_requested', '!=', '0000-00-00 00:00:00');
+    }
+
+    public function scopeQuoteApproved($query) {
+        return $query->where('approved', '!=', '0000-00-00 00:00:00');
+    }
+
+    public function scopePendingOrder($query) {  // This represents the processing status for an agent and a pending status for the admin
+        return $query->where('approved', '!=', '0000-00-00 00:00:00')
+                     ->andWhere('estimated_arrival', '=', '0000-00-00 00:00:00')
+                     ->andWhere('estimated_shipping_date', '=', '0000-00-00 00:00:00');
+    }
+
+    public function scopeInProduction($query) {
+        return $query->where('estimated_arrival', '!=', '0000-00-00 00:00:00')
+                     ->orWhere('estimated_shipping_date', '!=', '0000-00-00 00:00:00')
+                     ->andWhere('shipped', '=', '0000-00-00 00:00:00');
+    }
+
+    public function scopeInTransit($query) {
+        return $query->where('shipped', '!=', '0000-00-00 00:00:00')
+                     ->andWhere('delivered', '=', '0000-00-00 00:00:00');
+    }
+
+    public function scopeDelivered($query) {
+        return $query->where('delivered', '!=', '0000-00-00 00:00:00');
+    }
+
+
+
 
 
 

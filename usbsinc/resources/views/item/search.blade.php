@@ -12,7 +12,7 @@
                     <div class="panel-body">
 	                    {{Form::open(['method' => 'GET'])}}
 		                    {{Form::input('search', 'q', null, ['placeholder' => 'Search...'])}}
-	                    {{Form::close()}}
+	                    {{Form::close()}}<br>
 
                         <div class="col-md-2"><strong>Image</strong></div>
                         <div class="col-md-2"><strong>Category</strong></div>
