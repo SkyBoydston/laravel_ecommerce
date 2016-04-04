@@ -229,7 +229,12 @@ class ItemController extends Controller
      */
     public function search_for_item($sale_document_id)
     {
-        $query = Input::get('q');
+        
+
+
+        
+        $queries = explode(' ', Input::get('q'));
+        // dd($query);
         // $columns = \Schema::getColumnListing('items');
 
         // $search = 'function test() { $result = \App\Item::';  
@@ -242,17 +247,19 @@ class ItemController extends Controller
 
         $columns = \Schema::getColumnListing('items');
         $queryObj = array( '\App\Item', 'orWhere' );
-        foreach( $columns as $column ){
-            $tmpObj = call_user_func( $queryObj, $column, 'LIKE', "%{$query}%" );
-            $queryObj = array( $tmpObj, 'orWhere' );
-        }
-        $lastQueryObj = $queryObj[0];
-        if( is_object( $lastQueryObj ) ){
-            $items = $lastQueryObj->get();
-        }
-        else{
-            $items = Item::all();
-            
+        foreach($queries as $query) {
+            foreach( $columns as $column ){
+                $tmpObj = call_user_func( $queryObj, $column, 'LIKE', "%{$query}%" );
+                $queryObj = array( $tmpObj, 'orWhere' );
+            }
+            $lastQueryObj = $queryObj[0];
+            if( is_object( $lastQueryObj ) ){
+                $items = $lastQueryObj->get();
+            }
+            else{
+                $items = Item::all();
+                
+            }
         }
 
 
