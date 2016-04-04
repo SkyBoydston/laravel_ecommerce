@@ -20,8 +20,8 @@ class CreatePricesTable extends Migration
             $table->integer('sale_document_id')->nullable()->unsigned();
 
 
-            $table->integer('brand');
-            $table->integer('category');
+            $table->string('brand');
+            $table->string('category');
 
             $table->float('price_modifier_percentage');
             $table->float('price_modifier_amount');

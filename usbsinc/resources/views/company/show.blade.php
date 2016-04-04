@@ -10,6 +10,9 @@
         		<li class="active"><a data-toggle="tab" href="#User">User</a></li>
         		<li class=""><a data-toggle="tab" href="#Company">Company</a></li>
         		<li class=""><a data-toggle="tab" href="#Company_address">Company addresses</a></li>
+        		@if (Auth::user()->hasRole('admin'))
+	        		<li class=""><a data-toggle="tab" href="#Pricing">Pricing</a></li>
+	        	@endif
         		@if (Auth::user()->hasRole('admin') || Auth::user()->hasRole('company'))
 	        		<li class=""><a data-toggle="tab" href="#Company_contact">Company contact</a></li>
 	        		<li class=""><a data-toggle="tab" href="#Agents">Agents</a></li>
@@ -154,6 +157,29 @@
 
 					</div>					
 				</div>
+
+				@if (Auth::user()->hasRole('admin'))
+					<div id="Pricing" class="tab-pane fade">
+						<div class="panel panel-default">
+			                <div class="panel-heading">Pricing</div>
+				                <div class="panel-body">
+
+				                	<h3>Pricing details</h3>
+									
+									@if ($price_mods)
+										@foreach ($price_mods as $mod)
+											price mod percentage<br>
+											{{ $mod->price_modifier_percentage }}<br>
+											price mod amount (should be zero) <br>
+											{{ $mod->price_modifier_amount }}<br>
+										@endforeach
+									@endif
+														
+								</div>
+
+						</div>					
+					</div>
+				@endif
 
 				@if (Auth::user()->hasRole('admin') || Auth::user()->hasRole('company'))
 					<div id="Company_contact" class="tab-pane fade">

@@ -11,16 +11,25 @@
             <div class="panel panel-default">
                 <div class="panel-heading">All items</div>
                 <div class="panel-body">
-                    <div class="col-md-2"><strong>Image</strong></div>
+                    
+                    <!-- <div class="col-md-2"><strong>Image</strong></div> -->
+                    <div class="col-md-2"><strong>Temp hid image; mod price</strong></div>
                     <div class="col-md-2"><strong>Category</strong></div>
                     <div class="col-md-2"><strong>Brand</strong></div>
                     <div class="col-md-2"><strong>Name</strong></div>
                     <div class="col-md-2"><strong>Number</strong></div>
                     <div class="col-md-2"><strong>Base price</strong></div>
+                    <div class="clearfix"></div><br>
+
                     @foreach ($items as $item)
+
                         <a href="{{ url('item/' . $item->id) }}">
-                            <div class="col-md-2">
+                    
+                            <!-- <div class="col-md-2">
                                 <img src="{{ url('/client_item_image_files') . '/' }}{{ $item->image }}" style="width: auto;height: 70px;"/>
+                            </div> -->
+                            <div class="col-md-2">
+                                ${{ number_format($item->mod_price(Auth::user()->id), 2) }}
                             </div>
                             <div class="col-md-2">
                                 {{ $item->category }}

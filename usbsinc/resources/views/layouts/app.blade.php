@@ -52,9 +52,9 @@
                 <ul class="nav navbar-nav">
                     <li><a href="{{ url('/quote') }}">Quotes</a></li>
                     <li><a href="{{ url('/order') }}">Orders</a></li>
+                        <li><a href="{{ url('/item') }}">Items</a></li> <!-- Temp moved from between clients and site contetnt. -->
                     @if (Auth::user()->hasRole('admin'))
                         <li><a href="{{ url('/company') }}">Clients</a></li>
-                        <li><a href="{{ url('/item') }}">Items</a></li>
                         <li><a href="{{ url('/member_cover/edit') }}">Site content</a></li>
                     @endif
                     @if (Auth::user()->hasRole('agent') || Auth::user()->hasRole('company'))

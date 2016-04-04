@@ -111,6 +111,8 @@ class CompanyController extends Controller
             $company_default_shipping_address_id = null;
         }
 
+        $price_mods = \App\Price::where('company_id', $company_id)->get();
+
         $agents = $company->user()->where('role', 'agent')->where('access_code', '')->get();
 
         $transactions = $company->with('user.sale_documents')->findOrFail($company_id);
@@ -126,6 +128,7 @@ class CompanyController extends Controller
                         'company_phone_number', 'company_phone_number_id', 
                         'company_default_shipping_address', 'company_default_shipping_address_id', 
                         'company_office_address', 'company_office_address_id',
+                        'price_mods',
                         'agents',
                         'transactions'
                         ));
