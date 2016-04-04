@@ -1,4 +1,4 @@
-<?php
+<?php 
 
 namespace App;
 
@@ -12,11 +12,16 @@ class Price extends Model
      * @var array
      */
     protected $fillable = [
-            'price',
-            'answer_id',
             'user_id',
-            'company_id'
-                        
+            'company_id',
+            'item_id',
+            'sale_document_id',
+            'brand',
+            'category',
+            'price_modifier_percentage',
+            'price_modifier_amount',
+
+           
     ];
 
     /**

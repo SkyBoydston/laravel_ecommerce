@@ -15,11 +15,11 @@ class QuoteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index() // This needs to be altered to make it an inbox rather than showing them all.
     {
         if (Auth::user()->hasRole('admin')) {
 
-            $quotes = SaleDocument::IsQuote()->get();
+            $quotes = SaleDocument::IsQuote()->submitted()->get();
 
         } elseif (Auth::user()->hasRole('company')) {
 

@@ -15,6 +15,7 @@ class SaleDocument extends Model
     protected $fillable = [
             'user_id',	
             'number',
+            'client_reference',
             'submitted_for_approval',
             'contact_requested',
             'approved',
@@ -35,6 +36,74 @@ class SaleDocument extends Model
     protected $hidden = [
         
     ];
+
+    public function status($quote) {
+        if ($quote->submitted_for_approval == '0000-00-00 00:00:00') 
+        {
+            $status = 'Ready to be submitted';
+        } elseif ($quote->submitted_for_approval != '0000-00-00 00:00:00' 
+                  && $quote->contact_requested == '0000-00-00 00:00:00' 
+                  && $quote->approved == '0000-00-00 00:00:00') 
+        {
+            $status = 'Pending';
+        } elseif ($quote->contact_requested != '0000-00-00 00:00:00') 
+        {
+            $status = 'Contact representative';
+        } elseif ($quote->approved != '0000-00-00 00:00:00')
+        {
+            $status = 'Approved';
+        } elseif ($quote->approved != '0000-00-00 00:00:00'
+                 && $quote->estimated_arrival == '0000-00-00 00:00:00'
+                 && $quote->estimated_shipping_date == '0000-00-00 00:00:00')
+        {
+            if (Auth::user()->hasRole('admin')) {
+                $status = 'Pending';
+            } else {
+                $status = 'Processing';
+            }
+        } elseif ($quote->estimated_arrival != '0000-00-00 00:00:00'
+                 && $quote->estimated_shipping_date != '0000-00-00 00:00:00'
+                 && $quote->shipped == '0000-00-00 00:00:00')
+        {
+            $status = 'In production';
+        } elseif ($quote->shipped != '0000-00-00 00:00:00'
+                 && $quote->delivered == '0000-00-00 00:00:00')
+        {
+            $status = 'In transit';
+        } elseif ($quote->delivered != '0000-00-00 00:00:00') 
+        {
+            $status = 'Delivered';
+        } else {
+            $status = 'An error has occurred. Please contact your site administrator.';
+        }
+
+        return $status;
+    }
+
+
+
+    public function total($quote) {
+        $items = $quote->items()->get();
+        
+        $total = 0;
+        foreach ($items as $item) {
+            
+            $total = $total + $item->base_price;  // This is only temporary until the price system is set up and we can be addign up the right prices.
+        }
+        return '$' . number_format($total, 2);
+    }
+
+
+
+
+
+    public function scopeSubmitted($query) {  // This is used in the controller to display the right quotes to the inbox
+        return $query->where('submitted_for_approval', '!=', '0000-00-00 00:00:00');
+    }
+
+
+
+
 
     public function scopeReadyToBeSubmitted($query) {
         return $query->where('submitted_for_approval', '=', '0000-00-00 00:00:00');
@@ -92,7 +161,7 @@ class SaleDocument extends Model
         return $query->where('converted_to_retail_quote', '!=', '0000-00-00 00:00:00');
     }
 
-    public function scopeBelongsToCompany($query, $company_id) {
+    public function scopeBelongsToCompany($query, $company_id) {  // Pretty sure this gets all quotes that belong to a company
         $company_users = Company::findOrFail($company_id)->user()->get();
         $ids_of_users_in_company = array();
         foreach ($company_users as $company_user) {

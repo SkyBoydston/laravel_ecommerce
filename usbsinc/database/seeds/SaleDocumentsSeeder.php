@@ -19,6 +19,7 @@ class SaleDocumentsSeeder extends Seeder
         	
         	['user_id' => '2',
 			'number' => '456123BH',
+			'client_reference' => 'cherry ct',
 			'converted_to_order' => '2016-03-14 20:19:49',
 			'converted_to_retail_quote' => '2016-03-15 20:19:49',
 			'shipped' => '2016-03-16 20:19:49',
@@ -34,6 +35,7 @@ class SaleDocumentsSeeder extends Seeder
 			
 			['user_id' => '3',
 			'number' => '189123VV',
+			'client_reference' => 'cherry CT',
 			'converted_to_order' => '2016-03-17 20:19:49',
 			'converted_to_retail_quote' => '2016-03-17 20:19:49',
 			'shipped' => '2016-03-17 20:19:49',
@@ -46,6 +48,7 @@ class SaleDocumentsSeeder extends Seeder
 			
 			['user_id' => '3',
 			'number' => '756453BH',
+			'client_reference' => 'ChErRy Ct',
 			'converted_to_order' => '2015-03-14 20:19:49',
 			'converted_to_retail_quote' => '2015-03-15 20:19:49',
 			'shipped' => '',
@@ -58,6 +61,7 @@ class SaleDocumentsSeeder extends Seeder
 			
 			['user_id' => '3',
 			'number' => '855553VD',
+			'client_reference' => 'Sanford Builders',
 			'converted_to_order' => '2016-03-17 20:19:50',
 			'converted_to_retail_quote' => '2016-03-17 20:19:49',
 			'shipped' => '',
@@ -73,6 +77,7 @@ class SaleDocumentsSeeder extends Seeder
 			
         	['user_id' => '2',
 			'number' => 'G2-456123BH',
+			'client_reference' => 'Glass Installers, Inc.',
 			'converted_to_order' => '',
 			'converted_to_retail_quote' => '2016-03-17 20:19:49',
 			'shipped' => '',
@@ -85,6 +90,7 @@ class SaleDocumentsSeeder extends Seeder
 			
 			['user_id' => '3',
 			'number' => 'G2-189123VV',
+			'client_reference' => 'Glass Installers, Inc.',
 			'converted_to_order' => '',
 			'converted_to_retail_quote' => '2016-03-17 20:19:49',
 			'shipped' => '',
@@ -97,6 +103,7 @@ class SaleDocumentsSeeder extends Seeder
 			
 			['user_id' => '4',
 			'number' => 'G2-756453BH',
+			'client_reference' => 'Rock Creek job',
 			'converted_to_order' => '',
 			'converted_to_retail_quote' => '2016-03-17 20:19:49',
 			'shipped' => '',
@@ -109,6 +116,7 @@ class SaleDocumentsSeeder extends Seeder
 			
 			['user_id' => '4',
 			'number' => 'G2-855553VD',
+			'client_reference' => 'Rob Withers',
 			'converted_to_order' => '',
 			'converted_to_retail_quote' => '2016-03-17 20:19:49',
 			'shipped' => '',

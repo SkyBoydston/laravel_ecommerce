@@ -6,16 +6,50 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
 
-        	<a href="{{ url('quote/create') }}" class="btn btn-primary">Start new quote</a><br>
+        	<a href="{{ url('quote/create') }}" class="btn btn-primary">Start new quote</a><br><br>
 
             <div class="panel panel-default">
-                <div class="panel-heading">All quotes</div>
+                <div class="panel-heading">Quotes inbox (This needs to be altered to make it an inbox rather than showing them all.)</div>
                 <div class="panel-body">
-	                @foreach ($quotes as $quote)
-	                	<a href="quote/{{ $quote->id }}">Quote number: {{ $quote->number }} </a><br><hr>
 
-	                @endforeach
+                	<div class="col-md-2"><strong>Submission date</strong></div>
+                    <div class="col-md-2"><strong>Client name</strong></div>
+                    <div class="col-md-2"><strong>Client reference</strong></div>
+                    <div class="col-md-2"><strong>Quote status</strong></div>
+                    <div class="col-md-2"><strong>Quote number</strong></div>
+                    <div class="col-md-2"><strong>Quote value (for now this is showing the base prices)</strong></div>
+                    <div class="clearfix"></div><br>
 
+                    @foreach ($quotes as $quote)
+
+                        <a href="{{ url('quote/' . $quote->id) }}">
+
+                            <div class="col-md-2">
+                                {{ date('m-d-Y', strtotime($quote->created_at)) }}
+                            </div>
+                            <div class="col-md-2">
+                                {{ $quote->user->company()->first()->business_name }}
+                            </div>
+                            <div class="col-md-2">
+                                {{ $quote->client_reference }}
+                            </div>
+                            <div class="col-md-2">
+                            	{{ $quote->status($quote) }}
+                            </div>
+                            <div class="col-md-2">
+                                {{ $quote->number }}
+                            </div>
+                            <div class="col-md-2">
+                                {{ $quote->total($quote) }}
+                            </div>
+                            <div class="clearfix"></div>
+                            <hr>
+                            
+                        </a>
+
+                    @endforeach
+
+	                
 				</div>
 			</div>
 		</div>
