@@ -45,7 +45,16 @@ class QuoteController extends Controller
      */
     public function create()
     {
-        //
+        SaleDocument::create([
+                'user_id' => Auth::user()->id,
+                'number' => 'quote number gen needs to be done still',
+                'converted_to_order' => '0000-00-00 00:00:00', // For some reason the field is autofilling with the current time, even adjusted for timezone.
+
+            ]);
+
+        $id = SaleDocument::orderBy('id', 'desc')->first()->id;
+
+        return redirect('quote/'.$id);
     }
 
     /**
@@ -67,7 +76,7 @@ class QuoteController extends Controller
      */
     public function show($id)
     {
-        $quote = SaleDocument::with('items')->findOrFail($id);
+        $quote = SaleDocument::with('items', 'user')->findOrFail($id);
 
         return view('quote.show', compact('quote'));
     }

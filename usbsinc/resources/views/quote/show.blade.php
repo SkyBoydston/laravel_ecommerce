@@ -8,15 +8,61 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Quote details</div>
                 <div class="panel-body">
-	                @foreach ($quote['attributes'] as $key => $value)
-                		<h4>{{ ucfirst(str_replace('_', ' ', $key)) }}</h4> {{ $value }} <br/>
+                    Quote number:<br>
+                    {{$quote->number}}<br>
 
-                	@endforeach
+                    Quote created at:<br>
+                    {{$quote->created_at}}<br>
+
+                    By:<br>
+                    {{ucfirst($quote->user->first_name)}} {{ucfirst($quote->user->last_name)}}<br>
+
+	                Converted to retail quote:<br>
+                    @if($quote->converted_to_retail_quote != '0000-00-00 00:00:00')
+                        Yes, at {{$quote->converted_to_retail_quote}}.
+                    @else
+                        No.
+                    @endif
 
                		<h3>Item(s):</h3>
-                	@foreach ($quote->items as $item)
-                		<a href="{{url('/item', [$item->id]) }}"> {{ $item->number }} </a><br>
-                	@endforeach
+
+                    <div class="col-md-2"><strong>Image</strong></div>
+                    <div class="col-md-2"><strong>Category</strong></div>
+                    <div class="col-md-2"><strong>Brand</strong></div>
+                    <div class="col-md-2"><strong>Name</strong></div>
+                    <div class="col-md-2"><strong>Number</strong></div>
+                    <div class="col-md-2"><strong>Base price</strong></div>
+                    @foreach ($quote->items as $item)
+                        <a href="{{ url('item/' . $item->id) }}">
+                            <div class="col-md-2">
+                                <img src="{{ url('/client_item_image_files') . '/' }}{{ $item->image }}" style="width: auto;height: 70px;"/>
+                            </div>
+                            <div class="col-md-2">
+                                {{ $item->category }}
+                            </div>
+                            <div class="col-md-2">
+                                {{ $item->brand }}
+                            </div>
+                            <div class="col-md-2">
+                                {{ $item->name}}
+                            </div>
+                            <div class="col-md-2">
+                                {{ $item->number }}
+                            </div>
+                            <div class="col-md-2">
+                                ${{ number_format($item->base_price, 2) }}
+                            </div>
+                            <div class="clearfix"></div>
+                            <hr>
+                            
+                        </a>
+
+                    @endforeach
+
+                	
+
+                    <a href="{{ url('item/search_and_add_to_sale_document', ['sale_document_id' => $quote->id]) }}" class="btn btn-primary">Add an item</a>
+
 				</div>
 			</div>
 		</div>

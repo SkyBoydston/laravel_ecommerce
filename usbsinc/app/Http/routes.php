@@ -70,13 +70,14 @@ Route::group(['middleware' => 'web'], function () {
 	    // Route::resource('price', 'PriceController',
 	    // 	['except' => ['index', 'create', 'store', 'destroy']]);
 	    Route::resource('quote', 'QuoteController',
-	    	['except' => ['create', 'store', 'destroy']]);
+	    	['except' => ['destroy']]);
 	    Route::resource('order', 'OrderController',
 	    	['except' => ['create', 'store', 'destroy']]);
 	    Route::resource('retail_quote', 'RetailQuoteController',
 	    	['except' => ['create', 'store', 'destroy']]);
 
-
+	    Route::get('item/search_and_add_to_sale_document/{sale_document_id}', 'ItemController@search_for_item');
+	    Route::get('item/add_item_to_sale_document/{sale_document_id}/{item_id}', 'ItemController@add_item_to_sale_document');
 	    Route::resource('item', 'ItemController',
 	    	['except' => [  'destroy']]);  
 

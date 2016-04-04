@@ -8,6 +8,9 @@ use App\Http\Requests;
 use App\Item;
 use DB;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Illuminate\Support\Facades\Input;
+use App\SaleDocument;
+// use Illuminate\Database\Schema\Blueprint;
 
 class ItemController extends Controller
 {
@@ -216,6 +219,58 @@ class ItemController extends Controller
             ]);
 
         return redirect('/item');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function search_for_item($sale_document_id)
+    {
+        $query = Input::get('q');
+        // $columns = \Schema::getColumnListing('items');
+
+        // $search = 'function test() { $result = \App\Item::';  
+        // foreach ($columns as $column) {
+        //     $search .= "orWhere('$column', 'LIKE', \"%$query%\")->";
+        // }
+        // $search .= 'get(); return $result;} return test();';
+        
+        // $items = eval($search);
+
+        $columns = \Schema::getColumnListing('items');
+        $queryObj = array( '\App\Item', 'orWhere' );
+        foreach( $columns as $column ){
+            $tmpObj = call_user_func( $queryObj, $column, 'LIKE', "%{$query}%" );
+            $queryObj = array( $tmpObj, 'orWhere' );
+        }
+        $lastQueryObj = $queryObj[0];
+        if( is_object( $lastQueryObj ) ){
+            $items = $lastQueryObj->get();
+        }
+        else{
+            $items = Item::all();
+            
+        }
+
+
+        return view('item.search', compact('sale_document_id', 'items'));
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function add_item_to_sale_document($sale_document_id, $item_id)
+    {
+        $sale_document = SaleDocument::findOrFail($sale_document_id);
+        $sale_document->items()->attach($item_id);
+        
+        return redirect('quote/'.$sale_document_id);
     }
 
     /**
