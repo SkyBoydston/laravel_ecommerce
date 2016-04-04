@@ -222,19 +222,15 @@ class ItemController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Search for an item.
      *
-     * @param  int  $id
+     * 
      * @return \Illuminate\Http\Response
      */
     public function search_for_item($sale_document_id)
     {
-        
-
-
-        
-        $queries = explode(' ', Input::get('q'));
-        // dd($query);
+    
+        // dd($query);   // This was just the first attempt
         // $columns = \Schema::getColumnListing('items');
 
         // $search = 'function test() { $result = \App\Item::';  
@@ -245,21 +241,34 @@ class ItemController extends Controller
         
         // $items = eval($search);
 
+
+
+        $queries = explode(' ', Input::get('q'));  // Set some initial variables, q will be a number of search terms, or one, or none
         $columns = \Schema::getColumnListing('items');
         $queryObj = array( '\App\Item', 'orWhere' );
+        $items = Item::all();
+
+
         foreach($queries as $query) {
-            foreach( $columns as $column ){
+
+            foreach( $columns as $column ){  // We're calling the query builder stepwise to make a where statement for all the table's columns
                 $tmpObj = call_user_func( $queryObj, $column, 'LIKE', "%{$query}%" );
                 $queryObj = array( $tmpObj, 'orWhere' );
             }
+
             $lastQueryObj = $queryObj[0];
             if( is_object( $lastQueryObj ) ){
-                $items = $lastQueryObj->get();
+                $result = $lastQueryObj->get();  // At the end, run get() to output the results
+                $queryObj = array( '\App\Item', 'orWhere' );  // Reset this to run again for next query
+
             }
             else{
-                $items = Item::all();
+                $result = Item::all();  // This helps cover the case of an empty query AKA an extra space
                 
             }
+
+            $items = $result->intersect($items);  // Run this intersection for each search term to pare down the results
+
         }
 
 
