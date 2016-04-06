@@ -17,7 +17,7 @@
                     <div class="col-md-2"><strong>Client reference</strong></div>
                     <div class="col-md-2"><strong>Quote status</strong></div>
                     <div class="col-md-2"><strong>Quote number</strong></div>
-                    <div class="col-md-2"><strong>Quote value (for now this is showing the base prices)</strong></div>
+                    <div class="col-md-2"><strong>Quote value</strong></div>
                     <div class="clearfix"></div><br>
 
                     @foreach ($quotes as $quote)

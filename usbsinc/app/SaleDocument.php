@@ -88,7 +88,7 @@ class SaleDocument extends Model
         $total = 0;
         foreach ($items as $item) {
             
-            $total = $total + $item->base_price;  // This is only temporary until the price system is set up and we can be addign up the right prices.
+            $total = $total + $item->mod_price($quote->user->id, $quote->id);  
         }
         return '$' . number_format($total, 2);
     }

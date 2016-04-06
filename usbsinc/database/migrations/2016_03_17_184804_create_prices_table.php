@@ -23,12 +23,12 @@ class CreatePricesTable extends Migration
             $table->string('brand');
             $table->string('category');
 
-            $table->float('price_modifier_percentage');
-            $table->float('price_modifier_amount');
+            $table->decimal('price_modifier_percentage', 15, 5)->default(1.00)->nullable();
+            $table->decimal('price_modifier_amount', 15, 5)->default(0.00)->nullable();
             $table->timestamps();
 
 
-            $table->foreign('user_id')
+            $table->foreign('user_id')   
                   ->references('id')->on('users');    
 
             $table->foreign('company_id')

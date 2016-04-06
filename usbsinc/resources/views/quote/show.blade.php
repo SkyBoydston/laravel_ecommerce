@@ -31,7 +31,7 @@
                     <div class="col-md-2"><strong>Brand</strong></div>
                     <div class="col-md-2"><strong>Name</strong></div>
                     <div class="col-md-2"><strong>Number</strong></div>
-                    <div class="col-md-2"><strong>Base price</strong></div>
+                    <div class="col-md-2"><strong>Price</strong></div>
                     @foreach ($quote->items as $item)
                         <a href="{{ url('item/' . $item->id) }}">
                             <div class="col-md-2">
@@ -50,7 +50,7 @@
                                 {{ $item->number }}
                             </div>
                             <div class="col-md-2">
-                                ${{ number_format($item->base_price, 2) }}
+                                ${{ number_format($item->mod_price($quote->user->id, $quote->id), 2) }}
                             </div>
                             <div class="clearfix"></div>
                             <hr>

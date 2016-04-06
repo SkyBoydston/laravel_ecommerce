@@ -6,7 +6,7 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
 
-            <a href="{{ url('item/create') }}" class="btn btn-primary">Add a new item</a>
+            <a href="{{ url('item/create') }}" class="btn btn-primary">Add a new item</a><br><br>
             
             <div class="panel panel-default">
                 <div class="panel-heading">All items</div>

@@ -34,16 +34,50 @@ class Item extends Model
     	return $this->belongsToMany('App\SaleDocument');
     }
 
-    public function mod_price($user_id) {
+    public function mod_price($user_id, $sale_document_id = null) {
         if (User::findOrFail($user_id)->hasRole('admin')) {
             return $this->base_price;
-        } else {
-            $mods = Price::where('company_id', User::findOrFail($user_id)->company->id)
-                           ->where('brand', $this->brand)->get();
-                           // ->where('category', $this->category)
-                           // ->get();
-            dd($mods);
-            return 1;
+        } else {              
+            $mods = Price::where(function ($query) use ($user_id) {
+                                $query->where('company_id', User::findOrFail($user_id)->company->id)
+                                           ->where(function ($query) {
+                                                   $query->where('brand', $this->brand)
+                                                   ->orWhere('category', $this->category);
+                                           });
+                                       })
+                                ->orWhere(function ($query) use ($user_id) {
+                                            $query->where('user_id', $user_id)
+                                           ->where(function ($query) {
+                                                   $query->where('brand', $this->brand)
+                                                   ->orWhere('category', $this->category);
+                                           });
+                                       })
+                                           ->orWhere(function ($query) use ($sale_document_id) {  // This is only possible because individual items will only ever have price modifiers on the retail quote, i.e. the sale document.
+                                                $query->where('sale_document_id', $sale_document_id)
+                                                ->where('item_id', $this->id);
+                                           })
+                           // $mods = $mods->getQuery()->toSql();
+                           // dd($mods);
+                           ->get();
+            
+            // dd($mods);
+            $mod_price = $this->base_price;
+
+            foreach ($mods as $mod) {  // Apply the modifications to the base_price
+                // if (is_null($mod->sale_document_id)) {
+                    // $mod_price = $mod_price * $mod->price_modifier_percentage;  // For brands and categories there should only be multiplicative modifiers
+                    // if (($mod->brand == $this->brand) || ($mod->category == $this->category)) {  // This has a problem with cases  // This shouldn't be necessary.
+                    // }
+                // } elseif (!is_null($mod->sale_document_id)) {
+                    $mod_price = $mod_price * $mod->price_modifier_percentage;  // Both can be applied as long as correct defaults are inserted from the forms.
+                // }
+            }
+            foreach ($mods as $mod) {  // Breaking these into two groups ensures that additive and subtractive modifiers are applied _after_ multiplicative modifiers. Since additive mods should only be applied to retail quotes, the last step in the price change progression, this ensures that the order of operations doesn't have an adverse effect on the modified price. For example, if the agent has a markup of 2x across the board from the company and wants to mark up an item an additional $50.00 to his customer, we need to apply the $50.00 last so that it doesn't get doubled by the markup from the company.
+                    $mod_price = $mod_price + $mod->price_modifier_amount;
+            }
+
+            return $mod_price;  // Apply mods to base price and return that price, AKA this isn't finished
+            return count($mods);  // Apply mods to base price and return that price, AKA this isn't finished
         }
     }
 

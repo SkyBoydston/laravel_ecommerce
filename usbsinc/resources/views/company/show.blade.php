@@ -168,6 +168,9 @@
 									
 									@if ($price_mods)
 										@foreach ($price_mods as $mod)
+
+											price mod category<br>
+											{{ $mod->category }}<br>
 											price mod percentage<br>
 											{{ $mod->price_modifier_percentage }}<br>
 											price mod amount (should be zero) <br>
