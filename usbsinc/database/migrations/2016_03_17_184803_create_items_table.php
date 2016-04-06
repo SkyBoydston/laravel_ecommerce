@@ -20,7 +20,7 @@ class CreateItemsTable extends Migration
             $table->string('name');
             $table->string('number');
             $table->string('image');
-            $table->float('base_price');
+            $table->decimal('base_price', 15, 2);
             
             $table->timestamps();
 

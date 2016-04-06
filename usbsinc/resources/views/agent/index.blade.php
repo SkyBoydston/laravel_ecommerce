@@ -9,13 +9,21 @@
 				<div class="panel panel-default">
 	                <div class="panel-heading">Deactivated agents</div>
 		                <div class="panel-body">
-								@foreach ($agents as $agent)
-									<a href="{{ "/agent/" . $agent->id }}">
-										<h4>Name</h4> {{ ucfirst($agent->first_name) }} {{ ucfirst($agent->last_name) }}<br/><hr>
+								@if (count($agents))
+									@foreach ($agents as $agent)
+										<a href="{{ "/agent/" . $agent->id }}">
+											<h4>Name</h4> {{ ucfirst($agent->first_name) }} {{ ucfirst($agent->last_name) }}<br/><hr>
 
-									</a>
-								@endforeach
+										</a>
+									@endforeach
+								@else
+									No deactivated agents
 
+								@endif
+
+								<br>
+								<br>
+								<a href="{{ url('company') . '/' . $company_id . '/?tab=5' }}" class="btn btn-primary">Go back</a>
 
 						</div>
 				

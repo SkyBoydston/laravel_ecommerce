@@ -139,7 +139,7 @@ class UserController extends Controller
         $user->delete();
 
 
-        return redirect('company/' . $company_id);
+        return redirect('company/' . $company_id . '?tab=5');
     }
     
     /**
@@ -155,6 +155,6 @@ class UserController extends Controller
         $user->restore();
 
 
-        return redirect('company/' . $company_id);
+        return redirect('company/' . $company_id . '?tab=5');
     }
 }

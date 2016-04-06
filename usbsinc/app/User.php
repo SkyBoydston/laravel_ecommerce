@@ -51,4 +51,8 @@ class User extends Authenticatable
         return $query->where('role', 'company')->orWhere('role', 'denied');
     }
 
+    public function prices() {
+        return $this->hasMany('App\Price');
+    }
+
 }

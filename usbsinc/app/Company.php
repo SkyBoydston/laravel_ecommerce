@@ -51,7 +51,9 @@ class Company extends Model
         return $this->hasMany('App\User')->where('role', 'pending');
     }
 
-
+    public function prices() {
+        return $this->hasMany('App\Price');
+    }
     
 
     

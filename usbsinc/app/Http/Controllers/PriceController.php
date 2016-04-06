@@ -5,11 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-use App\User;
-use Illuminate\Support\Facades\Input;
-use App\Company;
+use App\Price;
 
-class AgentController extends Controller
+class PriceController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,11 +16,7 @@ class AgentController extends Controller
      */
     public function index()
     {
-        $company_id = Input::get('q');
-
-        $agents = Company::findOrFail($company_id)->user()->onlyTrashed()->get();  //  Needs to only grab _agents_ in this company
-
-        return view('agent.index', compact('agents', 'company_id'));
+        //
     }
 
     /**
@@ -54,11 +48,7 @@ class AgentController extends Controller
      */
     public function show($id)
     {
-        $agent = User::withTrashed()->findOrFail($id);
-        $phone_numbers = $agent->phone_number()->first();
-        $prices = $agent->prices()->get();
-
-        return view('agent.show', compact('agent', 'phone_numbers', 'prices'));
+        //
     }
 
     /**
@@ -69,7 +59,20 @@ class AgentController extends Controller
      */
     public function edit($id)
     {
-        //
+        $price = Price::findOrFail($id);
+
+        
+
+        // Different forms have been set up so that field visibility doesn't have to be figured out with view logic.
+        if ($price->company_id >= 1) {  
+            return view('price.company_edit', compact('price'));
+        } elseif (($price->user_id >= 1) && (!$price->sale_document_id >= 1) && ($price->brand != '')) {
+            return view('price.user_brand_edit', compact('price'));
+        } elseif (($price->user_id >= 1) && (!$price->sale_document_id >= 1) && ($price->category != '')) {
+            return view('price.user_category_edit', compact('price'));
+        } elseif (($price->user_id >= 1) && ($price->sale_document_id >= 1)) {
+            return view('price.sale_document_edit', compact('price'));
+        }
     }
 
     /**
@@ -81,7 +84,11 @@ class AgentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $price = Price::findOrFail($id);
+
+        $price->update($request->all());
+
+        return \Redirect::to('/company' . '/' . $price->company_id . '?tab=3');
     }
 
     /**

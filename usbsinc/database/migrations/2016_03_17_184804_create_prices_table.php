@@ -23,8 +23,8 @@ class CreatePricesTable extends Migration
             $table->string('brand');
             $table->string('category');
 
-            $table->decimal('price_modifier_percentage', 15, 5)->default(1.00)->nullable();
-            $table->decimal('price_modifier_amount', 15, 5)->default(0.00)->nullable();
+            $table->decimal('price_modifier_percentage', 15, 2)->default(1.00)->nullable();
+            $table->decimal('price_modifier_amount', 15, 2)->default(0.00)->nullable();
             $table->timestamps();
 
 
@@ -35,7 +35,7 @@ class CreatePricesTable extends Migration
                   ->references('id')->on('companies');
 
             $table->foreign('item_id')
-                  ->references('id')->on('items');
+                  ->references('id')->on('items');  //This relationship probably won't be used because the sale document relationship should be sufficient to select the right prices for retail quotes.
             
             $table->foreign('sale_document_id')
                   ->references('id')->on('sale_documents');

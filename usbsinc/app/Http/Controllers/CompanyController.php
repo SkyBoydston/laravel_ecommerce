@@ -41,6 +41,16 @@ class CompanyController extends Controller
      */
     public function show($id)
     {
+        // This causes bootstrap to show the right tab after redirecting (usually after updating, creating, or deleting a resource). Technically, it probably should be two vars since it applies the class 'in' to the tab header as well as the pane, but it doesn't seem to cause any problems, so I left it like this.
+        $active = array_fill(0, 50, "");  
+        $desired_tab = Input::get('tab');
+        if ($desired_tab >= 1) {
+            $active[$desired_tab] = 'in active';
+        } else {
+            $active[0] = 'in active';
+        }
+
+
         $company = Company::findOrFail($id);
         
 
@@ -117,7 +127,8 @@ class CompanyController extends Controller
             $arrcategories[] .= $category->category;
         }
 
-        $price_mods = \App\Price::where('company_id', $company_id)->whereIn('category', $arrcategories)->get(); // Selects all price mods that belong to the company in question but only if the category field is filled in.
+        // $price_mods = \App\Price::where('company_id', $company_id)->whereIn('category', $arrcategories)->get(); // Selects all price mods that belong to the company in question but only if the category field is filled in.
+        $price_mods = $company->prices()->get(); 
 
         $agents = $company->user()->where('role', 'agent')->where('access_code', '')->get();  //  Shows approved, activated agents
 
@@ -125,6 +136,7 @@ class CompanyController extends Controller
         
 
         return view('company.show', compact(
+                        'active', 
                         'user', 'user_id',
                         'user_phone_number', 'user_phone_number_id',
                         'company', 'company_id', 
@@ -134,7 +146,7 @@ class CompanyController extends Controller
                         'company_phone_number', 'company_phone_number_id', 
                         'company_default_shipping_address', 'company_default_shipping_address_id', 
                         'company_office_address', 'company_office_address_id',
-                        'categories',
+                        'categories',  // Probably not necessary anymore
                         'price_mods',
                         'agents',
                         'transactions'

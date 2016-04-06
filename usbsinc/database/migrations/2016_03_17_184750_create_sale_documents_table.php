@@ -16,7 +16,7 @@ class CreateSaleDocumentsTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->nullable()->unsigned();
             $table->string('number');
-            $table->string('client_reference');
+            $table->string('client_reference')->unique();
 
             $table->timestamp('submitted_for_approval');  // Agent submits quote for approval, pending status for agent and admin
             $table->timestamp('contact_requested');  // Contact rep

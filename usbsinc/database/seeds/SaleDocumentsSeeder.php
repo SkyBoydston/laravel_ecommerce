@@ -35,7 +35,7 @@ class SaleDocumentsSeeder extends Seeder
 			
 			['user_id' => '3',
 			'number' => '189123VV',
-			'client_reference' => 'cherry CT',
+			'client_reference' => 'cherry ct2',
 			'converted_to_order' => '2016-03-17 20:19:49',
 			'converted_to_retail_quote' => '2016-03-17 20:19:49',
 			'shipped' => '2016-03-17 20:19:49',
@@ -48,7 +48,7 @@ class SaleDocumentsSeeder extends Seeder
 			
 			['user_id' => '3',
 			'number' => '756453BH',
-			'client_reference' => 'ChErRy Ct',
+			'client_reference' => 'cherry ct3',
 			'converted_to_order' => '2015-03-14 20:19:49',
 			'converted_to_retail_quote' => '2015-03-15 20:19:49',
 			'shipped' => '',
@@ -61,7 +61,7 @@ class SaleDocumentsSeeder extends Seeder
 			
 			['user_id' => '3',
 			'number' => '855553VD',
-			'client_reference' => 'Sanford Builders',
+			'client_reference' => 'sanford builders',
 			'converted_to_order' => '2016-03-17 20:19:50',
 			'converted_to_retail_quote' => '2016-03-17 20:19:49',
 			'shipped' => '',
@@ -77,7 +77,7 @@ class SaleDocumentsSeeder extends Seeder
 			
         	['user_id' => '2',
 			'number' => 'G2-456123BH',
-			'client_reference' => 'Glass Installers, Inc.',
+			'client_reference' => 'glass installers, inc.',
 			'converted_to_order' => '',
 			'converted_to_retail_quote' => '2016-03-17 20:19:49',
 			'shipped' => '',
@@ -90,7 +90,7 @@ class SaleDocumentsSeeder extends Seeder
 			
 			['user_id' => '3',
 			'number' => 'G2-189123VV',
-			'client_reference' => 'Glass Installers, Inc.',
+			'client_reference' => 'glass installers, inc.-2',
 			'converted_to_order' => '',
 			'converted_to_retail_quote' => '2016-03-17 20:19:49',
 			'shipped' => '',
@@ -103,7 +103,7 @@ class SaleDocumentsSeeder extends Seeder
 			
 			['user_id' => '4',
 			'number' => 'G2-756453BH',
-			'client_reference' => 'Rock Creek job',
+			'client_reference' => 'rock creek job',
 			'converted_to_order' => '',
 			'converted_to_retail_quote' => '2016-03-17 20:19:49',
 			'shipped' => '',
@@ -116,7 +116,7 @@ class SaleDocumentsSeeder extends Seeder
 			
 			['user_id' => '4',
 			'number' => 'G2-855553VD',
-			'client_reference' => 'Rob Withers',
+			'client_reference' => 'rob withers',
 			'converted_to_order' => '',
 			'converted_to_retail_quote' => '2016-03-17 20:19:49',
 			'shipped' => '',

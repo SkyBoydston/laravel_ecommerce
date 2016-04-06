@@ -37,40 +37,78 @@ class SaleDocument extends Model
         
     ];
 
-    public function status($quote) {
-        if ($quote->submitted_for_approval == '0000-00-00 00:00:00') 
+
+
+    /**
+     * Get the uppercase version of the client reference.
+     *
+     * @param  string  $value
+     * @return string
+     */
+    public function getClientReferenceAttribute($value)
+    {
+        return ucwords($value);
+    }
+
+    /**
+     * Set the client reference to lowercase in the db.
+     *
+     * @param  string  $value
+     * @return string
+     */
+    public function setClientReferenceAttribute($value)
+    {
+        $this->attributes['client_reference'] = strtolower($value);
+    }
+
+
+
+
+
+
+
+    /**
+     * Determine the status of the sale document based on timestamps and return it in
+     * a human readable format.
+     *
+     *
+     * 
+     */
+
+    public function status($sale_document) {
+        if ($sale_document->submitted_for_approval == '0000-00-00 00:00:00') 
         {
             $status = 'Ready to be submitted';
-        } elseif ($quote->submitted_for_approval != '0000-00-00 00:00:00' 
-                  && $quote->contact_requested == '0000-00-00 00:00:00' 
-                  && $quote->approved == '0000-00-00 00:00:00') 
+        } elseif ($sale_document->submitted_for_approval != '0000-00-00 00:00:00' 
+                  && $sale_document->contact_requested == '0000-00-00 00:00:00' 
+                  && $sale_document->approved == '0000-00-00 00:00:00') 
         {
             $status = 'Pending';
-        } elseif ($quote->contact_requested != '0000-00-00 00:00:00') 
+        } elseif ($sale_document->contact_requested != '0000-00-00 00:00:00') 
         {
             $status = 'Contact representative';
-        } elseif ($quote->approved != '0000-00-00 00:00:00')
+        } elseif ($sale_document->approved != '0000-00-00 00:00:00')
         {
             $status = 'Approved';
-        } elseif ($quote->approved != '0000-00-00 00:00:00'
-                 && $quote->estimated_arrival == '0000-00-00 00:00:00'
-                 && $quote->estimated_shipping_date == '0000-00-00 00:00:00')
+        } elseif ($sale_document->approved != '0000-00-00 00:00:00'
+                 && $sale_document->estimated_arrival == '0000-00-00 00:00:00'
+                 && $sale_document->estimated_shipping_date == '0000-00-00 00:00:00')
         {
             if (Auth::user()->hasRole('admin')) {
                 $status = 'Pending';
             } else {
                 $status = 'Processing';
             }
-        } elseif (($quote->estimated_arrival != '0000-00-00 00:00:00'
-                 || $quote->estimated_shipping_date != '0000-00-00 00:00:00')
-                 && $quote->shipped == '0000-00-00 00:00:00')
+        } elseif (($sale_document->estimated_arrival != '0000-00-00 00:00:00'
+                 || $sale_document->estimated_shipping_date != '0000-00-00 00:00:00')
+                 && $sale_document->shipped == '0000-00-00 00:00:00')
         {
             $status = 'In production';
-        } elseif ($quote->shipped != '0000-00-00 00:00:00'
-                 && $quote->delivered == '0000-00-00 00:00:00')
+        } elseif ($sale_document->shipped != '0000-00-00 00:00:00'
+                 && $sale_document->delivered == '0000-00-00 00:00:00')
         {
             $status = 'In transit';
-        } elseif ($quote->delivered != '0000-00-00 00:00:00') 
+        } elseif ($sale_document->delivered != '0000-00-00 00:00:00') 
         {
             $status = 'Delivered';
         } else {
@@ -80,15 +118,20 @@ class SaleDocument extends Model
         return $status;
     }
 
+    /**
+     * Calculate the total value of a sale document based on the final prices of the retail quote, if 
+     * there is one, or the modified prices of items based on their user's company and id if there is no
+     * retail quote.
+     * 
+     */
 
-
-    public function total($quote) {
-        $items = $quote->items()->get();
+    public function total($sale_document) {
+        $items = $sale_document->items()->get();
         
         $total = 0;
         foreach ($items as $item) {
             
-            $total = $total + $item->mod_price($quote->user->id, $quote->id);  
+            $total = $total + $item->mod_price($sale_document->user->id, $sale_document->id);  
         }
         return '$' . number_format($total, 2);
     }
@@ -176,6 +219,10 @@ class SaleDocument extends Model
 
     public function items() {
     	return $this->belongsToMany('App\Item');
+    }
+
+    public function prices() {
+        return $this->hasMany('App\Price');
     }
 
 }

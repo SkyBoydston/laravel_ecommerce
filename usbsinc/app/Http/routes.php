@@ -87,6 +87,9 @@ Route::group(['middleware' => 'web'], function () {
 	    Route::get('inbox/deny', 'InboxController@deny');
 	    Route::get('inbox/history', 'InboxController@history');
 
+	    Route::resource('price', 'PriceController',
+	    	['except' => [ 'index', 'show', 'create', 'store', 'destroy']]);
+
 	    
 
 	});

@@ -17,9 +17,9 @@ class PricesSeeder extends Seeder
             'company_id' => '1',
             'item_id' => null,
             'sale_document_id' => null,
-            'brand' => 'simpson',
-            'category' => '',
-            'price_modifier_percentage' => 1.1,
+            'brand' => null,
+            'category' => 'Gutter',
+            'price_modifier_percentage' => 100.1,
             'price_modifier_amount' => 0,
              ],
              [
@@ -27,9 +27,9 @@ class PricesSeeder extends Seeder
             'company_id' => '1',
             'item_id' => null,
             'sale_document_id' => null,
-            'brand' => 'milgard',
-            'category' => '',
-            'price_modifier_percentage' => 1.1,
+            'brand' => null,
+            'category' => 'Window',
+            'price_modifier_percentage' => 100.1,
             'price_modifier_amount' => 0,
              ],
              [
@@ -38,8 +38,8 @@ class PricesSeeder extends Seeder
             'item_id' => null,
             'sale_document_id' => null,
             'brand' => '',
-            'category' => 'door',
-            'price_modifier_percentage' => 1.1,
+            'category' => 'Door',
+            'price_modifier_percentage' => 100.1,
             'price_modifier_amount' => 0,
              ],
              [
@@ -47,9 +47,24 @@ class PricesSeeder extends Seeder
             'company_id' => '2',
             'item_id' => null,
             'sale_document_id' => null,
-            'brand' => 'simpson',
-            'category' => '',
-            'price_modifier_percentage' => 2.1,
+            'brand' => null,
+            'category' => 'Door',
+            'price_modifier_percentage' => 200.1,
+            'price_modifier_amount' => 0,
+             ],
+
+
+            
+
+
+             [
+            'user_id' => '4',
+            'company_id' => null,
+            'item_id' => null,
+            'sale_document_id' => null,
+            'brand' => '',
+            'category' => 'Window',
+            'price_modifier_percentage' => 100.1,
             'price_modifier_amount' => 0,
              ],
              [
@@ -57,9 +72,9 @@ class PricesSeeder extends Seeder
             'company_id' => null,
             'item_id' => null,
             'sale_document_id' => null,
-            'brand' => '',
-            'category' => 'window',
-            'price_modifier_percentage' => 1.1,
+            'brand' => 'Milgard',
+            'category' => null,
+            'price_modifier_percentage' => 100.1,
             'price_modifier_amount' => 0,
              ],
              [
@@ -69,7 +84,7 @@ class PricesSeeder extends Seeder
             'sale_document_id' => '8',
             'brand' => '',
             'category' => '',
-            'price_modifier_percentage' => 5.1,
+            'price_modifier_percentage' => 500.1,
             'price_modifier_amount' => 0,
              ],
              [
@@ -79,7 +94,7 @@ class PricesSeeder extends Seeder
              'sale_document_id' => '8',
              'brand' => '',
              'category' => '',
-             'price_modifier_percentage' => 1.00,
+             'price_modifier_percentage' => 100.00,
              'price_modifier_amount' => 50000,
               ],
         ]);
