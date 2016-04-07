@@ -178,7 +178,15 @@ class CompanyController extends Controller
         $company = Company::findOrFail($id); 
         $company_id = $company->id;
 
-        return view('company/edit', compact('company', 'company_id'));
+        if (Input::get('notes') == 'false') {
+
+            return view('company/edit', compact('company', 'company_id'));
+
+        } elseif (Input::get('notes') == 'true') {
+
+            return view('company/edit_notes', compact('company', 'company_id'));
+
+        }
     }
 
     /**
@@ -230,11 +238,23 @@ class CompanyController extends Controller
             'website' => $request->website,
             'status' => $request->status,
             'brands_of_interest' => is_array($request->brands_of_interest)? implode(', ', $request->brands_of_interest) : $request->brands_of_interest,
-            'logo' => $modName
+            'logo' => $modName,
+            
             ]);
 
         return redirect('/company');
     }
 
+    public function update_notes(Request $request, $company_id)
+    {
+        // dd($request);
+        $company = Company::findOrFail($company_id);
+        $company->notes = $request->notes;
+
+        $company->update(); // This isn't validated. Is it sanitized?
+
+        return redirect(url('/company' . '/' . $company_id . '?tab=6'));
+    }
    
 }
+

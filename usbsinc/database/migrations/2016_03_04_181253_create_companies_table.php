@@ -23,6 +23,7 @@ class CreateCompaniesTable extends Migration
             $table->string('contact_me_via');
             $table->string('logo');
             $table->mediumtext('how_heard_about');
+            $table->mediumtext('notes');
             $table->timestamps();
 
             

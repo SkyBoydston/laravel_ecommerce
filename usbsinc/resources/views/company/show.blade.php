@@ -17,9 +17,10 @@
         		@if (Auth::user()->hasRole('admin') || Auth::user()->hasRole('company'))
 	        		<li class="{{ $active[4] }}"><a data-toggle="tab" href="#Company_contact">Company contact</a></li>
 	        		<li class="{{ $active[5] }}"><a data-toggle="tab" href="#Agents">Agents</a></li>
+	        		<li class="{{ $active[6] }}"><a data-toggle="tab" href="#Notes">Notes</a></li>
 	        	@endif
 	        	@if (Auth::user()->hasRole('company'))
-	        		<li class="{{ $active[6] }}"><a data-toggle="tab" href="#Transactions">Transactions</a></li>
+	        		<li class="{{ $active[7] }}"><a data-toggle="tab" href="#Transactions">Transactions</a></li>
 	        	@endif
 
 
@@ -102,7 +103,7 @@
 									
 								
 								@if (Auth::user()->hasRole('admin') || Auth::user()->hasRole('company'))
-									<a class="btn btn-primary" href="{{ "/company/" . $company_id . "/edit" }}">Edit</a>
+									<a class="btn btn-primary" href="{{ "/company/" . $company_id . "/edit?notes=false" }}">Edit</a>
 								@endif
 
 								<br/><br/>
@@ -303,9 +304,32 @@
 
 						</div>					
 					</div>
+
+					<div id="Notes" class="tab-pane fade {{ $active[6] }}">
+						<div class="panel panel-default">
+			                <div class="panel-heading">Client notes</div>
+				                <div class="panel-body">
+
+									@if ($company->notes)
+											{!! Form::textarea('notes', $company->notes, array('class' => 'form-control')) !!}
+											<!-- <textarea rows='10' cols="50">{{ $company->notes }}</textarea> -->
+										
+									@endif
+									<br>
+									<br>
+									
+									<a class="btn btn-primary" href="{{ "/company/" . $company_id . "/edit?notes=true" }}">Edit</a>
+											
+
+									<br/><br/>
+
+								</div>
+
+						</div>					
+					</div>
 				@endif
 				@if (Auth::user()->hasRole('company'))	
-				<div id="Transactions" class="tab-pane fade {{ $active[6] }}">
+				<div id="Transactions" class="tab-pane fade {{ $active[7] }}">
 					<div class="panel panel-default">
 		                <div class="panel-heading">Transactions</div>
 			                <div class="panel-body">

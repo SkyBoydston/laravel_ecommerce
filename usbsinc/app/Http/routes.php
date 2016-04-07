@@ -55,6 +55,7 @@ Route::group(['middleware' => 'web'], function () {
 	    Route::get('user/reactivate/{user}', 'UserController@reactivate');  // This is necessary for agents that get rehired.
 	    Route::resource('user', 'UserController',
 	    	['except' => ['index']]);
+	    Route::patch('company/{id}/update_notes', 'CompanyController@update_notes'); // This is necessary because the company request is invoked when trying to add/update the client notes and, since that form (company.edit_notes) doesn't have all the required fields, it fails validation.
 	    Route::resource('company', 'CompanyController',
 	    	['except' => ['create', 'store', 'destroy']]);
 	    Route::resource('business_contact', 'BusinessContactController',

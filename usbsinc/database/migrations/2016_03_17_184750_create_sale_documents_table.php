@@ -15,8 +15,9 @@ class CreateSaleDocumentsTable extends Migration
         Schema::create('sale_documents', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->nullable()->unsigned();
-            $table->string('number');
-            $table->string('client_reference')->unique();
+            $table->string('number')->unique();
+            $table->string('client_reference');
+            $table->mediumtext('notes');
 
             $table->timestamp('submitted_for_approval');  // Agent submits quote for approval, pending status for agent and admin
             $table->timestamp('contact_requested');  // Contact rep

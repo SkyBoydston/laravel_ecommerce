@@ -8,21 +8,38 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Quote details</div>
                 <div class="panel-body">
-                    Quote number:<br>
+                    <h4>Quote number:</h4>
                     {{$quote->number}}<br>
 
-                    Quote created at:<br>
-                    {{$quote->created_at}}<br>
+                    <h4>Client reference:</h4>
+                    {{$quote->client_reference}}<br>
 
-                    By:<br>
+                    <h4>Quote created on:</h4>
+                    {{ date('M j, Y', strtotime($quote->created_at)) }} at {{ date('g:i a', strtotime($quote->created_at)) }}<br>
+
+                    <h4>By:</h4>
                     {{ucfirst($quote->user->first_name)}} {{ucfirst($quote->user->last_name)}}<br>
 
-	                Converted to retail quote:<br>
+	                <h4>Converted to retail quote:</h4>
                     @if($quote->converted_to_retail_quote != '0000-00-00 00:00:00')
-                        Yes, at {{$quote->converted_to_retail_quote}}.
+                        Yes, on {{ date('M j, Y', strtotime($quote->converted_to_retail_quote)) }} at {{ date('g:i a', strtotime($quote->converted_to_retail_quote)) }}.
                     @else
                         No.
                     @endif
+
+                    @if (Auth::user()->hasRole('admin'))
+                        <h4>Client notes:</h4>
+                        @if (!$quote->user->hasRole('admin'))
+                            {!! Form::textarea('notes', $quote->user->company->notes, array('class' => 'form-control', 'rows' => '4', 'disabled' => 'disabled')) !!}
+                        @else
+                            You are viewing an admin created quote.
+                        @endif
+                    @endif
+
+                    <h4>Quote notes:</h4>
+                    {!! Form::textarea('notes', $quote->notes, array('class' => 'form-control', 'rows' => '4', 'disabled' => 'disabled')) !!}
+                    <br>
+                    <a href="{{ url('quote') . '/' . $quote->id . '/edit' }}" class="btn btn-primary btn-xs">Edit quote details</a>
 
                		<h3>Item(s):</h3>
 

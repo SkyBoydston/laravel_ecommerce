@@ -78,7 +78,7 @@ class Item extends Model
 
             foreach ($mods as $mod) {  // Apply the modifications to the base_price
                 
-                    $mod_price = $mod_price * $mod->price_modifier_percentage;  
+                    $mod_price = $mod_price * $mod->price_modifier_percentage / 100;  
             }
             foreach ($mods as $mod) {  // Breaking these into two groups ensures that additive and subtractive modifiers are applied _after_ multiplicative modifiers. Since additive mods should only be applied to retail quotes, the last step in the price change progression, this ensures that the order of operations doesn't have an adverse effect on the modified price. For example, if the agent has a markup of 2x across the board from the company and wants to mark up an item an additional $50.00 to his customer, we need to apply the $50.00 last so that it doesn't get doubled by the markup from the company.
                     $mod_price = $mod_price + $mod->price_modifier_amount;

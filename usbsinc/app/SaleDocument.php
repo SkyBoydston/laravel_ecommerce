@@ -38,6 +38,9 @@ class SaleDocument extends Model
     ];
 
 
+    
+
+
 
     /**
      * Get the uppercase version of the client reference.

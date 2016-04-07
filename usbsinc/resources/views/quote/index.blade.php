@@ -28,7 +28,11 @@
                                 {{ date('m-d-Y', strtotime($quote->created_at)) }}
                             </div>
                             <div class="col-md-2">
-                                {{ $quote->user->company()->first()->business_name }}
+                                @if (!$quote->user->hasRole('admin'))
+                                    {{ $quote->user->company()->first()->business_name }}
+                                @else 
+                                    Admin created
+                                @endif
                             </div>
                             <div class="col-md-2">
                                 {{ $quote->client_reference }}

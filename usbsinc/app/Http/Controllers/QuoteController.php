@@ -45,16 +45,7 @@ class QuoteController extends Controller
      */
     public function create()
     {
-        SaleDocument::create([
-                'user_id' => Auth::user()->id,
-                'number' => 'quote number gen needs to be done still',
-                'converted_to_order' => '0000-00-00 00:00:00', // For some reason the field is autofilling with the current time, even adjusted for timezone.
-
-            ]);
-
-        $id = SaleDocument::orderBy('id', 'desc')->first()->id;
-
-        return redirect('quote/'.$id);
+        return view('quote.create');
     }
 
     /**
@@ -65,7 +56,20 @@ class QuoteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if (!$request->client_reference == '') {
+            $this->validate($request, [
+               'client_reference' => 'sometimes|unique:sale_documents',  // The db doesn't require that this is unique because then it would disallow empties (since all empties are the same)
+           ]);
+        }
+
+        $number = 'Q-' . time(); // Assign a unique quote number
+        $request->merge(['number' => $number]);
+
+        SaleDocument::create($request->all());
+
+        $id = SaleDocument::orderBy('id', 'desc')->first()->id;
+
+        return redirect('quote/'.$id);
     }
 
     /**
@@ -89,7 +93,9 @@ class QuoteController extends Controller
      */
     public function edit($id)
     {
-        //
+        $quote = SaleDocument::findOrFail($id);
+
+        return view('quote.edit', compact('quote'));
     }
 
     /**
@@ -101,7 +107,19 @@ class QuoteController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        if (!$request->client_reference == '') {
+            $this->validate($request, [
+               'client_reference' => 'sometimes|unique:sale_documents',  // The db doesn't require that this is unique because then it would disallow empties (since all empties are the same)
+           ]);
+        }
+
+        $quote = SaleDocument::findOrFail($id);
+        $quote->notes = $request->notes;
+        $quote->client_reference = $request->client_reference;
+
+        $quote->update();
+        // return redirect('/company');
+        return redirect(url('/quote', ['quote_id' => $id]));
     }
 
     /**
