@@ -132,7 +132,8 @@ class CompanyController extends Controller
 
         $agents = $company->user()->where('role', 'agent')->where('access_code', '')->get();  //  Shows approved, activated agents
 
-        $transactions = $company->with('user.sale_documents')->findOrFail($company_id);
+
+        $transactions = $company->with('user.sale_documents')->findOrFail($company_id); // This should only show for company role. Otherwise, this will be split into quotes and orders for agents.
         
 
         return view('company.show', compact(

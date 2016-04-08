@@ -40,6 +40,8 @@
                     {!! Form::textarea('notes', $quote->notes, array('class' => 'form-control', 'rows' => '4', 'disabled' => 'disabled')) !!}
                     <br>
                     <a href="{{ url('quote') . '/' . $quote->id . '/edit' }}" class="btn btn-primary btn-xs">Edit quote details</a>
+                    <a href="{{ url('quote') . '/' . $quote->id . '/edit?mark=approved' }}" class="btn btn-primary btn-xs">Approve</a>
+                    <a href="{{ url('quote') . '/' . $quote->id . '/edit?mark=contact_requested' }}" class="btn btn-warning btn-xs">Request contact</a>
 
                		<h3>Item(s):</h3>
 

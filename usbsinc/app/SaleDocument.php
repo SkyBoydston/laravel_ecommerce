@@ -87,10 +87,10 @@ class SaleDocument extends Model
                   && $sale_document->approved == '0000-00-00 00:00:00') 
         {
             $status = 'Pending';
-        } elseif ($sale_document->contact_requested != '0000-00-00 00:00:00') 
-        {
+        } elseif (($sale_document->contact_requested != '0000-00-00 00:00:00') && ($sale_document->approved < $sale_document->contact_requested)) 
+        {   
             $status = 'Contact representative';
-        } elseif ($sale_document->approved != '0000-00-00 00:00:00')
+        } elseif ($sale_document->approved != '0000-00-00 00:00:00' && ($sale_document->approved > $sale_document->contact_requested))
         {
             $status = 'Approved';
         } elseif ($sale_document->approved != '0000-00-00 00:00:00'
@@ -162,7 +162,8 @@ class SaleDocument extends Model
     }
 
     public function scopeContactRequested($query) {
-        return $query->where('contact_requested', '!=', '0000-00-00 00:00:00');
+        return $query->where('contact_requested', '!=', '0000-00-00 00:00:00')
+                     ->where('approved', '0000-00-00 00:00:00');
     }
 
     public function scopeQuoteApproved($query) {
@@ -205,6 +206,37 @@ class SaleDocument extends Model
     public function scopeIsRetailQuote($query) {
         return $query->where('converted_to_retail_quote', '!=', '0000-00-00 00:00:00');
     }
+
+    public function CheckIfIsOrder($sale_document) {
+        if ($sale_document->converted_to_order != '0000-00-00 00:00:00') {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function CheckIfIsQuote($sale_document) {
+        if ($sale_document->converted_to_order == '0000-00-00 00:00:00') {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function CheckIfIsRetailQuote($sale_document) {
+        if ($sale_document->converted_to_retail_quote != '0000-00-00 00:00:00') {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+
+
+
+
+
+
 
     public function scopeBelongsToCompany($query, $company_id) {  // Pretty sure this gets all quotes that belong to a company
         $company_users = Company::findOrFail($company_id)->user()->get();

@@ -19,7 +19,7 @@
                         <div class="col-md-2"><strong>Brand</strong></div>
                         <div class="col-md-2"><strong>Name</strong></div>
                         <div class="col-md-2"><strong>Number</strong></div>
-                        <div class="col-md-2"><strong>Base price</strong></div>
+                        <div class="col-md-2"><strong>Price</strong></div>
                         @if(count($items))
 	                        @foreach ($items as $item)
 	                            <a href="{{ url('item/add_item_to_sale_document', ['sale_document_id' => $sale_document_id, 'item_id' => $item->id]) }}">
@@ -39,7 +39,7 @@
 	                                    {{ $item->number }}
 	                                </div>
 	                                <div class="col-md-2">
-	                                    ${{ number_format($item->base_price, 2) }}
+	                                    ${{ number_format($item->mod_price(Auth::user()->id), 2) }}
 	                                </div>
 	                                <div class="clearfix"></div>
 	                                <hr>

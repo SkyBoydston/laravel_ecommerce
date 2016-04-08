@@ -7,7 +7,7 @@
         <div class="col-md-8 col-md-offset-2">
 
         
-        	<ul class="nav nav-tabs">
+        	<ul class="nav nav-tabs">  <!-- The $active indexes are out of order because the tabs were added out of order and there was already code elsewhere that used these existing indices. -->
         		<li class="{{ $active[0] }}"><a data-toggle="tab" href="#User">User</a></li>
         		<li class="{{ $active[1] }}"><a data-toggle="tab" href="#Company">Company</a></li>
         		<li class="{{ $active[2] }}"><a data-toggle="tab" href="#Company_address">Company addresses</a></li>
@@ -16,11 +16,19 @@
 	        	@endif
         		@if (Auth::user()->hasRole('admin') || Auth::user()->hasRole('company'))
 	        		<li class="{{ $active[4] }}"><a data-toggle="tab" href="#Company_contact">Company contact</a></li>
+        		@endif
+        		@if (Auth::user()->hasRole('admin'))
+	        		<li class="{{ $active[8] }}"><a data-toggle="tab" href="#QuoteHistory">Quote history</a></li>
+	        		<li class="{{ $active[9] }}"><a data-toggle="tab" href="#OrderHistory">Order history</a></li>
+	        	@endif
+        		@if (Auth::user()->hasRole('admin') || Auth::user()->hasRole('company'))
 	        		<li class="{{ $active[5] }}"><a data-toggle="tab" href="#Agents">Agents</a></li>
-	        		<li class="{{ $active[6] }}"><a data-toggle="tab" href="#Notes">Notes</a></li>
 	        	@endif
 	        	@if (Auth::user()->hasRole('company'))
 	        		<li class="{{ $active[7] }}"><a data-toggle="tab" href="#Transactions">Transactions</a></li>
+	        	@endif
+	        	@if (Auth::user()->hasRole('admin'))
+	        		<li class="{{ $active[6] }}"><a data-toggle="tab" href="#Notes">Notes</a></li>
 	        	@endif
 
 
@@ -271,8 +279,39 @@
 
 						</div>					
 					</div>
+				@endif
 
+				@if (Auth::user()->hasRole('admin'))
+					<div id="QuoteHistory" class="tab-pane fade {{ $active[8] }}">
+						<div class="panel panel-default">
+			                <div class="panel-heading">Quote history</div>
+				                <div class="panel-body">
 
+									
+
+									
+
+								</div>
+
+						</div>					
+					</div>
+
+					<div id="OrderHistory" class="tab-pane fade {{ $active[9] }}">
+						<div class="panel panel-default">
+			                <div class="panel-heading">Order history</div>
+				                <div class="panel-body">
+
+									
+
+									
+
+								</div>
+
+						</div>					
+					</div>
+				@endif
+
+				@if (Auth::user()->hasRole('admin') || Auth::user()->hasRole('company'))
 					<div id="Agents" class="tab-pane fade {{ $active[5] }}">
 						<div class="panel panel-default">
 			                <div class="panel-heading">All agents</div>
@@ -304,7 +343,8 @@
 
 						</div>					
 					</div>
-
+				@endif
+				@if (Auth::user()->hasRole('admin'))
 					<div id="Notes" class="tab-pane fade {{ $active[6] }}">
 						<div class="panel panel-default">
 			                <div class="panel-heading">Client notes</div>
@@ -328,7 +368,7 @@
 						</div>					
 					</div>
 				@endif
-				@if (Auth::user()->hasRole('company'))	
+				@if (Auth::user()->hasRole('company') || Auth::user()->hasRole('agent'))	
 				<div id="Transactions" class="tab-pane fade {{ $active[7] }}">
 					<div class="panel panel-default">
 		                <div class="panel-heading">Transactions</div>
@@ -337,27 +377,54 @@
 								<h3>All company transactions (this should actually be a history)</h3>
 									@if(count($transactions))
 
-
+										<div class="col-md-2"><strong>Submission date</strong></div>
+										<div class="col-md-1"><strong>Type</strong></div>
+										<div class="col-md-2"><strong>Number</strong></div>
+										<div class="col-md-2"><strong>Client reference</strong></div>
+										<div class="col-md-2"><strong>Agent</strong></div>
+										<div class="col-md-2"><strong>Status</strong></div>
+										<div class="col-md-1"><strong>Total value</strong></div>
+										<div class="clearfix"></div> 
 										@foreach ($transactions->user as $user)
 												{{-- $user->first_name --}}<br>
 											@foreach ($user['sale_documents'] as $doc)
-												Submission date:<br>
-												{{ $doc->created_at }}<br>
-												Type:<br>
-												@if ($doc->isOrder())
-													Order<br>
+												<a href=" 
+												@if ($doc->isOrder($doc)) 
+													{{'/order/' . $doc->id}}
+												@elseif ($doc->isQuote($doc)) 
+													{{'/quote/' . $doc->id}}
 												@endif
-												@if ($doc->isQuote())
-													Quote<br>
-												@endif
+												">
+													<div class="col-md-2"> 
+														{{ date('M j, Y', strtotime($doc->submitted_for_approval)) }}
+													</div>
+													<div class="col-md-1"> 
+														@if ($doc->CheckIfIsOrder($doc))
+															Order<br>
+														@endif
+														@if ($doc->CheckIfIsQuote($doc))
+															Quote<br>
+														@endif
+													</div>
+													<div class="col-md-2">
+														{{ $doc->number }}
+													</div>
+													<div class="col-md-2"> 
+														{{ $doc->client_reference }}
+													</div>
+													<div class="col-md-2">
+														{{ $doc->user->first_name }} {{ $doc->user->last_name }}
+													</div>
+													<div class="col-md-2"> 
+														{{ $doc->status($doc) }}
+													</div>
+													<div class="col-md-1">
+														{{ $doc->total($doc) }}
+													</div>
+													<div class="clearfix"></div> 
+													
 
-												Number:<br>
-												{{ $doc->number }}<br>
-												Client reference (field to come later):<br>
-												Agent:<br>
-												{{ $doc->user->first_name }} {{ $doc->user->last_name }}<br>
-												Status:<br>
-												Total value:<br>
+												</a>
 												<hr>
 											@endforeach
 
