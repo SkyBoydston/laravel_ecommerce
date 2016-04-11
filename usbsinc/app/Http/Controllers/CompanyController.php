@@ -134,6 +134,9 @@ class CompanyController extends Controller
 
 
         $transactions = $company->with('user.sale_documents')->findOrFail($company_id); // This should only show for company role. Otherwise, this will be split into quotes and orders for agents.
+
+        $quote_history = 'bar';
+        $order_history = 'bar';
         
 
         return view('company.show', compact(
@@ -149,6 +152,8 @@ class CompanyController extends Controller
                         'company_office_address', 'company_office_address_id',
                         'categories',  // Probably not necessary anymore
                         'price_mods',
+                        'quote_history',
+                        'order_history',
                         'agents',
                         'transactions'
                         ));

@@ -286,10 +286,31 @@
 						<div class="panel panel-default">
 			                <div class="panel-heading">Quote history</div>
 				                <div class="panel-body">
+									<br>
+									<div class="col-md-3"><strong>Submission date</strong></div>
+									<div class="col-md-3"><strong>Status</strong></div>
+									<div class="col-md-3"><strong>Number</strong></div>
+									<div class="col-md-3"><strong>Total value</strong></div>
+									<div class="clearfix"></div> 
 
-									
-
-									
+									@if (count($quote_history))
+										@foreach ($quote_history as $quote)
+											<div class="col-md-3">
+												{{ date('M j, Y', strtotime($quote->submitted_for_approval)) }}
+											</div>
+											<div class="col-md-3">
+												{{ $quote->status($quote) }}
+											</div>
+											<div class="col-md-3">
+												{{ $quote->number }}
+											</div>
+											<div class="col-md-3">
+												{{ $quote->total($quote) }}
+											</div>
+											<div class="clearfix"></div>
+											<hr>
+										@endforeach
+									@endif
 
 								</div>
 
@@ -300,10 +321,39 @@
 						<div class="panel panel-default">
 			                <div class="panel-heading">Order history</div>
 				                <div class="panel-body">
+					                <br>
+									<div class="col-md-2"><strong>Submission date</strong></div>
+									<div class="col-md-2"><strong>Number</strong></div>
+									<div class="col-md-2"><strong>Status</strong></div>
+									<div class="col-md-2"><strong>Expected shipping date</strong></div>
+									<div class="col-md-2"><strong>Expected arrival date</strong></div>
+									<div class="col-md-2"><strong>Total value</strong></div>
+									<div class="clearfix"></div> 
 
-									
-
-									
+									@if (count($order_history))
+										@foreach ($order_history as $order)
+											<div class="col-md-2">
+												{{ date('M j, Y', strtotime($order->submitted_for_approval)) }}
+											</div>
+											<div class="col-md-2">
+												{{ $order->number }}
+											</div>
+											<div class="col-md-2">
+												{{ $order->status($order) }}
+											</div>
+											<div class="col-md-2">
+												{{ $order->estimated_shipping_date }}
+											</div>
+											<div class="col-md-2">
+												{{ $order->estimated_arrival }}
+											</div>
+											<div class="col-md-2">
+												{{ $order->total($order) }}
+											</div>
+											<div class="clearfix"></div>
+											<hr>
+										@endforeach
+									@endif
 
 								</div>
 
@@ -331,6 +381,8 @@
 
 												</a>
 											@endforeach
+										
+										No agents.
 										
 									@endif
 									<br>
@@ -375,16 +427,17 @@
 			                <div class="panel-body">
 								
 								<h3>All company transactions (this should actually be a history)</h3>
-									@if(count($transactions))
 
-										<div class="col-md-2"><strong>Submission date</strong></div>
-										<div class="col-md-1"><strong>Type</strong></div>
-										<div class="col-md-2"><strong>Number</strong></div>
-										<div class="col-md-2"><strong>Client reference</strong></div>
-										<div class="col-md-2"><strong>Agent</strong></div>
-										<div class="col-md-2"><strong>Status</strong></div>
-										<div class="col-md-1"><strong>Total value</strong></div>
-										<div class="clearfix"></div> 
+									<div class="col-md-2"><strong>Submission date</strong></div>
+									<div class="col-md-1"><strong>Type</strong></div>
+									<div class="col-md-2"><strong>Number</strong></div>
+									<div class="col-md-2"><strong>Client reference</strong></div>
+									<div class="col-md-2"><strong>Agent</strong></div>
+									<div class="col-md-2"><strong>Status</strong></div>
+									<div class="col-md-1"><strong>Total value</strong></div>
+									<div class="clearfix"></div> 
+
+									@if(count($transactions))
 										@foreach ($transactions->user as $user)
 												{{-- $user->first_name --}}<br>
 											@foreach ($user['sale_documents'] as $doc)
@@ -430,7 +483,7 @@
 
 										@endforeach
 
-
+										No transactions.
 
 									@endif 
 
