@@ -7,7 +7,9 @@
             <div class="sleek">
                 <h1>Welcome</h1>
 
-                <h2>This is where the public site will live.</h2>
+                <h2>To begin, click the link in the upper-right corner to login. Use the following credentials: </h2>
+            	<h2>Username - email@email.com</h2>
+            	<h2>Password - 111111</h2>
             </div>
         </div>
     </div>

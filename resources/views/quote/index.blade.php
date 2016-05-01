@@ -9,11 +9,11 @@
         	<a href="{{ url('quote/create') }}" class="btn btn-primary">Start new quote</a><br><br>
 
             <div class="panel panel-default">
-                <div class="panel-heading">Quotes inbox (This needs to be altered to make it an inbox rather than showing them all.)</div>
+                <div class="panel-heading">All quotes</div>
                 <div class="panel-body">
 
                 	<div class="col-md-2"><strong>Submission date</strong></div>
-                    <div class="col-md-2"><strong>Client name</strong></div>
+                    <div class="col-md-2"><strong>Org. name</strong></div>
                     <div class="col-md-2"><strong>Client reference</strong></div>
                     <div class="col-md-2"><strong>Quote status</strong></div>
                     <div class="col-md-2"><strong>Quote number</strong></div>

@@ -4,34 +4,32 @@
 <div class="container">
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
-            <div class="panel panel-default">
-                <div class="panel-heading">Member site</div>
 
-                <div class="panel-body">
-                    @if (Auth::user()->company)
-                        @if (Auth::user()->company->logo)
-                            <img style="display:block;margin: 0 auto;" src="{{ url('/client_logo_files/') . '/' . Auth::user()->company->logo }}"/>
-                        @endif
-                    @endif
-                    
-                        <h1 style="text-align: center;">News/specials</h1>
-                        
-                        {!! $news !!}
+            <div class="sleek">
+                <h1>Well done!</h1>
 
-                        <h1 style="text-align: center;">Promotions</h1>
-                        {!! $data->promotions !!}
+                <h2>You are logged in as an administrator. Now that you're into the system, explore to find out what kind of features this application offers. Take special note of these three:</h2>
+                <ul>
+                    <li>
+                        <h3>Click the link at the top of the page, "Quotes," and click the button at the top of the page to create a new quote. Add new items to the quote through the interface by searching for any term in an item's description.</h3>
+                    </li>
+                    <li>
+                        <h3>Click the "Clients" link at the top of the page and explore information about users with the "Organization" role. You can add and edit information for them.</h3>
+                    </li>
+                    <li>
+                        <h3>Finally, notice that in an organization's profile, there's a tab for "Agents." Explore this area and see how the system works when you try adding yourself as an agent with an email address you own. Notice the advanced authorization features.</h3>
+                    </li>
+                </ul>
 
-                        <h1 style="text-align: center;">Webinars</h1>
-                        {!! $data->webinars !!}
 
-                        <h1 style="text-align: center;">Financial</h1>
-                        {!! $data->financial !!}
 
-                        <h1 style="text-align: center;">Social media links</h1>
-                        {!! $data->social_media_links !!}
-                    
-                </div>
+
+    
+    
+    
             </div>
+
+            
         </div>
     </div>
 </div>

@@ -6,19 +6,46 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
+
                 <div class="panel-heading">All orders</div>
                 <div class="panel-body">
+
+                    <div class="col-md-3"><strong>Order number</strong></div>
+                    <div class="col-md-3"><strong>Converted to order</strong></div>
+                    <div class="col-md-3"><strong>Shipped</strong></div>
+                    <div class="col-md-3"><strong>Estimated arrival</strong></div>
+                    <div class="clearfix"></div><br>
+
                     @foreach ($orders as $order)
+
                         <a href="order/{{ $order->id }}">
-                            Order number: {{ $order->number }} <br>
-                            Converted to order: {{ $order->converted_to_order }} <br>
-                            Shipped: {{ $order->shipped == '0000-00-00 00:00:00'? 'Not yet shipped': $order->shipped }} <br>
-                            Est. arrival: {{ $order->estimated_arrival == '0000-00-00 00:00:00'? 'Not yet available': $order->estimated_arrival }} <br>
+
+                            <div class="col-md-3">
+                                {{ $order->number }}
+                            </div>
+                            <div class="col-md-3">
+                                {{ date('m-d-Y', strtotime($order->converted_to_order)) }}
+                                
+                            </div>
+                            <div class="col-md-3">
+                                {{ $order->shipped == '0000-00-00 00:00:00'? 'Not yet shipped': date('m-d-Y', strtotime($order->shipped)) }}
+                            </div>
+                            <div class="col-md-3">
+                                {{ $order->estimated_arrival == '0000-00-00 00:00:00'? 'Not yet available': date('m-d-Y', strtotime($order->estimated_arrival)) }}
+                            </div>
+                            
+                            <div class="clearfix"></div>
+                            <hr>
+                            
                         </a>
-                        <hr>
+
                     @endforeach
+
+                    
+                </div>
+
+
                 
-				</div>
 			</div>
 		</div>
 	</div>

@@ -18,13 +18,13 @@
 	        		<li class="{{ $active[4] }}"><a data-toggle="tab" href="#Company_contact">Company contact</a></li>
         		@endif
         		@if (Auth::user()->hasRole('admin'))
-	        		<li class="{{ $active[8] }}"><a data-toggle="tab" href="#QuoteHistory">Quote history</a></li>
-	        		<li class="{{ $active[9] }}"><a data-toggle="tab" href="#OrderHistory">Order history</a></li>
+	        		<!-- <li class="{{ $active[8] }}"><a data-toggle="tab" href="#QuoteHistory">Quote history</a></li>
+	        		<li class="{{ $active[9] }}"><a data-toggle="tab" href="#OrderHistory">Order history</a></li> -->
 	        	@endif
         		@if (Auth::user()->hasRole('admin') || Auth::user()->hasRole('company'))
 	        		<li class="{{ $active[5] }}"><a data-toggle="tab" href="#Agents">Agents</a></li>
 	        	@endif
-	        	@if (Auth::user()->hasRole('company'))
+	        	@if (false)
 	        		<li class="{{ $active[7] }}"><a data-toggle="tab" href="#Transactions">Transactions</a></li>
 	        	@endif
 	        	@if (Auth::user()->hasRole('admin'))
@@ -294,6 +294,7 @@
 									<div class="clearfix"></div> 
 
 									@if (count($quote_history))
+
 										@foreach ($quote_history as $quote)
 											<div class="col-md-3">
 												{{ date('M j, Y', strtotime($quote->submitted_for_approval)) }}
@@ -385,7 +386,7 @@
 										No agents.
 										
 									@endif
-									<br>
+									<br><br>
 									<a class="btn btn-primary" href="{{ url('agent?q=') . $company_id }}">View deactivated agents</a>
 											
 
@@ -402,9 +403,10 @@
 			                <div class="panel-heading">Client notes</div>
 				                <div class="panel-body">
 
+											{!! Form::textarea('notes', $company->notes, array('class' => 'form-control', 'rows' => '4', 'disabled' => 'disabled', 'style' => 'cursor:default;')) !!}
 									@if ($company->notes)
-											{!! Form::textarea('notes', $company->notes, array('class' => 'form-control')) !!}
 											<!-- <textarea rows='10' cols="50">{{ $company->notes }}</textarea> -->
+
 										
 									@endif
 									<br>
@@ -420,7 +422,7 @@
 						</div>					
 					</div>
 				@endif
-				@if (Auth::user()->hasRole('company') || Auth::user()->hasRole('agent'))	
+				@if (false)	
 				<div id="Transactions" class="tab-pane fade {{ $active[7] }}">
 					<div class="panel panel-default">
 		                <div class="panel-heading">Transactions</div>
@@ -481,10 +483,11 @@
 												<hr>
 											@endforeach
 
+
 										@endforeach
 
-										No transactions.
-
+									@else 
+											No transactions.
 									@endif 
 
 

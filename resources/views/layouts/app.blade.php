@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>USBS Advantage</title>
+    <title>E-commerce System</title>
 
     <!-- Fonts -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel='stylesheet' type='text/css'>
@@ -22,6 +22,14 @@
 
         .fa-btn {
             margin-right: 6px;
+        }
+        .sleek {
+                width: 100%;
+                color: #B0BEC5;
+                display: table;
+                font-weight: 100;
+                font-family: 'Lato';
+                text-align: center;
         }
     </style>
 
@@ -43,7 +51,7 @@
 
                 <!-- Branding Image -->
                 <a class="navbar-brand" href="{{ url('/member_cover') }}">
-                    USBS Advantage
+                    <img src="/swoosh_logo/greySwoosh.png" style="width:100px;height:auto;" />
                 </a>
             </div>
 
@@ -55,7 +63,7 @@
                     @if (Auth::user()->hasRole('admin'))
                         <li><a href="{{ url('/company') }}">Clients</a></li>
                         <li><a href="{{ url('/item') }}">Items</a></li> 
-                        <li><a href="{{ url('/member_cover/edit') }}">Site content</a></li>
+                        <!-- <li><a href="{{ url('/member_cover/edit') }}">Site content</a></li> -->
                     @endif
                     @if (Auth::user()->hasRole('agent') || Auth::user()->hasRole('company'))
                         <li><a href="{{ url('/retail_quote') }}">Retail quotes</a></li>

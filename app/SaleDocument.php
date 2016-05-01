@@ -15,6 +15,7 @@ class SaleDocument extends Model
     protected $fillable = [
             'user_id',	
             'number',
+            'notes',
             'client_reference',
             'submitted_for_approval',
             'contact_requested',

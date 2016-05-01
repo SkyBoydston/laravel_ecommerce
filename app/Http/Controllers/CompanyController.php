@@ -135,8 +135,8 @@ class CompanyController extends Controller
 
         $transactions = $company->with('user.sale_documents')->findOrFail($company_id); // This should only show for company role. Otherwise, this will be split into quotes and orders for agents.
 
-        $quote_history = 'bar';
-        $order_history = 'bar';
+        $quote_history = null; //This was set this way because this is where development stopped and it was causing an error in company.show.blade
+        $order_history = null;
         
 
         return view('company.show', compact(

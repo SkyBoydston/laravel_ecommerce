@@ -1,7 +1,6 @@
 USBS Application Documentation
 
 
-Github repository at: https://github.com/ActiveWebsite/usbsinc.git
 
 
 

@@ -64,8 +64,9 @@ class QuoteController extends Controller
            ]);
         }
 
-        $number = 'Q-' . time(); // Assign a unique quote number
+        $number = time(); // Assign a unique quote number
         $request->merge(['number' => $number]);
+        
 
         SaleDocument::create($request->all());
 
@@ -121,7 +122,7 @@ class QuoteController extends Controller
         $quote = SaleDocument::findOrFail($id);
 
     
-        if (!$request->client_reference == '') {
+        if (!$request->client_reference == ''  &&  !$request->client_reference == $quote->client_reference) {
             $this->validate($request, [
                'client_reference' => 'sometimes|unique:sale_documents',  // The db doesn't require that this is unique because then it would disallow empties (since all empties are the same). This however, does allow empties.
            ]);

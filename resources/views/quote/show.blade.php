@@ -28,16 +28,16 @@
                     @endif
 
                     @if (Auth::user()->hasRole('admin'))
-                        <h4>Client notes:</h4>
+                        <h4>Organization notes:</h4>
                         @if (!$quote->user->hasRole('admin'))
-                            {!! Form::textarea('notes', $quote->user->company->notes, array('class' => 'form-control', 'rows' => '4', 'disabled' => 'disabled')) !!}
+                            {!! Form::textarea('notes', $quote->user->company->notes, array('class' => 'form-control', 'rows' => '4', 'disabled' => 'disabled', 'style' => 'cursor:default;')) !!}
                         @else
                             You are viewing an admin created quote.
                         @endif
                     @endif
 
                     <h4>Quote notes:</h4>
-                    {!! Form::textarea('notes', $quote->notes, array('class' => 'form-control', 'rows' => '4', 'disabled' => 'disabled')) !!}
+                    {!! Form::textarea('notes', $quote->notes, array('class' => 'form-control', 'rows' => '4', 'disabled' => 'disabled', 'style' => 'cursor:default;')) !!}
                     <br>
                     <a href="{{ url('quote') . '/' . $quote->id . '/edit' }}" class="btn btn-primary btn-xs">Edit quote details</a>
                     <a href="{{ url('quote') . '/' . $quote->id . '/edit?mark=approved' }}" class="btn btn-primary btn-xs">Approve</a>
@@ -49,7 +49,7 @@
                     <div class="col-md-2"><strong>Category</strong></div>
                     <div class="col-md-2"><strong>Brand</strong></div>
                     <div class="col-md-2"><strong>Name</strong></div>
-                    <div class="col-md-2"><strong>Number</strong></div>
+                    <div class="col-md-2"><strong>Item Number</strong></div>
                     <div class="col-md-2"><strong>Price</strong></div>
                     @foreach ($quote->items as $item)
                         <a href="{{ url('item/' . $item->id) }}">
@@ -79,7 +79,7 @@
                     @endforeach
 
                 	
-
+                    <br><br>
                     <a href="{{ url('item/search_and_add_to_sale_document', ['sale_document_id' => $quote->id]) }}" class="btn btn-primary">Add an item</a>
 
 				</div>
