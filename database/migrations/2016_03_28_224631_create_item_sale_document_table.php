@@ -16,6 +16,7 @@ class CreateItemSaleDocumentTable extends Migration
             $table->increments('id');
             $table->integer('item_id')->unsigned();
             $table->integer('sale_document_id')->unsigned();
+            $table->integer('quantity');
             $table->timestamps();
 
             $table->foreign('item_id')

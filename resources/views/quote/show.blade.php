@@ -49,7 +49,7 @@
                     <div class="col-md-2"><strong>Category</strong></div>
                     <div class="col-md-2"><strong>Brand</strong></div>
                     <div class="col-md-2"><strong>Name</strong></div>
-                    <div class="col-md-2"><strong>Item Number</strong></div>
+                    <div class="col-md-2"><strong>Quantity</strong></div>
                     <div class="col-md-2"><strong>Price</strong></div>
                     @foreach ($quote->items as $item)
                         <a href="{{ url('item/' . $item->id) }}">
@@ -66,7 +66,25 @@
                                 {{ $item->name}}
                             </div>
                             <div class="col-md-2">
-                                {{ $item->number }}
+                                {{ Form::open(array('method' => 'POST', 'url' => 'decrease_quantity', 'style' => 'display:inline;')) }}
+                                    {{ Form::hidden('item_id', $item->id) }}
+                                    {{ Form::hidden('sale_document_id', $quote->id) }}
+                                    {{ Form::hidden('current_quantity', $item->pivot->quantity) }}
+
+                                    <button type="submit" class=" btn btn-primary btn-xs">
+                                        <i class="fa  fa-minus-square"></i>
+                                    </button>
+                                {{ Form::close() }}
+                                {{ $item->pivot->quantity }}
+                                {{ Form::open(array('method' => 'POST', 'url' => 'increase_quantity', 'style' => 'display:inline;')) }}
+                                    {{ Form::hidden('item_id', $item->id) }}
+                                    {{ Form::hidden('sale_document_id', $quote->id) }}
+                                    {{ Form::hidden('current_quantity', $item->pivot->quantity) }}
+
+                                    <button type="submit" class=" btn btn-primary btn-xs">
+                                        <i class="fa  fa-plus-square"></i>
+                                    </button>
+                                {{ Form::close() }}
                             </div>
                             <div class="col-md-2">
                                 ${{ number_format($item->mod_price($quote->user->id, $quote->id), 2) }}

@@ -91,6 +91,9 @@ Route::group(['middleware' => 'web'], function () {
 	    Route::resource('price', 'PriceController',
 	    	['except' => [ 'index', 'show', 'create', 'store', 'destroy']]);
 
+	    Route::post('increase_quantity', 'ItemSaleDocumentController@increaseQuantity');
+	    Route::post('decrease_quantity', 'ItemSaleDocumentController@decreaseQuantity');
+
 	    
 
 	});

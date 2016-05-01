@@ -254,7 +254,7 @@ class SaleDocument extends Model
     }
 
     public function items() {
-    	return $this->belongsToMany('App\Item');
+    	return $this->belongsToMany('App\Item')->withPivot('quantity');
     }
 
     public function prices() {
