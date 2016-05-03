@@ -38,7 +38,7 @@ class UserController extends Controller
 
         $access_code = str_random(36);
 
-        $url = url('user/set_password') . '?access_code=' . $access_code;
+        $url = url('user/set_password') . '?i=' . $access_code;
 
         User::create([
                 'first_name' => $request->first_name,
@@ -70,7 +70,7 @@ class UserController extends Controller
         // This still needs validation
 
 
-        $access_code = Input::get('access_code');
+        $access_code = Input::get('i');
 
         return view('set_password.set_password', compact('access_code'));
     }
@@ -88,6 +88,8 @@ class UserController extends Controller
             return 'There was a problem. Please contact the system administrator.';
         }
         $user->update(['password' => bcrypt($request->password), 'access_code' => '']);
+
+        Auth::logout();
 
         return redirect('/login');
 
