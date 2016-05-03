@@ -20,7 +20,7 @@
                     <div class="col-md-2"><strong>Quote value</strong></div>
                     <div class="clearfix"></div><br>
 
-                    if (count($quotes))
+                    @if (count($quotes))
                         @foreach ($quotes as $quote)
 
                             <a href="{{ url('quote/' . $quote->id) }}">

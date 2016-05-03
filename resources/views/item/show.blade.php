@@ -32,7 +32,10 @@
 
                     <div class="clearfix"></div><hr>
 
-                    <a href="{{ url('item') . '/' . $item->id . '/edit' }}" class="btn btn-primary">Edit</a>
+                    @if (Auth::user()->hasRole('admin'))
+                        <a href="{{ url('item') . '/' . $item->id . '/edit' }}" class="btn btn-primary">Edit</a>
+                    @endif
+                        
 				</div>
 			</div>
 		</div>
