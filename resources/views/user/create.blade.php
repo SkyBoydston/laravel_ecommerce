@@ -12,6 +12,8 @@
 					{!! Form::open(['method' => 'POST', 'url' => 'user', 'class' => 'form-horizontal']) !!}
 
 					{!! Form::hidden('role', 'agent', array('class' => 'form-control')) !!}
+					{!! Form::hidden('company_id', $company_id, array('class' => 'form-control')) !!}
+
 
 					    <div class="form-group{{ $errors->has('first_name') ? ' has-error' : '' }}">
 						    {!! Form::label ('first_name', 'First name', array('class' => 'col-md-4 control-label')) !!}

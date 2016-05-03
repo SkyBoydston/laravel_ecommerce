@@ -23,7 +23,9 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create() {
-        return view('user/create');
+        $company_id = Input::get('id');
+
+        return view('user/create', compact('company_id'));
 
     }
 
@@ -41,14 +43,14 @@ class UserController extends Controller
         User::create([
                 'first_name' => $request->first_name,
                 'last_name' => $request->last_name,
-                'company_id' => Auth::user()->company->id,
+                'company_id' => $request->company_id,
                 'email' => $request->email,
                 'role' => $request->role,
                 'approved_denied_at' => Carbon\Carbon::now(),
                 'access_code' => $access_code
 
             ]);
-
+        // ini_set('max_execution_time', 600);
 
         Mail::send('emails.new_agent_account', ['request' => $request, 'url' => $url], function ($m) use ($request) {
             // $m->from(env('MAIL_FROM'), env('MAIL_FROM_NAME'));
@@ -56,7 +58,7 @@ class UserController extends Controller
             $m->to($request->email, ucfirst($request->first_name) . ' ' . ucfirst($request->last_name))->subject('You have a new agent account');
         });
 
-        return redirect('company/'. Auth::user()->company->id);
+        return redirect('company/'. $request->company_id);
     }
 
     /**

@@ -368,7 +368,7 @@
 			                <div class="panel-heading">All agents</div>
 				                <div class="panel-body">
 
-					                <a class="btn btn-primary" href="{{ url('user/create') }}">Add agent</a>
+					                <a class="btn btn-primary" href="{{ url('user/create') . '?id=' . $company_id }}">Add agent</a>
 
 									<h3>Active agents</h3>
 

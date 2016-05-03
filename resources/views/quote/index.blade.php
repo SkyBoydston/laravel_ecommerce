@@ -20,38 +20,42 @@
                     <div class="col-md-2"><strong>Quote value</strong></div>
                     <div class="clearfix"></div><br>
 
-                    @foreach ($quotes as $quote)
+                    if (count($quotes))
+                        @foreach ($quotes as $quote)
 
-                        <a href="{{ url('quote/' . $quote->id) }}">
+                            <a href="{{ url('quote/' . $quote->id) }}">
 
-                            <div class="col-md-2">
-                                {{ date('m-d-Y', strtotime($quote->created_at)) }}
-                            </div>
-                            <div class="col-md-2">
-                                @if (!$quote->user->hasRole('admin'))
-                                    {{ $quote->user->company()->first()->business_name }}
-                                @else 
-                                    Admin created
-                                @endif
-                            </div>
-                            <div class="col-md-2">
-                                {{ $quote->client_reference }}
-                            </div>
-                            <div class="col-md-2">
-                            	{{ $quote->status($quote) }}
-                            </div>
-                            <div class="col-md-2">
-                                {{ $quote->number }}
-                            </div>
-                            <div class="col-md-2">
-                                {{ $quote->total($quote) }}
-                            </div>
-                            <div class="clearfix"></div>
-                            <hr>
-                            
-                        </a>
+                                <div class="col-md-2">
+                                    {{ date('m-d-Y', strtotime($quote->created_at)) }}
+                                </div>
+                                <div class="col-md-2">
+                                    @if (!$quote->user->hasRole('admin'))
+                                        {{ $quote->user->company()->first()->business_name }}
+                                    @else 
+                                        Admin created
+                                    @endif
+                                </div>
+                                <div class="col-md-2">
+                                    {{ $quote->client_reference }}
+                                </div>
+                                <div class="col-md-2">
+                                	{{ $quote->status($quote) }}
+                                </div>
+                                <div class="col-md-2">
+                                    {{ $quote->number }}
+                                </div>
+                                <div class="col-md-2">
+                                    {{ $quote->total($quote) }}
+                                </div>
+                                <div class="clearfix"></div>
+                                <hr>
+                                
+                            </a>
 
-                    @endforeach
+                        @endforeach
+                    @else
+                        No orders.
+                    @endif
 
 	                
 				</div>
