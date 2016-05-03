@@ -382,7 +382,9 @@
 
 												</a>
 											@endforeach
-										
+											
+									@else	
+
 										No agents.
 										
 									@endif

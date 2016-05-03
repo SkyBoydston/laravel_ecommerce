@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\SaleDocument;
+use Illuminate\Support\Facades\Input;
 use Auth;
 
 class OrderController extends Controller
@@ -78,7 +79,12 @@ class OrderController extends Controller
      */
     public function edit($id)
     {
-        //
+        $order = SaleDocument::findOrFail($id);
+        if (Input::get('mark') == 'revert') {
+            $order->converted_to_order = '0000-00-00 00:00:00';
+            $order->update();
+            return redirect('/order');
+        } 
     }
 
     /**

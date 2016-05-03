@@ -39,25 +39,31 @@
                     <h4>Order notes:</h4>
                     {!! Form::textarea('notes', $order->notes, array('class' => 'form-control', 'rows' => '4', 'disabled' => 'disabled', 'style' => 'cursor:default;')) !!}
                     <br>
-                    <a href="{{ url('order') . '/' . $order->id . '/edit' }}" class="btn btn-primary btn-xs">Edit order details</a>
-                    <a href="{{ url('order') . '/' . $order->id . '/edit?mark=approved' }}" class="btn btn-primary btn-xs">Approve</a>
-                    <a href="{{ url('order') . '/' . $order->id . '/edit?mark=contact_requested' }}" class="btn btn-warning btn-xs">Request contact</a>
+                    <a href="{{ url('order') . '/' . $order->id . '/edit?mark=revert' }}" class="btn btn-primary btn-xs">Revert to quote</a>
+                    <script type="text/javascript">
+                        $('.input-group.date').datepicker({
+                            format: "mm/dd/yy",
+                            todayHighlight: true
+                        });
+                    </script>
+                    <div class="input-group date">
+                      <input type="text" class="form-control"><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+                    </div>
+                    <a href="" class="btn btn-primary btn-xs">Set shipping date</a>
+                    <a href="" class="btn btn-primary btn-xs">Set est. arrival date</a>
 
                     <h3>Item(s):</h3>
 
                     <div class="col-md-2"><strong>Image</strong></div>
-                    <div class="col-md-2"><strong>Category</strong></div>
                     <div class="col-md-2"><strong>Brand</strong></div>
                     <div class="col-md-2"><strong>Name</strong></div>
                     <div class="col-md-2"><strong>Quantity</strong></div>
-                    <div class="col-md-2"><strong>Price</strong></div>
+                    <div class="col-md-2"><strong>Price each</strong></div>
+                    <div class="col-md-2"><strong>Price total</strong></div>
                     @foreach ($order->items as $item)
                         <a href="{{ url('item/' . $item->id) }}">
                             <div class="col-md-2">
                                 <img src="{{ url('/client_item_image_files') . '/' }}{{ $item->image }}" style="width: auto;height: 70px;"/>
-                            </div>
-                            <div class="col-md-2">
-                                {{ $item->category }}
                             </div>
                             <div class="col-md-2">
                                 {{ $item->brand }}
@@ -71,12 +77,30 @@
                             <div class="col-md-2">
                                 ${{ number_format($item->mod_price($order->user->id, $order->id), 2) }}
                             </div>
+                            <div class="col-md-2">
+                                ${{ number_format($item->mod_price($order->user->id, $order->id) * $item->pivot->quantity, 2) }}
+                            </div>
                             <div class="clearfix"></div>
                             <hr>
                             
                         </a>
 
                     @endforeach
+                    <div class="col-md-2"><strong></strong></div>
+                    <div class="col-md-2"><strong></strong></div>
+                    <div class="col-md-2"><strong></strong></div>
+                    <div class="col-md-2"><strong></strong></div>
+                    <div class="col-md-2"><strong>Grand total</strong></div>
+                    <div class="col-md-2"><strong>{{ $order->total($order) }}</strong></div>
+                    <div class="clearfix"></div>
+
+                    <br>
+                    <br>
+                    <div class="col-md-10"></div>
+                    <div class="col-md-2">
+                        <a href="{{ url('order') . '/' . $order->id . '/edit?mark=contact_requested' }}" class="btn btn-primary">Finalize order</a>
+                    </div>
+
                 </div>
 			</div>
 		</div>
