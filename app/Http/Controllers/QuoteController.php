@@ -98,7 +98,7 @@ class QuoteController extends Controller
     {
         $quote = SaleDocument::findOrFail($id);
         if (Input::get('mark') == 'approved') {
-            $quote->approved = Carbon\Carbon::now();
+            $quote->converted_to_order = Carbon\Carbon::now();
             $quote->update();
             return redirect('/quote');
         } elseif (Input::get('mark') == 'contact_requested') {

@@ -13,10 +13,10 @@
                 <div class="panel-body">
 
                 	<div class="col-md-2"><strong>Submission date</strong></div>
+                    <div class="col-md-2"><strong>Quote number</strong></div>
                     <div class="col-md-2"><strong>Org. name</strong></div>
                     <div class="col-md-2"><strong>Client reference</strong></div>
                     <div class="col-md-2"><strong>Quote status</strong></div>
-                    <div class="col-md-2"><strong>Quote number</strong></div>
                     <div class="col-md-2"><strong>Quote value</strong></div>
                     <div class="clearfix"></div><br>
 
@@ -29,6 +29,9 @@
                                     {{ date('m-d-Y', strtotime($quote->created_at)) }}
                                 </div>
                                 <div class="col-md-2">
+                                    {{ $quote->number }}
+                                </div>
+                                <div class="col-md-2">
                                     @if (!$quote->user->hasRole('admin'))
                                         {{ $quote->user->company()->first()->business_name }}
                                     @else 
@@ -39,10 +42,7 @@
                                     {{ $quote->client_reference }}
                                 </div>
                                 <div class="col-md-2">
-                                	{{ $quote->status($quote) }}
-                                </div>
-                                <div class="col-md-2">
-                                    {{ $quote->number }}
+                                    {{ $quote->status($quote) }}
                                 </div>
                                 <div class="col-md-2">
                                     {{ $quote->total($quote) }}

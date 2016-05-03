@@ -20,12 +20,12 @@
                     <h4>By:</h4>
                     {{ucfirst($quote->user->first_name)}} {{ucfirst($quote->user->last_name)}}<br>
 
-	                <h4>Converted to retail quote:</h4>
+	               <!--  <h4>Converted to retail quote:</h4>
                     @if($quote->converted_to_retail_quote != '0000-00-00 00:00:00')
                         Yes, on {{ date('M j, Y', strtotime($quote->converted_to_retail_quote)) }} at {{ date('g:i a', strtotime($quote->converted_to_retail_quote)) }}.
                     @else
                         No.
-                    @endif
+                    @endif -->
 
                     @if (Auth::user()->hasRole('admin'))
                         <h4>Organization notes:</h4>
@@ -46,18 +46,15 @@
                		<h3>Item(s):</h3>
 
                     <div class="col-md-2"><strong>Image</strong></div>
-                    <div class="col-md-2"><strong>Category</strong></div>
                     <div class="col-md-2"><strong>Brand</strong></div>
                     <div class="col-md-2"><strong>Name</strong></div>
                     <div class="col-md-2"><strong>Quantity</strong></div>
-                    <div class="col-md-2"><strong>Price</strong></div>
+                    <div class="col-md-2"><strong>Price each</strong></div>
+                    <div class="col-md-2"><strong>Price total</strong></div>
                     @foreach ($quote->items as $item)
                         <a href="{{ url('item/' . $item->id) }}">
                             <div class="col-md-2">
                                 <img src="{{ url('/client_item_image_files') . '/' }}{{ $item->image }}" style="width: auto;height: 70px;"/>
-                            </div>
-                            <div class="col-md-2">
-                                {{ $item->category }}
                             </div>
                             <div class="col-md-2">
                                 {{ $item->brand }}
@@ -89,12 +86,20 @@
                             <div class="col-md-2">
                                 ${{ number_format($item->mod_price($quote->user->id, $quote->id), 2) }}
                             </div>
+                            <div class="col-md-2">
+                                ${{ number_format($item->mod_price($quote->user->id, $quote->id) * $item->pivot->quantity, 2) }}
+                            </div>
                             <div class="clearfix"></div>
                             <hr>
                             
                         </a>
-
                     @endforeach
+                        <div class="col-md-2"><strong></strong></div>
+                        <div class="col-md-2"><strong></strong></div>
+                        <div class="col-md-2"><strong></strong></div>
+                        <div class="col-md-2"><strong></strong></div>
+                        <div class="col-md-2"><strong>Grand total</strong></div>
+                        <div class="col-md-2"><strong>{{ $quote->total($quote) }}</strong></div>
 
                 	
                     <br><br>

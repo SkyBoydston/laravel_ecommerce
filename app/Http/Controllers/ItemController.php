@@ -284,7 +284,7 @@ class ItemController extends Controller
     public function add_item_to_sale_document($sale_document_id, $item_id)
     {
         $sale_document = SaleDocument::findOrFail($sale_document_id);
-        $sale_document->items()->attach($item_id);
+        $sale_document->items()->attach([$item_id => ['quantity' => 1]]);
         
         return redirect('quote/'.$sale_document_id);
     }
