@@ -16,31 +16,35 @@
                     <div class="col-md-3"><strong>Estimated arrival</strong></div>
                     <div class="clearfix"></div><br>
 
-                    @foreach ($orders as $order)
+                    @if (count($orders))
+                        @foreach ($orders as $order)
 
-                        <a href="order/{{ $order->id }}">
+                            <a href="order/{{ $order->id }}">
 
-                            <div class="col-md-3">
-                                {{ $order->number }}
-                            </div>
-                            <div class="col-md-3">
-                                {{ date('m-d-Y', strtotime($order->converted_to_order)) }}
+                                <div class="col-md-3">
+                                    {{ $order->number }}
+                                </div>
+                                <div class="col-md-3">
+                                    {{ date('m-d-Y', strtotime($order->converted_to_order)) }}
+                                    
+                                </div>
+                                <div class="col-md-3">
+                                    {{ $order->shipped == '0000-00-00 00:00:00'? 'Not yet shipped': date('m-d-Y', strtotime($order->shipped)) }}
+                                </div>
+                                <div class="col-md-3">
+                                    {{ $order->estimated_arrival == '0000-00-00 00:00:00'? 'Not yet available': date('m-d-Y', strtotime($order->estimated_arrival)) }}
+                                </div>
                                 
-                            </div>
-                            <div class="col-md-3">
-                                {{ $order->shipped == '0000-00-00 00:00:00'? 'Not yet shipped': date('m-d-Y', strtotime($order->shipped)) }}
-                            </div>
-                            <div class="col-md-3">
-                                {{ $order->estimated_arrival == '0000-00-00 00:00:00'? 'Not yet available': date('m-d-Y', strtotime($order->estimated_arrival)) }}
-                            </div>
-                            
-                            <div class="clearfix"></div>
-                            <hr>
-                            
-                        </a>
+                                <div class="clearfix"></div>
+                                <hr>
+                                
+                            </a>
 
-                    @endforeach
-
+                        @endforeach
+                    @else
+                        No orders.
+                    @endif
+                        
                     
                 </div>
 
