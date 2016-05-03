@@ -40,15 +40,11 @@
                     {!! Form::textarea('notes', $order->notes, array('class' => 'form-control', 'rows' => '4', 'disabled' => 'disabled', 'style' => 'cursor:default;')) !!}
                     <br>
                     <a href="{{ url('order') . '/' . $order->id . '/edit?mark=revert' }}" class="btn btn-primary btn-xs">Revert to quote</a>
-                    <script type="text/javascript">
-                        $('.input-group.date').datepicker({
-                            format: "mm/dd/yy",
-                            todayHighlight: true
-                        });
-                    </script>
-                    <div class="input-group date">
-                      <input type="text" class="form-control"><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
-                    </div>
+
+
+                    <input type="text" class="form-control datepicker">
+
+
                     <a href="" class="btn btn-primary btn-xs">Set shipping date</a>
                     <a href="" class="btn btn-primary btn-xs">Set est. arrival date</a>
 
@@ -81,6 +77,7 @@
                                 ${{ number_format($item->mod_price($order->user->id, $order->id) * $item->pivot->quantity, 2) }}
                             </div>
                             <div class="clearfix"></div>
+                    
                             <hr>
                             
                         </a>
@@ -102,9 +99,9 @@
                     </div>
 
                 </div>
-			</div>
-		</div>
-	</div>
+            </div>
+        </div>
+    </div>
 </div>
 
 @endsection
