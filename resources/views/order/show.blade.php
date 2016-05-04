@@ -57,7 +57,8 @@
                     <h4>Order notes:</h4>
                     {!! Form::textarea('notes', $order->notes, array('class' => 'form-control', 'rows' => '4', 'disabled' => 'disabled', 'style' => 'cursor:default;')) !!}
                     <br>
-                    <a href="{{ url('order') . '/' . $order->id . '/edit?mark=revert' }}" class="btn btn-primary btn-xs">Revert to quote</a><br><br>
+                    <a href="{{ url('order') . '/' . $order->id . '/edit?mark=revert' }}" class="btn btn-primary btn-xs">Revert to quote</a>
+                    <span class='h4'><small>Use this if you need to make changes to notes, items, or quantities.</small></span><br><br>
 
 
 
@@ -141,7 +142,7 @@
                     <br>
                     <div class="col-md-10"></div>
                     <div class="col-md-2">
-                        <a href="{{ url('order') . '/' . $order->id . '/edit?mark=contact_requested' }}" class="btn btn-primary">Finalize order</a>
+                        <a href="{{ url('order') . '/' . $order->id . '/finalize' }}" class="btn btn-primary">Finalize order</a>
                     </div>
 
                 </div>

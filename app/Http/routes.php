@@ -74,6 +74,7 @@ Route::group(['middleware' => 'web'], function () {
 	    	['except' => ['destroy']]);
 	    Route::resource('order', 'OrderController',
 	    	['except' => ['create', 'store', 'destroy']]);
+	    Route::get('order/{id}/finalize', 'OrderController@finalize');
 	    Route::resource('retail_quote', 'RetailQuoteController',
 	    	['except' => ['create', 'store', 'destroy']]);
 

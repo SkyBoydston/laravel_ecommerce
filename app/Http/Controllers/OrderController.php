@@ -119,4 +119,15 @@ class OrderController extends Controller
     {
         //
     }
+
+    /**
+     * Show the area for finalizing an order, be that exporting it, printing, or whatever else.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function finalize($id)
+    {
+        return view('order.finalize', compact('id'));
+    }
 }

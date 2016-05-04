@@ -41,7 +41,7 @@
                                     {{ $order->client_reference }}
                                 </div>
                                 <div class="col-md-2">
-                                    {{ $order->estimated_shipping_date == '0000-00-00 00:00:00'? 'Not yet shipped': date('m-d-Y', strtotime($order->estimated_shipping_date)) }}
+                                    {{ $order->estimated_shipping_date == '0000-00-00 00:00:00'? 'Not yet available': date('m-d-Y', strtotime($order->estimated_shipping_date)) }}
                                 </div>
                                 <div class="col-md-2">
                                     {{ $order->estimated_arrival == '0000-00-00 00:00:00'? 'Not yet available': date('m-d-Y', strtotime($order->estimated_arrival)) }}
