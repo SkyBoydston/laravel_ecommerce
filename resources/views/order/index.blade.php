@@ -14,7 +14,7 @@
                     <div class="col-md-2"><strong>Order number</strong></div>
                     <div class="col-md-2"><strong>Org. name</strong></div>
                     <div class="col-md-2"><strong>Client reference</strong></div>
-                    <div class="col-md-2"><strong>Shipped</strong></div>
+                    <div class="col-md-2"><strong>Shipping date</strong></div>
                     <div class="col-md-2"><strong>Estimated arrival</strong></div>
                     <div class="clearfix"></div><br>
 
@@ -41,7 +41,7 @@
                                     {{ $order->client_reference }}
                                 </div>
                                 <div class="col-md-2">
-                                    {{ $order->shipped == '0000-00-00 00:00:00'? 'Not yet shipped': date('m-d-Y', strtotime($order->shipped)) }}
+                                    {{ $order->estimated_shipping_date == '0000-00-00 00:00:00'? 'Not yet shipped': date('m-d-Y', strtotime($order->estimated_shipping_date)) }}
                                 </div>
                                 <div class="col-md-2">
                                     {{ $order->estimated_arrival == '0000-00-00 00:00:00'? 'Not yet available': date('m-d-Y', strtotime($order->estimated_arrival)) }}

@@ -20,6 +20,24 @@
                     <h4>By:</h4>
                     {{ucfirst($order->user->first_name)}} {{ucfirst($order->user->last_name)}}<br>
 
+                    <h4>Estimated shipping date:</h4>
+                    @if ($order->estimated_shipping_date != '0000-00-00 00:00:00')
+                        {{ date('M j, Y', strtotime($order->estimated_shipping_date)) }}
+                    @else
+                        Not set.
+                    @endif
+                    <br>
+
+                    <h4>Estimated arrival date:</h4>
+                    @if ($order->estimated_arrival != '0000-00-00 00:00:00')
+                        {{ date('M j, Y', strtotime($order->estimated_arrival)) }}
+                    @else
+                        Not set.
+                    @endif
+                    <br>
+
+
+
                     <!-- <h4>Converted to retail order:</h4>
                     @if($order->converted_to_retail_order != '0000-00-00 00:00:00')
                         Yes, on {{ date('M j, Y', strtotime($order->converted_to_retail_order)) }} at {{ date('g:i a', strtotime($order->converted_to_retail_order)) }}.
@@ -39,14 +57,42 @@
                     <h4>Order notes:</h4>
                     {!! Form::textarea('notes', $order->notes, array('class' => 'form-control', 'rows' => '4', 'disabled' => 'disabled', 'style' => 'cursor:default;')) !!}
                     <br>
-                    <a href="{{ url('order') . '/' . $order->id . '/edit?mark=revert' }}" class="btn btn-primary btn-xs">Revert to quote</a>
+                    <a href="{{ url('order') . '/' . $order->id . '/edit?mark=revert' }}" class="btn btn-primary btn-xs">Revert to quote</a><br><br>
 
 
-                    <input type="text" class="form-control datepicker">
 
 
-                    <a href="" class="btn btn-primary btn-xs">Set shipping date</a>
-                    <a href="" class="btn btn-primary btn-xs">Set est. arrival date</a>
+
+
+
+
+                    {{ Form::open(array('method' => 'PATCH', 'url' => 'order' . '/' . $order->id, 'class' => '')) }}
+                        
+                        <input type="text" name="estimated_shipping_date" class="form-control datepicker" placeholder="mm/dd/yy"><br>
+
+                        <button type="submit" class=" btn btn-primary btn-xs">
+                            Set est. shipping date
+                        </button>
+                    {{ Form::close() }}
+                    <br>
+
+
+
+
+
+
+
+
+
+
+                    {{ Form::open(array('method' => 'PATCH', 'url' => 'order' . '/' . $order->id, 'class' => '')) }}
+                        
+                        <input type="text" name="estimated_arrival" class="form-control datepicker" placeholder="mm/dd/yy"><br>
+
+                        <button type="submit" class=" btn btn-primary btn-xs">
+                            Set est. arrival date
+                        </button>
+                    {{ Form::close() }}
 
                     <h3>Item(s):</h3>
 

@@ -65,6 +65,23 @@ class SaleDocument extends Model
         $this->attributes['client_reference'] = strtolower($value);
     }
 
+    public function setEstimatedShippingDateAttribute($value)
+    {
+        $year = substr($value, 6, 2);
+        $month = substr($value, 3, 2);
+        $day = substr($value, 0, 2);
+        
+        $this->attributes['estimated_shipping_date'] = \Carbon\Carbon::createFromFormat('m/d/y', $value)->toDateTimeString();
+    }
+
+    public function setEstimatedArrivalAttribute($value)
+    {
+        $year = substr($value, 6, 2);
+        $month = substr($value, 3, 2);
+        $day = substr($value, 0, 2);
+        
+        $this->attributes['estimated_arrival'] = \Carbon\Carbon::createFromFormat('m/d/y', $value)->toDateTimeString();
+    }
 
 
 

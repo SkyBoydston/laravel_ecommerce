@@ -84,7 +84,7 @@ class OrderController extends Controller
             $order->converted_to_order = '0000-00-00 00:00:00';
             $order->update();
             return redirect('/order');
-        } 
+        }  
     }
 
     /**
@@ -96,7 +96,17 @@ class OrderController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $order = SaleDocument::findOrFail($id);
+
+        if ($request->estimated_shipping_date) {
+            $order->estimated_shipping_date = $request->estimated_shipping_date;
+            $order->update();
+            return redirect('/order' . '/' . $order->id);
+        } elseif ($request->estimated_arrival) {
+            $order->estimated_arrival = $request->estimated_arrival;
+            $order->update();
+            return redirect('/order' . '/' . $order->id);
+        }
     }
 
     /**
