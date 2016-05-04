@@ -14,30 +14,30 @@ class BusinessContactSeeder extends Seeder
     	DB::table('business_contacts')->insert([
     				[
     					'company_id' => '1',
-		        		'first_name' => 'test first_name',
-						'last_name' => 'test last_name',
-						'title' => 'test title',
+		        		'first_name' => 'Frederick',
+						'last_name' => 'Ramirez',
+						'title' => 'Owner',
 						
 		        	],
 		        	[
     					'company_id' => '2',
-		        		'first_name' => 'another test first_name',
-						'last_name' => 'another test last_name',
-						'title' => 'another test title',
+		        		'first_name' => 'Darlene',
+						'last_name' => 'Thompson',
+						'title' => 'CFO',
 						
 		        	],
                     [
                         'company_id' => '3',
-                        'first_name' => 'pending test first_name',
-                        'last_name' => 'pending test last_name',
-                        'title' => 'pending 1 test title',
+                        'first_name' => 'Dylan',
+                        'last_name' => 'Westerbach',
+                        'title' => 'CEO',
                         
                     ],
                     [
                         'company_id' => '4',
-                        'first_name' => 'another pending test first_name',
-                        'last_name' => 'another pending test last_name',
-                        'title' => 'pending 2 test title',
+                        'first_name' => 'Sarah',
+                        'last_name' => 'Sundberg',
+                        'title' => 'Manager',
                         
                     ],
     		]);
