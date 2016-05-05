@@ -84,7 +84,7 @@ class PricesSeeder extends Seeder
             'sale_document_id' => '8',
             'brand' => '',
             'category' => '',
-            'price_modifier_percentage' => 500.1,
+            'price_modifier_percentage' => 120.1,
             'price_modifier_amount' => 0,
              ],
              [
@@ -95,7 +95,7 @@ class PricesSeeder extends Seeder
              'brand' => '',
              'category' => '',
              'price_modifier_percentage' => 100.00,
-             'price_modifier_amount' => 50000,
+             'price_modifier_amount' => 5,
               ],
         ]);
     }

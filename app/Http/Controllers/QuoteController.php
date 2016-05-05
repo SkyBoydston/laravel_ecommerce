@@ -60,7 +60,7 @@ class QuoteController extends Controller
     {
         if (!$request->client_reference == '') {
             $this->validate($request, [
-               'client_reference' => 'sometimes|unique:sale_documents',  // The db doesn't require that this is unique because then it would disallow empties (since all empties are the same)
+               'client_reference' => 'sometimes',  // The db doesn't require that this is unique because then it would disallow empties (since all empties are the same)
            ]);
         }
 
