@@ -18,8 +18,9 @@ class SaleDocumentsSeeder extends Seeder
 
         	
         	['user_id' => '2',
-			'number' => '456123BH',
-			'client_reference' => 'cherry ct',
+			'number' => '1462155550',
+			'client_reference' => 'cherry creek computing',
+			'notes' => 'This is a smaller client.',
 			'converted_to_order' => '2016-03-14 20:19:49',
 			'converted_to_retail_quote' => '2016-03-15 20:19:49',
 			'shipped' => '2016-03-16 20:19:49',
@@ -34,8 +35,9 @@ class SaleDocumentsSeeder extends Seeder
 
 			
 			['user_id' => '3',
-			'number' => '189123VV',
-			'client_reference' => 'cherry ct2',
+			'number' => '1462155334',
+			'client_reference' => 'Samantha Jones',
+			'notes' => 'Customer is upgrading her machine.',
 			'converted_to_order' => '2016-03-17 20:19:49',
 			'converted_to_retail_quote' => '2016-03-17 20:19:49',
 			'shipped' => '2016-03-17 20:19:49',
@@ -47,8 +49,9 @@ class SaleDocumentsSeeder extends Seeder
 			'delivered' => ''],
 			
 			['user_id' => '3',
-			'number' => '756453BH',
-			'client_reference' => 'cherry ct3',
+			'number' => '1462155744',
+			'client_reference' => 'Don Chaves',
+			'notes' => '',
 			'converted_to_order' => '2015-03-14 20:19:49',
 			'converted_to_retail_quote' => '2015-03-15 20:19:49',
 			'shipped' => '',
@@ -60,8 +63,9 @@ class SaleDocumentsSeeder extends Seeder
 			'delivered' => ''],
 			
 			['user_id' => '3',
-			'number' => '855553VD',
-			'client_reference' => 'sanford builders',
+			'number' => '1462155131',
+			'client_reference' => 'sanford IT',
+			'notes' => 'High volume client.',
 			'converted_to_order' => '2016-03-17 20:19:50',
 			'converted_to_retail_quote' => '2016-03-17 20:19:49',
 			'shipped' => '',
@@ -76,8 +80,9 @@ class SaleDocumentsSeeder extends Seeder
 
 			
         	['user_id' => '2',
-			'number' => 'G2-456123BH',
-			'client_reference' => 'glass installers, inc.',
+			'number' => '1462155722',
+			'client_reference' => 'tech installers, inc.',
+			'notes' => 'Needs to pickup Saturday.',
 			'converted_to_order' => '',
 			'converted_to_retail_quote' => '2016-03-17 20:19:49',
 			'shipped' => '',
@@ -89,8 +94,9 @@ class SaleDocumentsSeeder extends Seeder
 			'delivered' => ''],
 			
 			['user_id' => '3',
-			'number' => 'G2-189123VV',
-			'client_reference' => 'glass installers, inc.-2',
+			'number' => '1462155755',
+			'client_reference' => 'Michael Tampers',
+			'notes' => 'Advise customer of specials.',
 			'converted_to_order' => '',
 			'converted_to_retail_quote' => '2016-03-17 20:19:49',
 			'shipped' => '',
@@ -102,8 +108,9 @@ class SaleDocumentsSeeder extends Seeder
 			'delivered' => ''],
 			
 			['user_id' => '4',
-			'number' => 'G2-756453BH',
-			'client_reference' => 'rock creek job',
+			'number' => '1462155568',
+			'client_reference' => 'Rock Creek',
+			'notes' => '',
 			'converted_to_order' => '',
 			'converted_to_retail_quote' => '2016-03-17 20:19:49',
 			'shipped' => '',
@@ -115,8 +122,9 @@ class SaleDocumentsSeeder extends Seeder
 			'delivered' => ''],
 			
 			['user_id' => '4',
-			'number' => 'G2-855553VD',
+			'number' => '1462155223',
 			'client_reference' => 'rob withers',
+			'notes' => '',
 			'converted_to_order' => '',
 			'converted_to_retail_quote' => '2016-03-17 20:19:49',
 			'shipped' => '',

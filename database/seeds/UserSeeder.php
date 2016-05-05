@@ -14,8 +14,8 @@ class UserSeeder extends Seeder
         DB::table('users')->insert([
 		        	[
                         'company_id' => null,
-                        'first_name' => 'Admin',
-		        		'last_name' => 'test last name',
+                        'first_name' => 'Jeffrey',
+		        		'last_name' => 'Way',
                         'email' => 'email@email.com',
 						'password' => bcrypt('111111'),
                         'role' => 'admin',
@@ -24,20 +24,20 @@ class UserSeeder extends Seeder
 		        	],
 		        	[
                         'company_id' => '1',
-		        		'first_name' => 'Company owner 1',
-                        'last_name' => 'test last name',
+		        		'first_name' => 'Kent',
+                        'last_name' => 'Beck',
                         'email' => 'company@email.com',
-						'password' => bcrypt('111111'),
+						'password' => bcrypt('141414'),
                         'approved_denied_at' => '2015-11-11 04:50:22',
                         'role' => 'company',
 
 		        	],
                     [
                         'company_id' => '2',
-                        'first_name' => 'Company owner 2',
-                        'last_name' => 'test last name',
+                        'first_name' => 'Grady',
+                        'last_name' => 'Booch',
                         'email' => 'company2@email.com',
-                        'password' => bcrypt('111111'),
+                        'password' => bcrypt('141414'),
                         'role' => 'company',
                         'approved_denied_at' => '2016-03-21 16:01:43'
 
@@ -45,10 +45,10 @@ class UserSeeder extends Seeder
                     ],
                     [
                         'company_id' => '2',
-                        'first_name' => 'Agent',
-                        'last_name' => 'test last name',
+                        'first_name' => 'Linus',
+                        'last_name' => 'Torvalds',
                         'email' => 'agent@email.com',
-                        'password' => bcrypt('111111'),
+                        'password' => bcrypt('141414'),
                         'role' => 'agent',
                         'approved_denied_at' => '',
 
@@ -56,10 +56,10 @@ class UserSeeder extends Seeder
                     ],
                     [
                         'company_id' => '3',
-                        'first_name' => 'Pending user',
-                        'last_name' => 'test last name',
+                        'first_name' => 'Alan',
+                        'last_name' => 'Turing',
                         'email' => 'pending@email.com',
-                        'password' => bcrypt('111111'),
+                        'password' => bcrypt('141414'),
                         'role' => 'pending',
                         'approved_denied_at' => '',
 
@@ -67,10 +67,10 @@ class UserSeeder extends Seeder
                     ],
                     [
                         'company_id' => '4',
-                        'first_name' => 'Another pending user',
-                        'last_name' => 'test last name',
+                        'first_name' => 'Taylor',
+                        'last_name' => 'Otwell',
                         'email' => 'pending2@email.com',
-                        'password' => bcrypt('111111'),
+                        'password' => bcrypt('141414'),
                         'role' => 'pending',
                         'approved_denied_at' => '',
 

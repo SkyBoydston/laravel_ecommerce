@@ -12,7 +12,7 @@
 
                    
 
-                    <img src="{{ url('/client_item_image_files') . '/' }}{{ $item->image }}" style="width: auto;height: 170px;margin:0 auto"/>
+                    <img src="{{ url('/client_item_image_files') . '/' }}{{ $item->image }}" style="width: 70%;height: auto;margin:0 auto;display:block;"/>
                     
 
                     <h4>Category</h4>
